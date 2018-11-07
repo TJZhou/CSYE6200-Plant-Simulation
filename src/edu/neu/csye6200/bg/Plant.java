@@ -97,8 +97,8 @@ public class Plant {
 		// here, assume rose has the same growth patterns as maple
 		switch (this.plantName) {
 		case "Maple":
-			baseStem = new BGStem(0, 0, 30, 90);
-			bg.growthPlant(age, this.length, 30, baseStem);
+			baseStem = new BGStem(0, 0, 100, Math.PI/2);
+			bg.growthPlant(age, 100, Math.PI/3, baseStem);
 			break;
 		case "PhoenixTree":
 			baseStem = new BGStem(0, 0, 20, 90);

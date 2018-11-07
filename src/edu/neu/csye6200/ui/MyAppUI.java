@@ -65,11 +65,11 @@ public class MyAppUI extends JFrame{
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setColor(Color.BLACK);
-		for(int i =0 ; i< Math.pow(2, 7); i++) {
+		for(int i =0 ; i< 32; i++) {
 			BGStem st = BGStem.stemMap.get(i);
-			line = new Line2D.Float((int)st.getLocationX()+500, (int)st.getLocationY()+300, 
-					(int)(st.getLocationX()+st.getLength()*Math.cos(st.getRadians())+500), 
-					(int)(st.getLocationY()+st.getLength()*Math.sin(st.getRadians()))+300);
+			line = new Line2D.Double(st.getLocationX()+500, st.getLocationY()+300, 
+				(st.getLocationX()+st.getLength()*Math.cos(st.getRadians())+500), 
+				(st.getLocationY()+st.getLength()*Math.sin(st.getRadians()))+300);
 				g2.draw(line);
 		}
 		/*for(BGStem st: BGStem.stemMap.values()) {

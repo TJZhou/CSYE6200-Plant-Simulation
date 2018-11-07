@@ -6,26 +6,48 @@ package edu.neu.csye6200.bg;
 public class BGRule {
 
 //	private BGStem baseStem;
+	private BGStem left;
 	private BGStem stem;
+	private BGStem right;
+	private double radians, X, Y, length;
+	
+	private int depth = 0;
 	
 	public BGRule() {
 		
 	}
 	
+/*	public int growthPlant(BGStem baseStem) {
+		radians = baseStem.getRadians();
+		X = baseStem.getLocationX();
+		Y = baseStem.getLocationY();
+		length = baseStem.getLength();
+		
+		while(depth++<1) {
+			left = new BGStem(X + length * Math.cos(radians), Y + length * Math.sin(radians), length/2, Math.PI/2+radians);
+			growthPlant(left);
+			mid = new BGStem(X + length * Math.cos(radians), Y + length * Math.sin(radians), length/1.5, Math.PI/2);
+			growthPlant(mid);
+			right = new BGStem(X + length * Math.cos(radians), Y + length * Math.sin(radians), length/2, Math.PI/2-radians);	
+			growthPlant(right);
+		}
+		return depth--;
+	}*/
+
 	// method to growth 
-		public void growthPlant(int age, double baseLength, int rotateRadian, BGStem baseStem) {
+		public void growthPlant(int age, double baseLength, double radian, BGStem baseStem) {
 
 			// in order to calculate radians, LocationX/Y, length later
 			double radians, X, Y, length;
 			int ID = baseStem.getStemID();
 
-			/*
-			 * Create 16 stems, and the first two stems are based on the baseStem
+			
+		/*	 * Create 16 stems, and the first two stems are based on the baseStem
 			 * Parameters here are able to change and adapt 
 			 * It's able to increase the value of age to add more stems
-			 */
-			stem = new BGStem(0, baseLength, baseLength - 5, 90 + rotateRadian);
-			stem = new BGStem(0, baseLength, baseLength - 5, 90 - rotateRadian);
+*/			 
+			stem = new BGStem(0, baseLength, baseLength - 5, Math.PI/2 + radian);
+			stem = new BGStem(0, baseLength, baseLength - 5, Math.PI/2 - radian);
 			if (age >= 2) {
 				// Let every stem has two child stems
 				for (int i = ID + 3; i < ID + Math.pow(2, age); i++) {
@@ -44,9 +66,9 @@ public class BGRule {
 								// locationY
 								(Y + length * Math.sin(radians)),
 								// length
-								(baseLength - ((int) (Math.log(i - ID + 1) / Math.log(2))) * 5),
+								(baseLength /2 ),
 								// radians
-								radians + rotateRadian);
+								radians + radian);
 					}
 
 					// stems grow to right side
@@ -56,8 +78,10 @@ public class BGRule {
 						Y = BGStem.getFromHashMap((i - ID - 2) / 2 + ID).getLocationY();
 						length = BGStem.getFromHashMap((i - ID - 2) / 2 + ID).getLength();
 						stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-								(baseLength - ((int) (Math.log(i - ID + 1) / Math.log(2))) * 5), radians - rotateRadian);
+								(baseLength/2 ), radians - radian);
 					}
+					//- ((int) (Math.log(i - ID + 1) / Math.log(2))) * 10
+					//- ((int) (Math.log(i - ID + 1) / Math.log(2))) * 10
 				}
 			}
 		}
