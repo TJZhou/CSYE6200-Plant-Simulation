@@ -6,12 +6,12 @@ import java.util.logging.Logger;
 /**
  * @author Tianju Zhou NUID 001420546
  */
-public class Stem {
+public class BGStem {
 	
-	private static Logger log = Logger.getLogger(Stem.class.getName());
+	private static Logger log = Logger.getLogger(BGStem.class.getName());
 	
 	//create a static HashMap to store all the stems 
-	private static HashMap<Integer, Stem> stemMap = new HashMap<Integer, Stem>();
+	public static HashMap<Integer, BGStem> stemMap = new HashMap<Integer, BGStem>();
 	
 	private static int stemCounter = 0;
 	
@@ -22,11 +22,11 @@ public class Stem {
 	private double radians;		
 	
 	// constructor
-	public Stem() {
+	public BGStem() {
 		log.info("Constructing a Stem instance");
 	}
 
-	public Stem(double locationX, double locationY, double length, double radians) {
+	public BGStem(double locationX, double locationY, double length, double radians) {
 		this.stemID = stemCounter++;
 		setLocationX(locationX);
 		setLocationY(locationY);
@@ -91,7 +91,7 @@ public class Stem {
 	public int getStemID() {
 		return stemID;
 	}
-	public static HashMap<Integer, Stem> getStemMap() {
+	public static HashMap<Integer, BGStem> getStemMap() {
 		return stemMap;
 	}
 
@@ -99,7 +99,7 @@ public class Stem {
 	 * @param stemID
 	 * @return get the stem instance from stemMap
 	 */
-	public static Stem getFromHashMap(int stemID) {
+	public static BGStem getFromHashMap(int stemID) {
 		return stemMap.get(stemID);
 	}
 
@@ -107,7 +107,7 @@ public class Stem {
 	 * @param stem
 	 *            add stem to HashMap
 	 */
-	public void addToHashMap(Stem stem) {
+	public void addToHashMap(BGStem stem) {
 		stemMap.put(stemID, stem);
 	}
 
@@ -120,7 +120,7 @@ public class Stem {
 	}
 
 	//create a method to judge if the present stem is the base stem
-	boolean isBaseStem(Stem stem) {
+	boolean isBaseStem(BGStem stem) {
 			if(stem.getLocationX() == 0 && stem.getLocationY() == 0)
 				return true;
 			else
@@ -128,7 +128,7 @@ public class Stem {
 	}
 
 	// return the number of childr stem (current plant)
-	public int childStemNumbers(Stem baseStem) {
+	public int childStemNumbers(BGStem baseStem) {
 		int count = 0;
 		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
 			/*
@@ -144,7 +144,7 @@ public class Stem {
 	}
 
 	//return the highest stem (locationY) of all the child stem
-	public double totalHeight(Stem baseStem){
+	public double totalHeight(BGStem baseStem){
 		double highestStem = 0;
 		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
 			if (i != baseStem.stemID && isBaseStem(stemMap.get(i)) == true)
@@ -156,7 +156,7 @@ public class Stem {
 	}
 	
 	//return the widest stem (locationX) of all the child stem
-	public double totalWidth(Stem baseStem){
+	public double totalWidth(BGStem baseStem){
 		double widestStem = 0;
 		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
 			if (i != baseStem.stemID && isBaseStem(stemMap.get(i)) == true)
@@ -177,7 +177,7 @@ public class Stem {
 	}
 
 	// traverse and print the HashMap
-	public String traverseHashMap(Stem baseStem) {
+	public String traverseHashMap(BGStem baseStem) {
 		String str = "\n";
 		
 		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
