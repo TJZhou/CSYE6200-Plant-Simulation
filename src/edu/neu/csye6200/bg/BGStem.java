@@ -80,10 +80,6 @@ public class BGStem {
 		return radians;
 	}
 	public void setRadians(double radians) {
-		
-		//the radians should not greater than 360
-		if (radians > 360)
-			this.radians = radians % 360;
 		this.radians = radians;
 	}
 

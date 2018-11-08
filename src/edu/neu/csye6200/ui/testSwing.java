@@ -3,6 +3,7 @@ package edu.neu.csye6200.ui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
+import java.math.BigDecimal;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,7 +28,9 @@ public class testSwing extends JFrame {
   }
 
   public static void main(String[] args) {
-	  testSwing s = new testSwing();
-    s.setVisible(true);
+	  BigDecimal x = new BigDecimal(Double.toString((Math.log((12L) * 2 / 3 + 1.0) / Math.log(3))));
+	  System.out.println(x);
+	 // testSwing s = new testSwing();
+   // s.setVisible(true);
   }
 }
