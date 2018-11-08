@@ -43,8 +43,8 @@ public class PlantTest {
 		
 		//add plant to the singleton instance roster
 		roster.addPlant(plant1.getSpecimenID(), plant1);
-		roster.addPlant(plant2.getSpecimenID(), plant2);
-		roster.addPlant(plant3.getSpecimenID(), plant3);
+		/*roster.addPlant(plant2.getSpecimenID(), plant2);
+		roster.addPlant(plant3.getSpecimenID(), plant3);*/
 
 
 		//print basic plant infomation	

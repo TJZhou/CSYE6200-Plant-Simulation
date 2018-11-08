@@ -67,9 +67,9 @@ public class MyAppUI extends JFrame{
 		g2.setColor(Color.BLACK);
 		for(int i =0 ; i< 1024; i++) {
 			BGStem st = BGStem.stemMap.get(i);
-			line = new Line2D.Double(st.getLocationX()+500, st.getLocationY()+300, 
+			line = new Line2D.Double(st.getLocationX()+500, -st.getLocationY()+300, 
 				(st.getLocationX()+st.getLength()*Math.cos(st.getRadians())+500), 
-				(st.getLocationY()+st.getLength()*Math.sin(st.getRadians()))+300);
+				-(st.getLocationY()+st.getLength()*Math.sin(st.getRadians()))+300);
 				g2.draw(line);
 		}
 	}
