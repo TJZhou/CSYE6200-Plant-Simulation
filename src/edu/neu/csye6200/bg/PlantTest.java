@@ -22,14 +22,11 @@ public class PlantTest {
 	public PlantTest(){
 		try {
 			log.info("Constructing a PlantTest instance");
-			Handler handler = new FileHandler(logBase);
-			Logger.getLogger("").addHandler(handler);
+			/*Handler handler = new FileHandler(logBase);
+			Logger.getLogger("").addHandler(handler);*/
 			
 		} catch (SecurityException e) {
 			log.warning("SecurityException occurs in constructor PlantTest");
-			e.printStackTrace();
-		} catch (IOException e) {
-			log.info("IOException occurs in constructor PlantTest");
 			e.printStackTrace();
 		}	
 	}
@@ -54,7 +51,7 @@ public class PlantTest {
 		roster.displayPlant();
 		
 		//growth plant the parameter is the age of growth
-		roster.growPlant(7);
+		roster.growPlant(10);
 		
 		//print their child stems
 		roster.printChild();

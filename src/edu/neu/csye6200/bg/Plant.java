@@ -101,12 +101,12 @@ public class Plant {
 			bg.growthPlant(age, 100, Math.PI/3, baseStem);
 			break;
 		case "PhoenixTree":
-			baseStem = new BGStem(0, 0, 20, 90);
-			bg.growthPlant(age, this.length, 20, baseStem);
+			/*baseStem = new BGStem(0, 0, 20, 90);
+			bg.growthPlant(age, this.length, 20, baseStem);*/
 			break;
 		case "CamphorTree":
-			baseStem = new BGStem(0, 0, 15, 90);
-			bg.growthPlant(age, this.length, 15, baseStem);
+			/*baseStem = new BGStem(0, 0, 15, 90);
+			bg.growthPlant(age, this.length, 15, baseStem);*/
 			break;
 		}
 		setAge(this.age + age);
