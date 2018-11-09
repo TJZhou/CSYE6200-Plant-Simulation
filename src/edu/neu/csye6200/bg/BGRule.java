@@ -27,8 +27,8 @@ public class BGRule {
 		 * add more stems
 		 */
 
-		stem = new BGStem(0, baseLength, baseLength / 1.3, Math.PI / 2 + rotateRadian);
-		stem = new BGStem(0, baseLength, baseLength / 1.3, Math.PI / 2 - rotateRadian);
+		stem = new BGStem(0, baseLength, baseLength / 1.2, Math.PI / 2 + rotateRadian);
+		stem = new BGStem(0, baseLength, baseLength / 1.2, Math.PI / 2 - rotateRadian);
 		if (generation >= 2) {
 			// Let every stem has two child stems
 			for (int i = ID + 3; i < ID + Math.pow(2, generation) - 1; i++) {
@@ -43,7 +43,7 @@ public class BGRule {
 							// locationY
 							(Y + length * Math.sin(radians)),
 							// to calculate the length
-							(baseLength / Math.pow(1.5, ((int) (Math.log(i - ID + 1) / Math.log(2))))),
+							(baseLength / Math.pow(1.2, ((int) (Math.log(i - ID + 1) / Math.log(2))))),
 							// radians
 							radians + rotateRadian);
 				}
@@ -51,7 +51,7 @@ public class BGRule {
 				else if (i % 2 == 0) {
 					presentStem((i - ID - 2) / 2 + ID);
 					stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-							(baseLength / Math.pow(1.5, ((int) (Math.log(i - ID + 1) / Math.log(2))))),
+							(baseLength / Math.pow(1.2, ((int) (Math.log(i - ID + 1) / Math.log(2))))),
 							radians - rotateRadian);
 				}
 			}
