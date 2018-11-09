@@ -51,7 +51,7 @@ public class PlantTest {
 		roster.displayPlant();
 		
 		//growth plant the parameter is the age of growth
-		roster.growPlant(10);
+		roster.growPlant(7);
 		
 		//print their child stems
 		roster.printChild();

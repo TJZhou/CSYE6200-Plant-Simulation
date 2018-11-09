@@ -105,7 +105,12 @@ public class Plant {
 		switch (this.plantName) {
 		case "Maple":
 			// locationX locationY length radians
-			bg.growthRule1(generation, 100, Math.PI / 6, baseStem);
+		/*	bg.growthRule1(1, 100, Math.PI / 6, baseStem);
+			bg.growthRule1(2, 100, Math.PI / 6, baseStem);
+			bg.growthRule1(3, 100, Math.PI / 6, baseStem);
+			bg.growthRule1(4, 100, Math.PI / 6, baseStem);
+			bg.growthRule1(5, 100, Math.PI / 6, baseStem);*/
+			bg.growthRule1(6, 100, Math.PI / 6, baseStem);
 			break;
 
 		case "PhoenixTree":
