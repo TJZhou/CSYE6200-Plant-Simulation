@@ -1,5 +1,5 @@
 specimenID       plantName        totalHeight (cm) totalWidth (cm)  stemNumbers     
-1001             Maple            7                60.00            0.00            
+1001             Maple            7                494.52           709.83          
 
 stemID           locationX        locationY        stemLength       radians         
 0                0.00             0.00             100.00           1.57            
@@ -3285,7 +3285,7 @@ stemID           locationX        locationY        stemLength       radians
 
 ---------------------------------------------------------------------------------------------------------
 specimenID       plantName        totalHeight (cm) totalWidth (cm)  stemNumbers     
-1002             PhoenixTree      7                60.00            0.00            
+1002             PhoenixTree      7                565.74           805.95          
 
 stemID           locationX        locationY        stemLength       radians         
 0                0.00             0.00             100.00           1.57            

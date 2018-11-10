@@ -1,4 +1,4 @@
-package edu.neu.csye6200.ui;
+package edu.neu.csye6200.bg;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,10 +12,6 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import edu.neu.csye6200.bg.BGStem;
-import edu.neu.csye6200.bg.Plant;
-import edu.neu.csye6200.bg.PlantTest;
 
 /**
  * @author Tianju Zhou

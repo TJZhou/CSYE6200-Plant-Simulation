@@ -63,22 +63,22 @@ public class PlantTest {
 		roster.save(saveBase);
 		
 		//load all PlantData from sabeBase file to loadBase file
-		roster.load(saveBase);
+		//roster.load(saveBase);
 		
 		//IO.load(saveBase, plantMap);
-		System.out.println("succeed to load plant data");
+		//System.out.println("succeed to load plant data");
 		
 		//print plant info after load
 		roster.displayPlant();
 		
 		//using quick sort to sort the HashMap plantMap
-		roster.quickSort();
+		//roster.quickSort();
 		
 		//plant sorted by ID
-		System.out.println("plant infomation after quick sort:");
+		/*System.out.println("plant infomation after quick sort:");
 		for(Plant pt : roster.getPlantArray()){
 			System.out.println(pt.toString());
-		}
+		}*/
 	}
 
 	private void clearFile(){

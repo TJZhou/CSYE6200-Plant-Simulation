@@ -136,8 +136,9 @@ public class Plant {
 	 * ----------------The growth method------------------------
 	 */
 	public void plantGrowth(int generation) {
-	
 		genrationSet(generation);
+		setLength(plantHeight());
+		setWidth(plantWidth());
 		setAge(this.age + generation);
 	}
 
