@@ -40,7 +40,7 @@ public class PlantRoster {
 	
 	//print the information of every plant
 	public void displayPlant(){
-		System.out.println("This is the information about all plants");
+		System.out.println("This is the information about the plants");
 		System.out.println(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s", "SpecimenID", "Plant Name", "Age(Year)",
 				"Length(cm)", "Width(cm)"));		
 		for (Plant pt : plantMap.values()) 
@@ -48,19 +48,16 @@ public class PlantRoster {
 		System.out.println("---------------------------------------------------------------------------------");
 	}
 	
-	public void growPlant(int age){	
+	public void growPlant(Plant pt, int age){	
 		/*
 		 * let the plant grow and output the information of the plant
 		 * grow 4 years (the age parameter is in plantGrowth method) 
 		 */
 		
-		//clear file before save and load
-		clearFile();	
-		
-		for (Plant pt : plantMap.values()) {
-			pt.plantGrowth(age);
-			save(pt, saveBase);
-		}
+		// clear file before save and load
+		clearFile();
+		pt.plantGrowth(age);
+		save(pt, saveBase);
 	}
 	
 	//print child stems and flowers of every plant	

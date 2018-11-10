@@ -8,9 +8,8 @@ import java.util.logging.Logger;
 public class Plant {
 
 	private static Logger log = Logger.getLogger(Plant.class.getName());
-
+	private BGGenerationSet bgs;
 	private static int idCounter = 1001;
-
 	private String plantName;
 	private int specimenID; // create a unique specimenID
 	private int age;
@@ -21,7 +20,7 @@ public class Plant {
 	// constructor
 	Plant(String plantName, double length) {
 		setPlantName(plantName);
-		setAge(1);
+		setAge(0);
 		setLength(length);
 		this.specimenID = idCounter++;
 		log.info("Constructing a Plant instance");
@@ -29,7 +28,7 @@ public class Plant {
 
 	Plant(String plantName) {
 		setPlantName(plantName);
-		setAge(1);
+		setAge(0);
 		setLength(60);
 		this.specimenID = idCounter++;
 		log.info("Constructing a Plant instance");
@@ -90,53 +89,18 @@ public class Plant {
 		return baseStem;
 	}
 
-	/*
-	 * ----------------The Generation Set------------------------
-	 */
-	public void genrationSet(int generation) {
-
-		BGRule bg = new BGRule();
-
-		// different plant should have different growth patterns
-		// here, assume rose has the same growth patterns as maple
-		switch (this.plantName) {
-		case "Maple":
-			// locationX locationY length radians
-			/*
-			 * Able to grow by each generation
-			 * bg.growthRule1(1, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(2, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(3, 100, Math.PI / 6, baseStem);
-			 * bg.growthRule1(4, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(5, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(6, 100, Math.PI / 6, baseStem);
-			 */
-			
-			BGStem.claerHashMap();
-			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
-			bg.growthRule1(8, 1.05, Math.PI / 6, baseStem);
-			break;
-
-		case "PhoenixTree":
-			BGStem.claerHashMap();
-			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
-			bg.growthRule2(6, 1.05,1.05, Math.PI / 6, baseStem);
-			break;
-
-		case "CamphorTree":
-			BGStem.claerHashMap();
-			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
-			bg.growthRule2(6, 1.05,1.05, Math.PI / 10, baseStem);
-			break;
-		}
-
-	}
+	
 
 	/*
 	 * ----------------The growth method------------------------
 	 */
 	public void plantGrowth(int generation) {
-		genrationSet(generation);
+		BGStem.claerHashMap();
+		baseStem = new BGStem(0, 0, 100, Math.PI / 2);
+		bgs = new BGGenerationSet(generation);
+		
+		//maybe can change the rule in the GUI
+		bgs.genrationSet("rule2", baseStem);
 		setLength(plantHeight());
 		setWidth(plantWidth());
 		setAge(this.age + generation);

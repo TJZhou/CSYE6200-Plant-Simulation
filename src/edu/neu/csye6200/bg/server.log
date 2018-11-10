@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-11-10T03:17:14.205287Z</date>
+  <millis>1541819834205</millis>
+  <nanos>287000</nanos>
+  <sequence>2</sequence>
+  <logger>edu.neu.csye6200.bg.RegistryIO</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.RegistryIO</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Constructing a RegistryIO instance</message>
+</record>
+<record>
+  <date>2018-11-10T03:17:14.210207Z</date>
+  <millis>1541819834210</millis>
+  <nanos>207000</nanos>
+  <sequence>3</sequence>
+  <logger>edu.neu.csye6200.bg.PlantRoster</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.PlantRoster</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>Constructing a PlantRoster instance</message>
+</record>
+<record>
+  <date>2018-11-10T03:17:15.758713Z</date>
+  <millis>1541819835758</millis>
+  <nanos>713000</nanos>
+  <sequence>4</sequence>
+  <logger>edu.neu.csye6200.bg.MyAppUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.MyAppUI</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>App Started</message>
+</record>
+</log>

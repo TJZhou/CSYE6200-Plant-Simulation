@@ -1,14 +1,11 @@
 package edu.neu.csye6200.bg;
 
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 /**
  * @author Tianju Zhou NUID 001420546
  */
 public class BGStem {
-	
-	//private static Logger log = Logger.getLogger(BGStem.class.getName());
 	
 	//create a static HashMap to store all the stems 
 	public static HashMap<Integer, BGStem> stemMap = new HashMap<Integer, BGStem>();
@@ -23,7 +20,7 @@ public class BGStem {
 	
 	// constructor
 	public BGStem() {
-		//log.info("Constructing a Stem instance");
+
 	}
 
 	public BGStem(double locationX, double locationY, double length, double radians) {
@@ -33,7 +30,6 @@ public class BGStem {
 		setLength(length);
 		setRadians(radians);
 		addToHashMap(this);
-		//log.info("Constructing a Stem instance");
 	}
 
 
