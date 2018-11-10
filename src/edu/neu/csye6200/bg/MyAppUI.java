@@ -21,9 +21,9 @@ import javax.swing.JPanel;
 public class MyAppUI extends JFrame implements Runnable{
 	public static int generation = 7;
 	public static String rule = "rule2";
-	public static double sideLengthGrow = 1.05;
-	public static double midLengthGrow = 1.05;
-	public static double rotateRadian = Math.PI / 10;
+	public static double sideLengthGrow = 1.02;
+	public static double midLengthGrow = 1.02;
+	public static double rotateRadian = Math.PI / 12;
 	
 	private Logger log = Logger.getLogger(MyAppUI.class.getName());	
 	private JPanel jPanel = null;
@@ -65,7 +65,7 @@ public class MyAppUI extends JFrame implements Runnable{
 		Line2D line;
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.setColor(Color.BLUE);
+		g2.setColor(Color.GRAY);
 		
 		//traverse all stems
 		for (int i = 0; i < ((Math.pow(3, generation) - 1) * 3 / 2) + 1; i++) {
@@ -76,11 +76,21 @@ public class MyAppUI extends JFrame implements Runnable{
 					-(st.getLocationY() + st.getLength() * Math.sin(st.getRadians())) + 800);
 
 			// different generations have different line thickness
-			if(i != 1)
-				g2.setStroke(new BasicStroke( (int)(9 / Math.pow(3, ((int) Math.log((i-1) * 2 / 3 + 1) / Math.log(3))))));
+//			if(i != 0)
+//				g2.setStroke(new BasicStroke( (int)(9 / Math.pow(3, ((int) Math.log((i-1) * 2 / 3 + 1) / Math.log(3))))));
 			if (i == 0) {
-				g2.setStroke(new BasicStroke(16.0f));
+				g2.setStroke(new BasicStroke(14.0f));
 			}
+			else if(i>=1&& i<=3)
+				g2.setStroke(new BasicStroke(9.0f));
+			else if(i>=4&&i<=12)
+				g2.setStroke(new BasicStroke(5.0f));
+			else if(i>=13&&i<=39)
+				g2.setStroke(new BasicStroke(3.0f));
+			else if(i>=40&&i<=66)
+				g2.setStroke(new BasicStroke(1.0f));
+			else
+				g2.setStroke(new BasicStroke(0.3f));
 			/*if(i == 12)
 				g2.setStroke(new BasicStroke(3f));*/
 			g2.draw(line);
