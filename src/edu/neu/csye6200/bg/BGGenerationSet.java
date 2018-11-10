@@ -1,31 +1,22 @@
 package edu.neu.csye6200.bg;
 
 public class BGGenerationSet {
-
-	private int gen;	//growth generation
 	
-	public BGGenerationSet(int generation) {
-		setGen(generation);
+	public BGGenerationSet() {
+		
 	}
 
-	public int getGen() {
-		return gen;
-	}
-
-	public void setGen(int gen) {
-		this.gen = gen;
-	}	
 	
 	/*
 	 * ----------------The Generation Set------------------------
 	 */
-	public void genrationSet(String plantName, BGStem baseStem) {
+	public void genrationSet(BGStem baseStem) {
 
 		BGRule bg = new BGRule();
 		
 		// different plant should have different growth patterns
 		// here, assume rose has the same growth patterns as maple
-		switch (plantName) {
+		switch (MyAppUI.rule) {
 		
 		
 		case "rule1":
@@ -39,11 +30,11 @@ public class BGGenerationSet {
 			 * bg.growthRule1(5, 100, Math.PI / 6, baseStem); 
 			 * bg.growthRule1(6, 100, Math.PI / 6, baseStem);
 			 */		
-			bg.growthRule1(getGen(), 1.05, Math.PI / 6, baseStem);
+			bg.growthRule1(MyAppUI.generation, MyAppUI.sideLengthGrow, MyAppUI.rotateRadian , baseStem);
 			break;
 
 		case "rule2":
-			bg.growthRule2(getGen(), 1.05,1.05, Math.PI / 10, baseStem);
+			bg.growthRule2(MyAppUI.generation, MyAppUI.sideLengthGrow, MyAppUI.midLengthGrow, MyAppUI.rotateRadian, baseStem);
 			break;
 
 /*		case "CamphorTree":

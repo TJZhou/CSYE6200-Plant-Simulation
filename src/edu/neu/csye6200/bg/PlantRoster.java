@@ -48,7 +48,7 @@ public class PlantRoster {
 		System.out.println("---------------------------------------------------------------------------------");
 	}
 	
-	public void growPlant(Plant pt, int age){	
+	public void growPlant(Plant pt, String rule){	
 		/*
 		 * let the plant grow and output the information of the plant
 		 * grow 4 years (the age parameter is in plantGrowth method) 
@@ -56,7 +56,7 @@ public class PlantRoster {
 		
 		// clear file before save and load
 		clearFile();
-		pt.plantGrowth(age);
+		pt.plantGrowth(rule);
 		save(pt, saveBase);
 	}
 	

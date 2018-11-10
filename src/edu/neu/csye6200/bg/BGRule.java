@@ -6,6 +6,7 @@ package edu.neu.csye6200.bg;
 public class BGRule {
 
 	// private BGStem baseStem;
+	@SuppressWarnings("unused")
 	private BGStem stem;
 	
 	// in order to calculate radians, LocationX/Y, length later
@@ -26,7 +27,7 @@ public class BGRule {
 	 * @param rotateRadian: in each generation, how much does the radian change
 	 * @param baseStem: the next generation grows based on the last baseStem
 	 */
-	public void growthRule1(int generation, double lengthChange, double rotateRadian, BGStem baseStem) {
+	public void growthRule1(int generation, double lengthGrow, double rotateRadian, BGStem baseStem) {
 		/*
 		 * * Create stems, and the first two stems are based on the baseStem Parameters
 		 * here are able to change and adapt It's able to increase the value of age to
@@ -48,7 +49,7 @@ public class BGRule {
 							// locationY
 							(Y + length * Math.sin(radians)),
 							// to calculate the length
-							(length / Math.pow(lengthChange, ((int) (Math.log(i + 1) / Math.log(2))))),
+							(length / Math.pow(lengthGrow, ((int) (Math.log(i + 1) / Math.log(2))))),
 							// radians
 							radians + rotateRadian);
 				}
@@ -56,7 +57,7 @@ public class BGRule {
 				else if (i % 2 == 0) {
 					presentStem((i - 2) / 2);
 					stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-							(length / Math.pow(lengthChange, ((int) (Math.log(i + 1) / Math.log(2))))),
+							(length / Math.pow(lengthGrow, ((int) (Math.log(i + 1) / Math.log(2))))),
 							radians - rotateRadian);
 				}
 			}

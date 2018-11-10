@@ -94,16 +94,16 @@ public class Plant {
 	/*
 	 * ----------------The growth method------------------------
 	 */
-	public void plantGrowth(int generation) {
+	public void plantGrowth(String rule) {
 		BGStem.claerHashMap();
 		baseStem = new BGStem(0, 0, 100, Math.PI / 2);
-		bgs = new BGGenerationSet(generation);
+		bgs = new BGGenerationSet();
 		
 		//maybe can change the rule in the GUI
-		bgs.genrationSet("rule2", baseStem);
+		bgs.genrationSet(baseStem);
 		setLength(plantHeight());
 		setWidth(plantWidth());
-		setAge(this.age + generation);
+		setAge(this.age + MyAppUI.generation);
 	}
 
 	// method to print child stems

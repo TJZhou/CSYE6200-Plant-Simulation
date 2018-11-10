@@ -9,6 +9,8 @@ import java.util.logging.Logger;
  * @author Tianju Zhou NUID 001420546
  */
 public class PlantTest implements Runnable{
+
+	
 	private static Logger log = Logger.getLogger(PlantTest.class.getName());
 
 	// create 3 different plant
@@ -51,7 +53,7 @@ public class PlantTest implements Runnable{
 		 */
 		
 		//can change the grow generation 7 in the GUI
-		roster.growPlant(plant, 7);
+		roster.growPlant(plant, MyAppUI.rule);
 			
 		//print plant info after growth
 		System.out.println("After growth");
@@ -64,8 +66,6 @@ public class PlantTest implements Runnable{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		PlantTest pt = new PlantTest();
 		
 		Thread thread = new Thread(new PlantTest()); // create a thread
 		//pt.run();
