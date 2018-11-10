@@ -18,9 +18,6 @@ public class Plant {
 	private double width;
 	private BGStem baseStem;
 
-	// @SuppressWarnings("unused")
-	// private BGStem stem;
-
 	// constructor
 	Plant(String plantName, double length) {
 		setPlantName(plantName);
@@ -105,12 +102,16 @@ public class Plant {
 		switch (this.plantName) {
 		case "Maple":
 			// locationX locationY length radians
-		/*	bg.growthRule1(1, 100, Math.PI / 6, baseStem);
-			bg.growthRule1(2, 100, Math.PI / 6, baseStem);
-			bg.growthRule1(3, 100, Math.PI / 6, baseStem);
-			bg.growthRule1(4, 100, Math.PI / 6, baseStem);
-			bg.growthRule1(5, 100, Math.PI / 6, baseStem);
-			bg.growthRule1(6, 100, Math.PI / 6, baseStem);*/
+			/*
+			 * Able to grow by each generation
+			 * bg.growthRule1(1, 100, Math.PI / 6, baseStem); 
+			 * bg.growthRule1(2, 100, Math.PI / 6, baseStem); 
+			 * bg.growthRule1(3, 100, Math.PI / 6, baseStem);
+			 * bg.growthRule1(4, 100, Math.PI / 6, baseStem); 
+			 * bg.growthRule1(5, 100, Math.PI / 6, baseStem); 
+			 * bg.growthRule1(6, 100, Math.PI / 6, baseStem);
+			 */
+			
 			BGStem.claerHashMap();
 			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
 			bg.growthRule1(8, 1.05, Math.PI / 6, baseStem);
@@ -119,14 +120,13 @@ public class Plant {
 		case "PhoenixTree":
 			BGStem.claerHashMap();
 			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
-			bg.growthRule2(7, 1.05,1.05, Math.PI / 6, baseStem);
+			bg.growthRule2(6, 1.05,1.05, Math.PI / 6, baseStem);
 			break;
 
 		case "CamphorTree":
-			/*
-			 * baseStem = new BGStem(0, 0, 15, 90); bg.growthPlant(age, this.length, 15,
-			 * baseStem);
-			 */
+			BGStem.claerHashMap();
+			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
+			bg.growthRule2(6, 1.05,1.05, Math.PI / 10, baseStem);
 			break;
 		}
 

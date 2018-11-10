@@ -44,7 +44,7 @@ public class RegistryIO {
 	 * @param pt
 	 * @param fileName
 	 */
-	private void save(Plant pt, String fileName) {
+	public void save(Plant pt, String fileName) {
 		
 		// open source and destination files
 		// using try-with-resources, using FileWriter to modify BufferedWriter

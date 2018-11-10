@@ -1,5 +1,8 @@
 package edu.neu.csye6200.bg;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -17,6 +20,9 @@ public class PlantRoster {
 	private Plant[] plantArray;	//in order to sort all plants
 	
 	private RegistryIO IO = new RegistryIO();	//an instance of RegistryIO to do file operation
+	
+	//data save base routine
+	private String saveBase = "src/edu/neu/csye6200/bg/PlantData.txt" ;
 	
 	private PlantRoster(){	// can't be built externally to class
 		log.info("Constructing a PlantRoster instance");
@@ -46,10 +52,14 @@ public class PlantRoster {
 		/*
 		 * let the plant grow and output the information of the plant
 		 * grow 4 years (the age parameter is in plantGrowth method) 
-		 * 
 		 */
+		
+		//clear file before save and load
+		clearFile();	
+		
 		for (Plant pt : plantMap.values()) {
 			pt.plantGrowth(age);
+			save(pt, saveBase);
 		}
 	}
 	
@@ -66,9 +76,22 @@ public class PlantRoster {
 		}
 	}
 	
+
+	// delete all the existing info and then do the rewrite
+	private void clearFile(){
+	
+		try (FileOutputStream clearFile = new FileOutputStream(saveBase);){			
+			clearFile.write(new String("").getBytes());
+		} catch (FileNotFoundException e) { // File cannot be found
+			e.printStackTrace();
+		} catch (IOException e) { // All other IO problem
+			e.printStackTrace();
+		}
+	}
+	
 	//save plants to "src/edu/neu/csye6200/sim/PlantData.txt"
-	public void save(String saveBase){
-		IO.saveAll(plantMap, saveBase);		
+	public void save(Plant pt, String saveBase){
+		IO.save(pt, saveBase);		
 	}
 
 	// load plants data from "src/edu/neu/csye6200/sim/PlantData.txt"

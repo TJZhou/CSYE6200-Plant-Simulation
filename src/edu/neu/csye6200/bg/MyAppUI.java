@@ -35,7 +35,8 @@ public class MyAppUI extends JFrame{
 	private void initGUI(){
 		//jFrame = new JFrame();
 		setTitle("MyAppUI");
-		setSize(1000, 600);	//set the size to something reasonable
+		setSize(1200, 800);	//set the size to something reasonable
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//if we press the close button, exit		
 		setLayout(new BorderLayout());
 		getContentPane().add(getMainPanel(), BorderLayout.CENTER);	
@@ -63,9 +64,9 @@ public class MyAppUI extends JFrame{
 		g2.setColor(Color.BLACK);
 		for(int i =0 ; i< 4000; i++) {
 			BGStem st = BGStem.stemMap.get(i);
-			line = new Line2D.Double(st.getLocationX()+500, -st.getLocationY()+500, 
-				(st.getLocationX()+st.getLength()*Math.cos(st.getRadians())+500), 
-				-(st.getLocationY()+st.getLength()*Math.sin(st.getRadians()))+500);
+			line = new Line2D.Double(st.getLocationX()+600, -st.getLocationY()+800, 
+				(st.getLocationX()+st.getLength()*Math.cos(st.getRadians())+600), 
+				-(st.getLocationY()+st.getLength()*Math.sin(st.getRadians()))+800);
 				g2.draw(line);
 		}
 	}
@@ -74,10 +75,9 @@ public class MyAppUI extends JFrame{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-	PlantTest pt  =new PlantTest();
+	PlantTest pt = new PlantTest();
 	pt.run();
 	MyAppUI myApp = new MyAppUI();
-	
 	System.out.println("MyAppUI is exiting");
 
 	}
