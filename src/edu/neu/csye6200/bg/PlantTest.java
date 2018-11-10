@@ -34,7 +34,7 @@ public class PlantTest {
 	// create 3 different plant
 	private Plant plant1 = new Plant("Maple");
 	private Plant plant2 = new Plant("PhoenixTree");
-	private Plant plant3 = new Plant("CamphorTree");
+	//private Plant plant3 = new Plant("CamphorTree");
 
 		
 	public void run() {
@@ -43,18 +43,18 @@ public class PlantTest {
 		
 		//add plant to the singleton instance roster
 		roster.addPlant(plant1.getSpecimenID(), plant1);
-		/*roster.addPlant(plant2.getSpecimenID(), plant2);
-		roster.addPlant(plant3.getSpecimenID(), plant3);*/
+		roster.addPlant(plant2.getSpecimenID(), plant2);
+		//roster.addPlant(plant3.getSpecimenID(), plant3);
 
 
 		//print basic plant infomation	
 		roster.displayPlant();
 		
 		//growth plant the parameter is the age of growth
-		roster.growPlant(7);
+		roster.growPlant(6);
 		
 		//print their child stems
-		roster.printChild();
+		//roster.printChild();
 		
 		//clear file before save and load
 		clearFile();			

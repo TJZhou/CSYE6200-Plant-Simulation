@@ -96,7 +96,7 @@ public class Plant {
 	/*
 	 * ----------------The Generation Set------------------------
 	 */
-	public void genrationSet(int generation, BGStem baseStem) {
+	public void genrationSet(int generation) {
 
 		BGRule bg = new BGRule();
 
@@ -109,15 +109,17 @@ public class Plant {
 			bg.growthRule1(2, 100, Math.PI / 6, baseStem);
 			bg.growthRule1(3, 100, Math.PI / 6, baseStem);
 			bg.growthRule1(4, 100, Math.PI / 6, baseStem);
-			bg.growthRule1(5, 100, Math.PI / 6, baseStem);*/
-			bg.growthRule1(6, 100, Math.PI / 6, baseStem);
+			bg.growthRule1(5, 100, Math.PI / 6, baseStem);
+			bg.growthRule1(6, 100, Math.PI / 6, baseStem);*/
+			BGStem.claerHashMap();
+			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
+			bg.growthRule1(8, 1.05, Math.PI / 6, baseStem);
 			break;
 
 		case "PhoenixTree":
-			/*
-			 * baseStem = new BGStem(0, 0, 20, 90); bg.growthPlant(age, this.length, 20,
-			 * baseStem);
-			 */
+			BGStem.claerHashMap();
+			baseStem = new BGStem(0, 0, 100, Math.PI / 2);
+			bg.growthRule2(7, 1.05,1.05, Math.PI / 6, baseStem);
 			break;
 
 		case "CamphorTree":
@@ -134,8 +136,8 @@ public class Plant {
 	 * ----------------The growth method------------------------
 	 */
 	public void plantGrowth(int generation) {
-		baseStem = new BGStem(0, 0, 100, Math.PI / 2);
-		genrationSet(generation, baseStem);
+	
+		genrationSet(generation);
 		setAge(this.age + generation);
 	}
 

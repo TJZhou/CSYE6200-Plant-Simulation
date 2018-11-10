@@ -8,7 +8,7 @@ import java.util.logging.Logger;
  */
 public class BGStem {
 	
-	private static Logger log = Logger.getLogger(BGStem.class.getName());
+	//private static Logger log = Logger.getLogger(BGStem.class.getName());
 	
 	//create a static HashMap to store all the stems 
 	public static HashMap<Integer, BGStem> stemMap = new HashMap<Integer, BGStem>();
@@ -23,7 +23,7 @@ public class BGStem {
 	
 	// constructor
 	public BGStem() {
-		log.info("Constructing a Stem instance");
+		//log.info("Constructing a Stem instance");
 	}
 
 	public BGStem(double locationX, double locationY, double length, double radians) {
@@ -33,7 +33,7 @@ public class BGStem {
 		setLength(length);
 		setRadians(radians);
 		addToHashMap(this);
-		log.info("Constructing a Stem instance");
+		//log.info("Constructing a Stem instance");
 	}
 
 
@@ -43,12 +43,12 @@ public class BGStem {
 	}
 	public void setLocationX(double locationX) {
 		
-		//the location of X should not exceed -1000 or 1000
+/*		//the location of X should not exceed -1000 or 1000
 		if (locationX > 1000)
 			this.locationX = 1000;
 		else if (locationX < -1000)
 			this.locationX = -1000;
-		else
+		else*/
 			this.locationX = locationX;
 	}
 	public double getLocationY() {
@@ -56,12 +56,12 @@ public class BGStem {
 	}
 	public void setLocationY(double locationY) {
 		
-		//the location of X should not exceed -500 or 500
+/*		//the location of X should not exceed -500 or 500
 		if (locationY > 500)
 			this.locationY = 500;
 		else if (locationY < 0)
 			this.locationY = 0;
-		else
+		else*/
 			this.locationY = locationY;
 	}
 
@@ -107,12 +107,9 @@ public class BGStem {
 		stemMap.put(stemID, stem);
 	}
 
-	/**
-	 * @param stemID
-	 *            remove stem from HashMap
-	 */
-	public static void removeFromHashMap(int stemID) {
-		stemMap.remove(stemID);
+	public static void claerHashMap() {
+		stemMap.clear();
+		stemCounter = 0;
 	}
 
 	//create a method to judge if the present stem is the base stem
