@@ -43,15 +43,12 @@ public class Plant {
 	public String getPlantName() {
 		return plantName;
 	}
-
 	public void setPlantName(String plantName) {
 		this.plantName = plantName;
 	}
-
 	public int getAge() {
 		return age;
 	}
-
 	public void setAge(int age) {
 		// age must greater or equal than 0
 		if (age >= 0)
@@ -64,7 +61,6 @@ public class Plant {
 	public double getLength() {
 		return length;
 	}
-
 	public void setLength(double length) {
 		// length must greater or equal than 1
 		if (length >= 0)
@@ -72,11 +68,9 @@ public class Plant {
 		else
 			this.length = 0;
 	}
-
 	public double getWidth() {
 		return width;
 	}
-
 	public void setWidth(double width) {
 		if (width >= 0)
 			this.width = width;
@@ -88,8 +82,6 @@ public class Plant {
 	public BGStem getBaseStem() {
 		return baseStem;
 	}
-
-	
 
 	/*
 	 * ----------------The growth method------------------------
@@ -115,7 +107,12 @@ public class Plant {
 
 	// method to get numbers of child stem
 	public int childStemNumbers() {
-		return baseStem.childStemNumbers(baseStem);
+		try {
+			return baseStem.childStemNumbers(baseStem);
+		}catch(NullPointerException e) {
+			return 0;
+		}
+			
 	}
 
 	// return the total height of the plant
@@ -132,8 +129,8 @@ public class Plant {
 
 	// the toString method
 	public String toString() {
-		String str = String.format("%1$-16d %2$-16s %3$-16d %4$-16.2f %5$-16.2f", this.specimenID, this.plantName,
-				this.age, this.length, this.width);
+		String str = String.format("%1$-16d %2$-16s %3$-16d %4$-16.2f %5$-16.2f %6$-16d", this.specimenID, this.plantName,
+				this.age, this.length, this.width, childStemNumbers());
 		return str;
 	}
 }

@@ -19,6 +19,7 @@ public class PlantTest implements Runnable{
 	//log file routine
 	private String logBase = "src/edu/neu/csye6200/bg/server.log";
 	
+	// constructor
 	public PlantTest(){
 		try {
 			log.info("Constructing a PlantTest instance");
@@ -34,8 +35,7 @@ public class PlantTest implements Runnable{
 		}	
 	}
 
-
-		
+	//implement runnable
 	public void run() {
 		
 		PlantRoster roster = PlantRoster.instance();
@@ -60,7 +60,6 @@ public class PlantTest implements Runnable{
 		roster.displayPlant();
 
 	}
-
 	
 	/**
 	 * @param args

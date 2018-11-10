@@ -36,10 +36,9 @@ public class BGGenerationSet {
 		case "rule2":
 			bg.growthRule2(MyAppUI.generation, MyAppUI.sideLengthGrow, MyAppUI.midLengthGrow, MyAppUI.rotateRadian, baseStem);
 			break;
-
-/*		case "CamphorTree":
-			bg.growthRule2(6, 1.05,1.05, Math.PI / 10, baseStem);
-			break;*/
+			
+		case "rule3":
+			break;
 		}
 	}
 }

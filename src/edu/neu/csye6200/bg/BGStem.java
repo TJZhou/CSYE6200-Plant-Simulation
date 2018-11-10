@@ -51,17 +51,10 @@ public class BGStem {
 		return locationY;
 	}
 	public void setLocationY(double locationY) {
-		
-/*		//the location of X should not exceed -500 or 500
-		if (locationY > 500)
-			this.locationY = 500;
-		else if (locationY < 0)
-			this.locationY = 0;
-		else*/
-			this.locationY = locationY;
+		this.locationY = locationY;
 	}
 
-	//getter and setter of radians
+	//getter and setter of length and radians
 	public double getLength() {
 		return length;
 	}
@@ -103,30 +96,24 @@ public class BGStem {
 		stemMap.put(stemID, stem);
 	}
 
+	//clear stemMap
 	public static void claerHashMap() {
 		stemMap.clear();
 		stemCounter = 0;
 	}
 
-	//create a method to judge if the present stem is the base stem
+/*	//create a method to judge if the present stem is the base stem
 	boolean isBaseStem(BGStem stem) {
 			if(stem.getLocationX() == 0 && stem.getLocationY() == 0)
 				return true;
 			else
 				return false;
-	}
+	}*/
 
 	// return the number of childr stem (current plant)
 	public int childStemNumbers(BGStem baseStem) {
 		int count = 0;
 		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
-			/*
-			 * if the present stem is base stem
-			 * it should be the next plant
-			 * then break the for loop to return the stem number of the current plant
-			 */			
-			if (i!=baseStem.stemID && isBaseStem(stemMap.get(i)) == true)
-				break;
 			count++;
 		}
 		return count;
@@ -135,9 +122,7 @@ public class BGStem {
 	//return the highest stem (locationY) of all the child stem
 	public double totalHeight(BGStem baseStem){
 		double highestStem = 0;
-		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
-			if (i != baseStem.stemID && isBaseStem(stemMap.get(i)) == true)
-				break;
+		for (int i = baseStem.stemID; i < stemMap.size(); i++) {	
 			if(stemMap.get(i).locationY > highestStem)
 				highestStem = stemMap.get(i).locationY;
 		}
@@ -148,8 +133,6 @@ public class BGStem {
 	public double totalWidth(BGStem baseStem){
 		double widestStem = 0;
 		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
-			if (i != baseStem.stemID && isBaseStem(stemMap.get(i)) == true)
-				break;
 			if(stemMap.get(i).locationX > widestStem)
 				widestStem = stemMap.get(i).locationX;
 		}
@@ -167,16 +150,8 @@ public class BGStem {
 
 	// traverse and print the HashMap
 	public String traverseHashMap(BGStem baseStem) {
-		String str = "\n";
-		
+		String str = "\n";		
 		for (int i = baseStem.stemID; i < stemMap.size(); i++) {		
-			/*
-			 * if the present stem is base stem
-			 * it should be the next plant
-			 * then break the for loop to only print the stem of the current plant
-			 */		
-			if (i != baseStem.stemID && isBaseStem(stemMap.get(i)) == true)
-				break;
 			str = str + stemMap.get(i).toString() + '\n';
 			//System.out.println(stemMap.get(i).toString());
 		}

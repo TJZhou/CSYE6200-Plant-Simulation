@@ -11,18 +11,13 @@ import java.util.logging.Logger;
  *
  */
 public class PlantRoster {
-	private static Logger log = Logger.getLogger(PlantRoster.class.getName());
 	
-	private static PlantRoster instance = null; // the single copy
-	
-	private HashMap<Integer, Plant> plantMap = new HashMap<Integer, Plant>();	//plant list
-	
-	private Plant[] plantArray;	//in order to sort all plants
-	
+	private static Logger log = Logger.getLogger(PlantRoster.class.getName());	
+	private static PlantRoster instance = null; // the single copy	
+	private HashMap<Integer, Plant> plantMap = new HashMap<Integer, Plant>();	//plant list	
+	private Plant[] plantArray;	//in order to sort all plants	
 	private RegistryIO IO = new RegistryIO();	//an instance of RegistryIO to do file operation
-	
-	//data save base routine
-	private String saveBase = "src/edu/neu/csye6200/bg/PlantData.txt" ;
+	private String saveBase = "src/edu/neu/csye6200/bg/PlantData.txt" ; //data save base routine
 	
 	private PlantRoster(){	// can't be built externally to class
 		log.info("Constructing a PlantRoster instance");
@@ -41,8 +36,8 @@ public class PlantRoster {
 	//print the information of every plant
 	public void displayPlant(){
 		System.out.println("This is the information about the plants");
-		System.out.println(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s", "SpecimenID", "Plant Name", "Age(Year)",
-				"Length(cm)", "Width(cm)"));		
+		System.out.println(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s %6$-16s", "SpecimenID", "Plant Name", "Age(Year)",
+				"Length(cm)", "Width(cm)", "stemNumbers"));		
 		for (Plant pt : plantMap.values()) 
 			System.out.println(pt.toString());
 		System.out.println("---------------------------------------------------------------------------------");
@@ -73,7 +68,6 @@ public class PlantRoster {
 		}
 	}
 	
-
 	// delete all the existing info and then do the rewrite
 	private void clearFile(){
 	

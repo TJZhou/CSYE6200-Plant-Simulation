@@ -73,41 +73,33 @@ public class BGRule {
 	 * @param baseStem: the next generation grows based on the last baseStem
 	 */
 	public void growthRule2(int generation, double sideLengthGrow, double midLengthGrow, double rotateRadian, BGStem baseStem) {
-	
+
 		if (generation >= 1) {
 			// Let every stem has two child stems
-			for (int i = 1; i <  ((Math.pow(3, generation) - 1) * 3 / 2) + 1; i++) {
+			for (int i = 1; i < ((Math.pow(3, generation) - 1) * 3 / 2) + 1; i++) {
 
 				// stems grow to left side
 				if (i % 3 == 1) {
-					presentStem((i  - 1) / 3 );
+					presentStem((i - 1) / 3);
 					stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-							(length / Math.pow(sideLengthGrow, (int)(Math.log((i) * 2 / 3 + 1) / Math.log(3)))),
+							(length / Math.pow(sideLengthGrow, (int) (Math.log(2 * i + 1) / Math.log(3) - 1))),
 							radians + rotateRadian);
 				}
 
 				// stems grow to the middle
 				else if (i % 3 == 2) {
 					// in orede to create new stem
-					presentStem((i  - 2) / 3 );
+					presentStem((i - 2) / 3);
 					stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-							(length / Math.pow(midLengthGrow, (int)(Math.log((i) * 2 / 3 + 1) / Math.log(3)))),
-							radians);
+							(length / Math.pow(midLengthGrow, (int) (Math.log(2 * i + 1) / Math.log(3) - 1))), radians);
 				}
 
 				// stems grow to right side
 				else if (i % 3 == 0) {
-					presentStem((i - 3) / 3 );
-					
-					// some calculation is wrong here, at the end of each stem
-					if((Math.log((i) * 2 / 3 + 1) / Math.log(3))%1 == 0) {
-						stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-								(length / Math.pow(sideLengthGrow,(int)(Math.log((i-1) * 2 / 3 + 1) / Math.log(3)))),
-								radians - rotateRadian);
-					}
-					else
-						stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-							(length / Math.pow(sideLengthGrow,(int)(Math.log((i) * 2 / 3 + 1) / Math.log(3)))),
+					presentStem((i - 3) / 3);
+
+					stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
+							(length / Math.pow(sideLengthGrow, (int) (Math.log(2 * i + 1) / Math.log(3) - 1))),
 							radians - rotateRadian);
 				}
 			}

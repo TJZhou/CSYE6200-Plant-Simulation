@@ -19,6 +19,10 @@ import javax.swing.JPanel;
  *
  */
 public class MyAppUI extends JFrame implements Runnable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static int generation = 7;
 	public static String rule = "rule2";
 	public static double sideLengthGrow = 1.02;

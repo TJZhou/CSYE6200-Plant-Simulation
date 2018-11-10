@@ -74,8 +74,8 @@ public class RegistryIO {
 	 * @throws IOException
 	 */
 	private void saveBasicInfo(BufferedWriter bw, Plant pt) throws IOException {
-		bw.write(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s", 
-		"specimenID", "plantName", "totalHeight (cm)", "totalWidth (cm)", "stemNumbers"));
+		bw.write(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s %6$-16s", 
+		"specimenID", "plantName", "Age(Generation)", "totalHeight (cm)", "totalWidth (cm)", "stemNumbers"));
 		bw.write("\n");
 		bw.write(pt.toString());
 		bw.write("\n\n");
@@ -94,8 +94,8 @@ public class RegistryIO {
 
 
 	/**
-	 * @param readBase 
 	 * to read from readBase
+	 * @param readBase 
 	 */
 	public void load(HashMap<Integer,Plant> plantMap, String readBase) {
 
