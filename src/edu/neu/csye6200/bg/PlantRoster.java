@@ -14,7 +14,6 @@ public class PlantRoster {
 	private static Logger log = Logger.getLogger(PlantRoster.class.getName());	
 	private static PlantRoster instance = null; // the single copy	
 	private HashMap<Integer, Plant> plantMap = new HashMap<Integer, Plant>();	//plant list	
-	private Plant[] plantArray;	//in order to sort all plants	
 	private RegistryIO IO = new RegistryIO();	//an instance of RegistryIO to do file operation
 	private String saveBase = "src/edu/neu/csye6200/bg/PlantData.txt" ; //data save base routine
 	
@@ -83,61 +82,4 @@ public class PlantRoster {
 	public void save(Plant pt, String saveBase){
 		IO.save(pt, saveBase);		
 	}
-
-	// load plants data from "src/edu/neu/csye6200/sim/PlantData.txt"
-	public void load(String saveBase) {
-		IO.load(plantMap, saveBase);
-	}
-	
-	// get the plantArray
-	public Plant[] getPlantArray() {
-		return plantArray;
-	}
-
-	//use quickSort to sort plant by ID
-	public void quickSort(){
-		int i = 0;
-		
-		//initialize the plantArray, the length of plantArray equals the size of plantMap
-		plantArray = new Plant[plantMap.size()];		
-		for (Plant pt : plantMap.values()) {		
-			plantArray[i++] = pt;
-		}
-		
-		//call quick sort method
-		qs(plantArray, 0, plantArray.length - 1);	
-	}
-
-	/**
-	 * A recursive version of Quicksort.
-	 * To sort plants by their specimen ID 
-	 * @param plantArray
-	 * @param left
-	 * @param right
-	 */
-	private static void qs(Plant[] plantArray, int left, int right) {	
-		int i, j;
-		int x;    //middle number of specimenID
-		Plant y;  //in order to change the location of different plant in the array
-		i = left;
-		j = right;
-		x = plantArray[(left+right)/2].getSpecimenID();
-		do {
-			while ((plantArray[i].getSpecimenID() < x) && (i < right))
-				i++;
-			while ((x < plantArray[j].getSpecimenID()) && (j > left))
-				j--;
-			if (i <= j) {
-				y = plantArray[i];
-				plantArray[i] = plantArray[j];
-				plantArray[j] = y;
-				i++;
-				j--;
-			}
-		} while (i <= j);
-		if (left < j)
-			qs(plantArray, left, j);
-		if (i < right)
-			qs(plantArray, i, right);
-	}	
 }

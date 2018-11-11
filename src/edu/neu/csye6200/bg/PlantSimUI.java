@@ -8,8 +8,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,20 +28,52 @@ public class PlantSimUI extends JFrame implements Runnable{
 	public static double midLengthGrow = 1.03;
 	public static double rotateRadian = Math.PI / 4;
 	
-	private Logger log = Logger.getLogger(PlantSimUI.class.getName());	
+	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
 	private JPanel jPanel = null;
 	private JButton startBtn = null;
 	private JButton stopBtn = null;
+
+	//create a plant instance
+	private Plant plant = new Plant("plant");
+	//log file routine
+	private String logBase = "src/edu/neu/csye6200/bg/server.log";
+	
 	
 	//constructor
 	public PlantSimUI(){
-		log.info("App Started");
+		try {
+			log.info("APP start");
+			Handler handler = new FileHandler(logBase);
+			Logger.getLogger("").addHandler(handler);
+			
+		} catch (SecurityException e) {
+			log.warning("SecurityException occurs in constructor PlantTest");
+			e.printStackTrace();
+		} catch (IOException e) {
+			log.warning("IOException occurs in constructor PlantTest");
+			e.printStackTrace();
+		}
 	}
 
 	//initialize the GUI
 	public void run(){
-		//jFrame = new JFrame();
-		setTitle("MyAppUI");
+
+		PlantRoster roster = PlantRoster.instance();
+		
+		//add plant to the singleton instance roster
+		roster.addPlant(plant.getSpecimenID(), plant);
+
+		//print basic plant infomation	
+		roster.displayPlant();
+		
+		//growth plant, generate different stems
+		roster.growPlant(plant, rule);
+			
+		//print plant info after growth
+		System.out.println("After growth");
+		roster.displayPlant();
+		
+		setTitle("PlantSimulation");
 		setSize(1200, 800);	//set the size to something reasonable
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//if we press the close button, exit		
@@ -100,10 +134,7 @@ public class PlantSimUI extends JFrame implements Runnable{
 	 * @throws InterruptedException 
 	 */
 	public static void main(String[] args) throws InterruptedException {
-	Thread thrdPT = new Thread(new PlantTest());
-	thrdPT.run();
-	thrdPT.join();
-	
+
 	Thread thrdUI = new Thread(new PlantSimUI());
 	thrdUI.run();
 	thrdUI.join();

@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-11-11T00:39:26.442796Z</date>
-  <millis>1541896766442</millis>
-  <nanos>796000</nanos>
+  <date>2018-11-11T18:11:20.574707Z</date>
+  <millis>1541959880574</millis>
+  <nanos>707000</nanos>
   <sequence>2</sequence>
   <logger>edu.neu.csye6200.bg.RegistryIO</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Constructing a RegistryIO instance</message>
 </record>
 <record>
-  <date>2018-11-11T00:39:26.451228Z</date>
-  <millis>1541896766451</millis>
-  <nanos>228000</nanos>
+  <date>2018-11-11T18:11:20.582766Z</date>
+  <millis>1541959880582</millis>
+  <nanos>766000</nanos>
   <sequence>3</sequence>
   <logger>edu.neu.csye6200.bg.PlantRoster</logger>
   <level>INFO</level>
@@ -24,17 +24,5 @@
   <method>&lt;init&gt;</method>
   <thread>1</thread>
   <message>Constructing a PlantRoster instance</message>
-</record>
-<record>
-  <date>2018-11-11T00:39:28.384178Z</date>
-  <millis>1541896768384</millis>
-  <nanos>178000</nanos>
-  <sequence>4</sequence>
-  <logger>edu.neu.csye6200.bg.MyAppUI</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.bg.MyAppUI</class>
-  <method>&lt;init&gt;</method>
-  <thread>1</thread>
-  <message>App Started</message>
 </record>
 </log>
