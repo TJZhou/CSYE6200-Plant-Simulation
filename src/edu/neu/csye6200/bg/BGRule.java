@@ -1,18 +1,25 @@
 package edu.neu.csye6200.bg;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * @author Tianju Zhou NUID 001420546
  */
 public class BGRule {
 
+	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
+	
 	// private BGStem baseStem;
 	private BGStem stem;
 	
 	// in order to calculate radians, LocationX/Y, length later
 	double radians, X, Y, length;
 
+	public BGRule() {
+		log.info("An instance of BGRule is created");
+	}
+	
 	// the present stem info based on the last stem info
 	private void presentStem(ArrayList<BGStem> bgs, int lastStemID) {
 		radians = bgs.get(lastStemID).getRadians();
@@ -30,15 +37,14 @@ public class BGRule {
 	public BGStem growthRule(int generation, double lengthGrow, double rotateRadian, ArrayList<BGStem> bgs, int i) {
 		/*
 		 * * Create stems, and the first two stems are based on the baseStem Parameters
-		 * here are able to change and adapt It's able to increase the value of age to
-		 * add more stems
+		 * here are able to change and adapt in PlantSimUi
+		 * It's able to increase the value of generation to add more stems
 		 */
 
-			// Let every stem has two child stems
-
+				// Let every stem has two child stems
 				// stems grow to left side
 				if (i % 2 == 1) {
-					// get the last stem's radians, location x and y, length; 
+					// get the last stem's radians, location x and y, length
 					// in orede to create new stem
 					presentStem(bgs, (i - 1) / 2);
 					stem = new BGStem(

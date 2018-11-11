@@ -15,16 +15,12 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import depracted.Plant;
-import depracted.PlantRoster;
-
 /**
  * @author Tianju Zhou NUID 001420546
  */
 public class PlantSimUI extends JFrame implements Runnable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersxsionUID = 1L;
 	public static int generation = 7;
 	private String rule = "rule2";
 	public static double sideLengthGrow = 1.02;
@@ -62,20 +58,6 @@ public class PlantSimUI extends JFrame implements Runnable{
 	public void run(){
 
 		bgs.genrationSet(rule);
-		PlantRoster roster = PlantRoster.instance();
-		
-/*		//add plant to the singleton instance roster
-		roster.addPlant(plant.getSpecimenID(), plant);
-
-		//print basic plant infomation	
-		roster.displayPlant();
-		
-		//growth plant, generate different stems
-		roster.growPlant(plant, rule);
-			
-		//print plant info after growth
-		System.out.println("After growth");
-		roster.displayPlant();*/
 		
 		setTitle("PlantSimulation");
 		setSize(1200, 800);	//set the size to something reasonable
