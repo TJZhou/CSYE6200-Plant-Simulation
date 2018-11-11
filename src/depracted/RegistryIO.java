@@ -1,4 +1,4 @@
-package edu.neu.csye6200.bg;
+package depracted;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class BGStem {
 	
 	//create a static HashMap to store all the stems 
-	public static HashMap<Integer, BGStem> stemMap = new HashMap<Integer, BGStem>();
+	//public static HashMap<Integer, BGStem> stemMap = new HashMap<Integer, BGStem>();
 	
 	private static int stemCounter = 0;
 	
@@ -29,7 +29,7 @@ public class BGStem {
 		setLocationY(locationY);
 		setLength(length);
 		setRadians(radians);
-		addToHashMap(this);
+		//addToHashMap(this);
 	}
 
 
@@ -76,22 +76,22 @@ public class BGStem {
 	public int getStemID() {
 		return stemID;
 	}
-	public static HashMap<Integer, BGStem> getStemMap() {
+/*	public static HashMap<Integer, BGStem> getStemMap() {
 		return stemMap;
 	}
 
-	/**
+	*//**
 	 * @param stemID
 	 * @return get the stem instance from stemMap
-	 */
+	 *//*
 	public static BGStem getFromHashMap(int stemID) {
 		return stemMap.get(stemID);
 	}
 
-	/**
+	*//**
 	 * @param stem
 	 *            add stem to HashMap
-	 */
+	 *//*
 	public void addToHashMap(BGStem stem) {
 		stemMap.put(stemID, stem);
 	}
@@ -102,13 +102,13 @@ public class BGStem {
 		stemCounter = 0;
 	}
 
-/*	//create a method to judge if the present stem is the base stem
+	//create a method to judge if the present stem is the base stem
 	boolean isBaseStem(BGStem stem) {
 			if(stem.getLocationX() == 0 && stem.getLocationY() == 0)
 				return true;
 			else
 				return false;
-	}*/
+	}
 
 	// return the number of childr stem (current plant)
 	public int childStemNumbers(BGStem baseStem) {
@@ -156,7 +156,7 @@ public class BGStem {
 			//System.out.println(stemMap.get(i).toString());
 		}
 		return str + '\n';
-	}
+	}*/
 
 	//print the format of stem
 	public String toString() {

@@ -2,10 +2,10 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-11-11T18:11:20.574707Z</date>
-  <millis>1541959880574</millis>
-  <nanos>707000</nanos>
-  <sequence>2</sequence>
+  <date>2018-11-11T20:03:55.502615Z</date>
+  <millis>1541966635502</millis>
+  <nanos>615000</nanos>
+  <sequence>1</sequence>
   <logger>edu.neu.csye6200.bg.RegistryIO</logger>
   <level>INFO</level>
   <class>edu.neu.csye6200.bg.RegistryIO</class>
@@ -14,10 +14,10 @@
   <message>Constructing a RegistryIO instance</message>
 </record>
 <record>
-  <date>2018-11-11T18:11:20.582766Z</date>
-  <millis>1541959880582</millis>
-  <nanos>766000</nanos>
-  <sequence>3</sequence>
+  <date>2018-11-11T20:03:55.508665Z</date>
+  <millis>1541966635508</millis>
+  <nanos>665000</nanos>
+  <sequence>2</sequence>
   <logger>edu.neu.csye6200.bg.PlantRoster</logger>
   <level>INFO</level>
   <class>edu.neu.csye6200.bg.PlantRoster</class>

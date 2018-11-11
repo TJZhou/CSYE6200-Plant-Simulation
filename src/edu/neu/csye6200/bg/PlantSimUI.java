@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import depracted.Plant;
+import depracted.PlantRoster;
+
 /**
  * @author Tianju Zhou NUID 001420546
  */
@@ -23,21 +26,21 @@ public class PlantSimUI extends JFrame implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 	public static int generation = 7;
-	public static String rule = "rule2";
-	public static double sideLengthGrow = 1.03;
-	public static double midLengthGrow = 1.03;
-	public static double rotateRadian = Math.PI / 4;
+	private String rule = "rule2";
+	public static double sideLengthGrow = 1.02;
+	public static double midLengthGrow = 1.02;
+	public static double rotateRadian = Math.PI /12;
 	
 	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
 	private JPanel jPanel = null;
 	private JButton startBtn = null;
 	private JButton stopBtn = null;
 
-	//create a plant instance
-	private Plant plant = new Plant("plant");
+	/*//create a plant instance
+	private Plant plant = new Plant("plant");*/
 	//log file routine
 	private String logBase = "src/edu/neu/csye6200/bg/server.log";
-	
+	private BGGenerationSet bgs  = new BGGenerationSet();
 	
 	//constructor
 	public PlantSimUI(){
@@ -58,9 +61,10 @@ public class PlantSimUI extends JFrame implements Runnable{
 	//initialize the GUI
 	public void run(){
 
+		bgs.genrationSet(rule);
 		PlantRoster roster = PlantRoster.instance();
 		
-		//add plant to the singleton instance roster
+/*		//add plant to the singleton instance roster
 		roster.addPlant(plant.getSpecimenID(), plant);
 
 		//print basic plant infomation	
@@ -71,7 +75,7 @@ public class PlantSimUI extends JFrame implements Runnable{
 			
 		//print plant info after growth
 		System.out.println("After growth");
-		roster.displayPlant();
+		roster.displayPlant();*/
 		
 		setTitle("PlantSimulation");
 		setSize(1200, 800);	//set the size to something reasonable
@@ -104,7 +108,7 @@ public class PlantSimUI extends JFrame implements Runnable{
 		
 		//traverse all stems
 		for (int i = 0; i < ((Math.pow(3, generation) - 1) * 3 / 2) + 1; i++) {
-			BGStem st = BGStem.stemMap.get(i);
+			BGStem st = bgs.getBgSet().get(0).getBgs().get(i);
 			//stem location
 			line = new Line2D.Double(st.getLocationX() + 600, -st.getLocationY() + 800,
 					(st.getLocationX() + st.getLength() * Math.cos(st.getRadians()) + 600),

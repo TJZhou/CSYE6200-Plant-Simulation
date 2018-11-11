@@ -1,10 +1,15 @@
 package edu.neu.csye6200.bg;
 
+import java.util.ArrayList;
+
 /**
  * @author Tianju Zhou NUID 001420546
  */
 public class BGGenerationSet {
 	
+	private BGGeneration bg = new BGGeneration();
+	private ArrayList<BGGeneration> bgSet = new ArrayList<BGGeneration>();
+ 
 	//constructor
 	public BGGenerationSet() {
 		
@@ -13,13 +18,12 @@ public class BGGenerationSet {
 	/*
 	 * ----------------The Generation Set------------------------
 	 */
-	public void genrationSet(BGStem baseStem) {
-
-		BGRule bg = new BGRule();
+	public void genrationSet(String rule) {
+		
 		
 		// different plant should have different growth patterns
 		// here, assume rose has the same growth patterns as maple
-		switch (PlantSimUI.rule) {
+		switch (rule) {
 		
 		
 		case "rule1":
@@ -33,15 +37,21 @@ public class BGGenerationSet {
 			 * bg.growthRule1(5, 100, Math.PI / 6, baseStem); 
 			 * bg.growthRule1(6, 100, Math.PI / 6, baseStem);
 			 */		
-			bg.growthRule1(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.rotateRadian , baseStem);
+			bg.growthRule("rule1");
 			break;
 
 		case "rule2":
-			bg.growthRule2(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.midLengthGrow, PlantSimUI.rotateRadian, baseStem);
+			bg.growthRule("rule2");
 			break;
 			
 		case "rule3":
-			break;
+			bg.growthRule("rule3");
+			break;		
 		}
+		bgSet.add(bg);
+	}
+
+	public ArrayList<BGGeneration> getBgSet() {
+		return bgSet;
 	}
 }

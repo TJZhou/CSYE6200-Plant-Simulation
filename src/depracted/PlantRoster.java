@@ -1,4 +1,4 @@
-package edu.neu.csye6200.bg;
+package depracted;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
