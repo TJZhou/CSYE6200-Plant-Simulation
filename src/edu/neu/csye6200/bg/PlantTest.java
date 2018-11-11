@@ -9,7 +9,6 @@ import java.util.logging.Logger;
  * @author Tianju Zhou NUID 001420546
  */
 public class PlantTest implements Runnable{
-
 	
 	private static Logger log = Logger.getLogger(PlantTest.class.getName());
 
@@ -53,7 +52,7 @@ public class PlantTest implements Runnable{
 		 */
 		
 		//can change the grow generation 7 in the GUI
-		roster.growPlant(plant, MyAppUI.rule);
+		roster.growPlant(plant, PlantSimUI.rule);
 			
 		//print plant info after growth
 		System.out.println("After growth");

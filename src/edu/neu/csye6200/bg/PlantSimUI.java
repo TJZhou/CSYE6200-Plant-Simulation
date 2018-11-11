@@ -15,27 +15,24 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * @author Tianju Zhou
- *
+ * @author Tianju Zhou NUID 001420546
  */
-public class MyAppUI extends JFrame implements Runnable{
-	/**
-	 * 
-	 */
+public class PlantSimUI extends JFrame implements Runnable{
+
 	private static final long serialVersionUID = 1L;
 	public static int generation = 7;
 	public static String rule = "rule2";
-	public static double sideLengthGrow = 1.02;
-	public static double midLengthGrow = 1.02;
-	public static double rotateRadian = Math.PI / 12;
+	public static double sideLengthGrow = 1.03;
+	public static double midLengthGrow = 1.03;
+	public static double rotateRadian = Math.PI / 4;
 	
-	private Logger log = Logger.getLogger(MyAppUI.class.getName());	
+	private Logger log = Logger.getLogger(PlantSimUI.class.getName());	
 	private JPanel jPanel = null;
 	private JButton startBtn = null;
 	private JButton stopBtn = null;
 	
 	//constructor
-	public MyAppUI(){
+	public PlantSimUI(){
 		log.info("App Started");
 	}
 
@@ -69,7 +66,7 @@ public class MyAppUI extends JFrame implements Runnable{
 		Line2D line;
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.setColor(Color.GRAY);
+		g2.setColor(Color.CYAN);
 		
 		//traverse all stems
 		for (int i = 0; i < ((Math.pow(3, generation) - 1) * 3 / 2) + 1; i++) {
@@ -79,9 +76,6 @@ public class MyAppUI extends JFrame implements Runnable{
 					(st.getLocationX() + st.getLength() * Math.cos(st.getRadians()) + 600),
 					-(st.getLocationY() + st.getLength() * Math.sin(st.getRadians())) + 800);
 
-			// different generations have different line thickness
-//			if(i != 0)
-//				g2.setStroke(new BasicStroke( (int)(9 / Math.pow(3, ((int) Math.log((i-1) * 2 / 3 + 1) / Math.log(3))))));
 			if (i == 0) {
 				g2.setStroke(new BasicStroke(14.0f));
 			}
@@ -110,7 +104,7 @@ public class MyAppUI extends JFrame implements Runnable{
 	thrdPT.run();
 	thrdPT.join();
 	
-	Thread thrdUI = new Thread(new MyAppUI());
+	Thread thrdUI = new Thread(new PlantSimUI());
 	thrdUI.run();
 	thrdUI.join();
 	

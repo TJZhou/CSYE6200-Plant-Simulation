@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 /**
  * @author Tianju Zhou NUID 001420546
  */
-
 public class RegistryIO {
 
 	private static Logger log = Logger.getLogger(RegistryIO.class.getName());

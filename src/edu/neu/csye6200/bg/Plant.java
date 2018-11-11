@@ -95,7 +95,7 @@ public class Plant {
 		bgs.genrationSet(baseStem);
 		setLength(plantHeight());
 		setWidth(plantWidth());
-		setAge(this.age + MyAppUI.generation);
+		setAge(this.age + PlantSimUI.generation);
 	}
 
 	// method to print child stems

@@ -1,12 +1,15 @@
 package edu.neu.csye6200.bg;
 
+/**
+ * @author Tianju Zhou NUID 001420546
+ */
 public class BGGenerationSet {
 	
+	//constructor
 	public BGGenerationSet() {
 		
 	}
 
-	
 	/*
 	 * ----------------The Generation Set------------------------
 	 */
@@ -16,7 +19,7 @@ public class BGGenerationSet {
 		
 		// different plant should have different growth patterns
 		// here, assume rose has the same growth patterns as maple
-		switch (MyAppUI.rule) {
+		switch (PlantSimUI.rule) {
 		
 		
 		case "rule1":
@@ -30,11 +33,11 @@ public class BGGenerationSet {
 			 * bg.growthRule1(5, 100, Math.PI / 6, baseStem); 
 			 * bg.growthRule1(6, 100, Math.PI / 6, baseStem);
 			 */		
-			bg.growthRule1(MyAppUI.generation, MyAppUI.sideLengthGrow, MyAppUI.rotateRadian , baseStem);
+			bg.growthRule1(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.rotateRadian , baseStem);
 			break;
 
 		case "rule2":
-			bg.growthRule2(MyAppUI.generation, MyAppUI.sideLengthGrow, MyAppUI.midLengthGrow, MyAppUI.rotateRadian, baseStem);
+			bg.growthRule2(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.midLengthGrow, PlantSimUI.rotateRadian, baseStem);
 			break;
 			
 		case "rule3":
