@@ -10,8 +10,8 @@ public class BGGeneration {
 
 	private BGRule bgr = new BGRule();
 
-	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
-	
+	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());
+
 	// bgStem and the container to collect it
 	private BGStem bgStem;
 	private ArrayList<BGStem> bgStemSet = new ArrayList<BGStem>();
@@ -51,12 +51,14 @@ public class BGGeneration {
 
 	}
 
+	// save stem information in the file stemData.txt
 	private void saveStemInfo() {
+		// try-with-resources
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/edu/neu/csye6200/bg/stemData.txt"))) {
 			bw.write(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s", "stemID", "locationX", "locationY",
 					"length", "radians"));
-
 			bw.write('\n');
+			//for each stem in the bgStemSet array
 			for (BGStem stem : bgStemSet) {
 				bw.write(stem.toString());
 				bw.write('\n');

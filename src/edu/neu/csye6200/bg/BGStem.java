@@ -58,7 +58,7 @@ public class BGStem {
 		this.radians = radians;
 	}
 
-	//get stemID, get stemMap
+	//get stemID
 	public int getStemID() {
 		return stemID;
 	}
