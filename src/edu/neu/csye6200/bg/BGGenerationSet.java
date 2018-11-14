@@ -9,21 +9,35 @@ import java.util.logging.Logger;
 public class BGGenerationSet {
 	
 	//BGGeneration and the container to collect it
-	private BGGeneration bg = new BGGeneration();
+	private BGGeneration bg;
+	private static BGGenerationSet generationSet = null;
 	private ArrayList<BGGeneration> bgSet = new ArrayList<BGGeneration>();
 	
 	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
 	
-	//constructor
-	public BGGenerationSet() {
-		log.info("An instance of BGGenrationSet is created");
+	//private constructor - singleton pattern
+	private BGGenerationSet() {
+		
 	}
+	
+	public ArrayList<BGGeneration> getBgSet() {
+		return bgSet;
+	}
+
+	public static BGGenerationSet generationSet() {
+		if(generationSet == null) {
+			log.info("An instance of BGGenrationSet is created");
+			generationSet = new BGGenerationSet();
+		}			
+		return generationSet;
+	}
+
 
 	/*
 	 * ----------------The Generation Set------------------------
 	 */
 	public void genrationSet(String rule) {
-		
+		bg = new BGGeneration();
 		
 		// different plant should have different growth patterns
 		// here, assume rose has the same growth patterns as maple
@@ -53,9 +67,5 @@ public class BGGenerationSet {
 			break;		
 		}
 		bgSet.add(bg);
-	}
-
-	public ArrayList<BGGeneration> getBgSet() {
-		return bgSet;
 	}
 }

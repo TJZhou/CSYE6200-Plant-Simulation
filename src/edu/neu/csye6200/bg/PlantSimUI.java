@@ -36,7 +36,7 @@ import javax.swing.event.ListSelectionListener;
 public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
 	
-	public static int generation = 7;
+	public static int generation = 5;
 	public static double sideLengthGrow = 1.05;
 	public static double midLengthGrow = 1.05;
 	public static double sideRotateRadian = Math.PI /12;
@@ -46,11 +46,12 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 	private static int BGSetCount = 0;
 	private String rules[] = {"rule1", "rule2", "rule3"};
 	private String colors[] = {"black", "white", "red", "blue", "green", "yellow","cyan"};
-
+	private static boolean pause = false;
 	private JPanel menuPanel = null;
 	private JPanel mainPanel = null;
 	private JButton startBtn = null;
 	private JButton stopBtn = null;
+	private JButton resetBtn = null;
 	private JLabel ruleLabel = null;
 	private JLabel colorLabel = null;
 	private JLabel lengthLabel = null;
@@ -60,10 +61,8 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 	private JComboBox colorBox = null;
 	private JSlider lengthSlider = null;
 	private JSlider radianSlider = null;
-	
-	//log file routine
-	private String logBase = "src/edu/neu/csye6200/bg/server.log";
-	private BGGenerationSet bgs  = new BGGenerationSet();
+	private String logBase = "src/edu/neu/csye6200/bg/server.log";	//log file routine	
+	private BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
 	
 	//constructor
 	public PlantSimUI(){
@@ -97,34 +96,33 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 	public JPanel getMenuPanel(){
 		menuPanel = new JPanel();
 		menuPanel.setLayout(null);
-		//the size of menu panel is 300*800
-		menuPanel.setPreferredSize(new Dimension(300,1000));
-		startBtn = new JButton("Start"); // create button instances
-		startBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				//mainPanel.repaint();
+		menuPanel.setPreferredSize(new Dimension(300,1000)); //the size of menu panel is 300*800
+		
+		startBtn = new JButton("Start"); // create start button instances
+		startBtn.addActionListener(e->{
+				pause =false;		//pause equals false; it's able to draw line
 				startBtnAction();
-			//	mainPanel.revalidate();
-			}	
+		});		
+		stopBtn = new JButton("Stop"); // create stop button instances
+		stopBtn.addActionListener(e->{
+			pause = true;
+		});
+		resetBtn = new JButton("Reset"); // create reset button instances
+		resetBtn.addActionListener(e->{
+			mainPanel.repaint();
 		});
 		
-		stopBtn = new JButton("Stop");
-		
-		//ruleBox
-		ruleLabel = new JLabel("rule");	
+		ruleLabel = new JLabel("rule");		//ruleBox
 		ruleBox = new JComboBox();
 		ruleBox.setModel(new DefaultComboBoxModel(rules));
 		ruleBox.addActionListener(this);
 		
-		//colorBox
-		colorLabel = new JLabel("color");
+		colorLabel = new JLabel("color");	//colorBox
 		colorBox = new JComboBox();
 		colorBox.setModel(new DefaultComboBoxModel(colors));	
 		colorBox.addActionListener(this);
 		
-		lengthLabel = new JLabel("length");
+		lengthLabel = new JLabel("length"); //length and radian slide control
 		lengthSlider = new JSlider(1, 2);		
 		radianLabel = new JLabel("radian");
 		radianSlider = new JSlider(1, 2);	
@@ -140,13 +138,15 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 		lengthSlider.setBounds(100, 250, 100, 40);
 		radianLabel.setBounds(50, 325, 60, 40);
 		radianSlider.setBounds(100, 325, 100, 40);
-		startBtn.setBounds(50, 400, 60, 30);
-		stopBtn.setBounds(125, 400, 60, 30);
+		startBtn.setBounds(50, 400, 150, 40);
+		stopBtn.setBounds(50, 475, 150, 40);
+		resetBtn.setBounds(50, 550, 150,40);
 		info.setBounds(20, 850, 300, 100);
 		
 		//add every component to menuPanel 
 		menuPanel.add(startBtn);
 		menuPanel.add(stopBtn);
+		menuPanel.add(resetBtn);
 		menuPanel.add(ruleLabel);
 		menuPanel.add(ruleBox);		
 		menuPanel.add(colorLabel);
@@ -164,52 +164,51 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 	//jpanel at the right: main panel
 	public JPanel getMainPanel() {
 		mainPanel = new JPanel();
-		//mainPanel.paint(getGraphics());
 		mainPanel.setBackground(Color.GRAY);
 		mainPanel.setPreferredSize(new Dimension(1200,1000));
 		return mainPanel;
 	}
 
 	//press startBtn and do some action
-	private void startBtnAction() {
+	private void startBtnAction() {	
 		super.paint(getGraphics());
-		System.out.println("你按下了" + startBtn.getText());
-		bgs.genrationSet(rule);
-		Line2D line;
+		System.out.println("you press" + startBtn.getText());
+		bgs.genrationSet(rule);		//generate stem according to rules
 		Graphics2D g2 = (Graphics2D) mainPanel.getGraphics();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setColor(color);
+		drawLine(g2);
+		BGSetCount++;
+	}
+
+	//draw stems of the plant
+	private void drawLine(Graphics2D g2) {
+		Line2D line;
 		for(int i = 0; i < bgs.getBgSet().get(BGSetCount).getBgs().size(); i++) {
-			System.out.println(i);
+			while(pause == true) {
+				try {
+					this.wait();
+				} catch (InterruptedException e1) {
+					log.warning("An error occurs at start button");
+					e1.printStackTrace();
+				}
+			}	
 			//get the current BGStem
-			BGStem st = bgs.getBgSet().get(0).getBgs().get(i);
+			BGStem st = bgs.getBgSet().get(BGSetCount).getBgs().get(i);
 			// stem location
 			line = new Line2D.Double(st.getLocationX() + 600, -st.getLocationY() + 1000,
 					(st.getLocationX() + st.getLength() * Math.cos(st.getRadians()) + 600),
 					-(st.getLocationY() + st.getLength() * Math.sin(st.getRadians())) + 1000);
 			g2.draw(line);
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				log.warning("An error occurs at start button");
+				e.printStackTrace();
+			}
 		}
-		BGSetCount++;
-/*		for (int i = 0; i < ((Math.pow(3, generation) - 1) * 3 / 2) + 1; i++) {
-
-			if (i == 0) {
-				g2.setStroke(new BasicStroke(14.0f));
-			} else if (i >= 1 && i <= 3)
-				g2.setStroke(new BasicStroke(9.0f));
-			else if (i >= 4 && i <= 12)
-				g2.setStroke(new BasicStroke(5.0f));
-			else if (i >= 13 && i <= 39)
-				g2.setStroke(new BasicStroke(3.0f));
-			else if (i >= 40 && i <= 66)
-				g2.setStroke(new BasicStroke(1.0f));
-			else
-				g2.setStroke(new BasicStroke(0.3f));
-			if (i == 12)
-				g2.setStroke(new BasicStroke(3f));
-			g2.draw(line);
-		}*/
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//action appears at the rule box
