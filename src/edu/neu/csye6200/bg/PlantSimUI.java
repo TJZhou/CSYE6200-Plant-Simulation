@@ -115,13 +115,49 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 		ruleLabel = new JLabel("rule");		//ruleBox
 		ruleBox = new JComboBox();
 		ruleBox.setModel(new DefaultComboBoxModel(rules));
-		ruleBox.addActionListener(this);
+		ruleBox.addActionListener(e->{
+			switch (ruleBox.getSelectedIndex()) {
+			case 0:
+				System.out.print("rule1");
+				rule = "rule1"; break;
+			case 1:
+				System.out.print("rule2");
+				rule = "rule2"; break;
+			case 2:
+				System.out.print("rule3");
+				rule = "rule3"; break;
+			}
+		});
 		
 		colorLabel = new JLabel("color");	//colorBox
 		colorBox = new JComboBox();
 		colorBox.setModel(new DefaultComboBoxModel(colors));	
-		colorBox.addActionListener(this);
-		
+		colorBox.addActionListener(e->{
+			switch (colorBox.getSelectedIndex()) {
+			case 0:
+				System.out.print("black");
+				color = Color.black; break;
+			case 1:
+				System.out.print("white");
+				color = Color.white; break;
+			case 2:
+				System.out.print("red");
+				color = Color.red; break;
+			case 3:
+				System.out.print("blue");
+				color = Color.blue; break;
+			case 4:
+				System.out.print("green");
+				color = Color.green; break;
+			case 5:
+				System.out.print("yellow");
+				color = Color.yellow; break;
+			case 6:
+				System.out.print("cyan");
+				color = Color.cyan; break;		
+			}	
+		});
+
 		lengthLabel = new JLabel("length"); //length and radian slide control
 		lengthSlider = new JSlider(1, 2);		
 		radianLabel = new JLabel("radian");
@@ -184,28 +220,17 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 	//draw stems of the plant
 	private void drawLine(Graphics2D g2) {
 		Line2D line;
-		for(int i = 0; i < bgs.getBgSet().get(BGSetCount).getBgs().size(); i++) {
-			while(pause == true) {
-				try {
-					this.wait();
-				} catch (InterruptedException e1) {
-					log.warning("An error occurs at start button");
-					e1.printStackTrace();
-				}
-			}	
-			//get the current BGStem
-			BGStem st = bgs.getBgSet().get(BGSetCount).getBgs().get(i);
+		for (int i = 0; i < bgs.getBgSet().get(BGSetCount).getBgs().size(); i++) {
+			BGStem st = bgs.getBgSet().get(BGSetCount).getBgs().get(i); // get the current BGStem
 			// stem location
 			line = new Line2D.Double(st.getLocationX() + 600, -st.getLocationY() + 1000,
 					(st.getLocationX() + st.getLength() * Math.cos(st.getRadians()) + 600),
 					-(st.getLocationY() + st.getLength() * Math.sin(st.getRadians())) + 1000);
 			g2.draw(line);
-			try {
-				Thread.sleep(30);
-			} catch (InterruptedException e) {
-				log.warning("An error occurs at start button");
-				e.printStackTrace();
-			}
+			/*
+			 * try { Thread.sleep(30); } catch (InterruptedException e) {
+			 * log.warning("An error occurs at start button"); e.printStackTrace(); } }
+			 */
 		}
 	}
 	

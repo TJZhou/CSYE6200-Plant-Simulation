@@ -123,31 +123,26 @@ public class BGRule {
 		double midLengthChange = Math.pow(midLengthGrow, (int) (Math.log(3 * i + 1) / Math.log(4)));
 		
 		// Let every stem has four child stems
-		
 		// stems grow to the most left side
 		if (i % 4 == 1) {
-			System.out.print("1");
 			presentStem(bgs, (i - 1) / 4);
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
 					(length / sideLengthChange), radians + sideRotateRadian);
 		}
 		//stem grow to the mid-left side
 		else if (i % 4 == 2) {
-			System.out.print("2");
 			presentStem(bgs, (i - 2) / 4);
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
 					(length / midLengthChange), radians + midRotateRadian);
 		}
 		//stem grow to the mid-right side
 		else if (i % 4 == 3) {
-			System.out.print("3");
 			presentStem(bgs, (i - 3) / 4);
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
 					(length / midLengthChange), radians - midRotateRadian);
 		}
 		// stems grow to the most right side
 		else if (i % 4 == 0) {
-			System.out.print("4");
 			presentStem(bgs, (i - 4) / 4);
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
 					(length / sideLengthChange), radians - sideRotateRadian);
