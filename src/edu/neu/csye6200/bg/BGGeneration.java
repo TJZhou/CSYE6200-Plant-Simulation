@@ -26,13 +26,13 @@ public class BGGeneration {
 	public void growthRule(String rule) {
 
 		// create baseStem
-		bgStemSet.add(new BGStem(0, 0, 100, Math.PI / 2));
+		bgStemSet.add(new BGStem(0, 0, 150, Math.PI / 2));
 
 		// rule1 grow to two side
 		if (rule.equals("rule1")) {
 			// the stem numbers are depended on generation
-			for (int i = 1; i <= Math.pow(2, PlantSimUI.generation + 1) - 1; i++) {
-				bgStem = bgr.growthRule(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.rotateRadian,
+			for (int i = 1; i < (Math.pow(2, PlantSimUI.generation) * 2-1); i++) {
+				bgStem = bgr.growthRule(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.sideRotateRadian,
 						bgStemSet, i);
 				bgStemSet.add(bgStem);
 			}
@@ -40,9 +40,17 @@ public class BGGeneration {
 
 		// rule2 grow to three side
 		else if (rule.equals("rule2")) {
-			for (int i = 1; i < ((Math.pow(3, PlantSimUI.generation) - 1) * 3 / 2) + 1; i++) {
+			for (int i = 1; i < ((Math.pow(3, PlantSimUI.generation) * 3 / 2)-1); i++) {
 				bgStem = bgr.growthRule(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.midLengthGrow,
-						PlantSimUI.rotateRadian, bgStemSet, i);
+						PlantSimUI.sideRotateRadian, bgStemSet, i);
+				bgStemSet.add(bgStem);
+			}
+		}
+		
+		else if (rule.equals("rule3")) {
+			for (int i = 1; i < ((Math.pow(4, PlantSimUI.generation) * 4 / 3)-1); i++) {
+				bgStem = bgr.growthRule(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.midLengthGrow,
+						PlantSimUI.sideRotateRadian, PlantSimUI.midRotateRadian, bgStemSet, i);
 				bgStemSet.add(bgStem);
 			}
 		}
@@ -65,6 +73,7 @@ public class BGGeneration {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			log.warning("an error occurs when saving stem info - " + e);
 		}
 
 	}
