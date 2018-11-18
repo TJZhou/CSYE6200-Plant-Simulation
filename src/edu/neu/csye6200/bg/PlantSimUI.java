@@ -37,8 +37,8 @@ public class PlantSimUI extends JFrame implements Runnable{
 	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
 	
 	public static int generation = 9;
-	public static double sideLengthGrow = 1.05;
-	public static double midLengthGrow = 1.05;	//default length
+	public static double sideLengthGrow = 1.05555;
+	public static double midLengthGrow = 1.05555;	//default length
 	public static double sideRotateRadian = Math.PI /9;
 	public static double midRotateRadian = Math.PI/9;	//default radian
 	public static String rule = "rule1";	//default rule
@@ -163,7 +163,7 @@ public class PlantSimUI extends JFrame implements Runnable{
 		});
 
 		lengthLabel = new JLabel("length"); //length slide control and action listener
-		lengthSlider = new JSlider(10,50);	
+		lengthSlider = new JSlider(5,31);	
 		lengthSlider.addChangeListener(e->{
 			sideLengthGrow = 1.0 + 1.0 / lengthSlider.getValue();		
 		});
@@ -174,15 +174,19 @@ public class PlantSimUI extends JFrame implements Runnable{
 			sideRotateRadian = Math.PI/(17 - ((double)radianSlider.getValue())/10);
 		});
 		
-		info = new JLabel("There two sliders are only available at rule3");
-		info.setBounds(20, 375, 300, 40);
+		info = new JLabel("midLength slider is only available at rule 2/3");
+		info.setBounds(20, 340, 300, 40);
 		menuPanel.add(info);
 		//mid length and radian slide control and action listener; only available at rule 4
 		midLengthLabel = new JLabel("midLength");
-		midLengthSlider = new JSlider(10,50);	
+		midLengthSlider = new JSlider(5,31);	
 		midLengthSlider.addChangeListener(e->{
 			midLengthGrow = 1.0 + 1.0 / midLengthSlider.getValue();		
 		});
+		
+		info = new JLabel("midRadian slider is only available at rule 3");
+		info.setBounds(20, 435, 300, 40);
+		menuPanel.add(info);
 		midRadianLabel = new JLabel("midRadian");
 		midRadianSlider = new JSlider(20, 150);
 		midRadianSlider.addChangeListener(e->{
@@ -200,8 +204,8 @@ public class PlantSimUI extends JFrame implements Runnable{
 		lengthSlider.setBounds(100, 250, 150, 40);
 		radianLabel.setBounds(50, 300, 60, 40);
 		radianSlider.setBounds(100, 300, 150, 40);
-		midLengthLabel.setBounds(25, 425, 200, 40);
-		midLengthSlider.setBounds(100, 425, 150, 40);
+		midLengthLabel.setBounds(25, 380, 200, 40);
+		midLengthSlider.setBounds(100, 380, 150, 40);
 		midRadianLabel.setBounds(25, 475, 200, 40);
 		midRadianSlider.setBounds(100, 475, 150, 40);
 		startBtn.setBounds(75, 550, 150, 40);

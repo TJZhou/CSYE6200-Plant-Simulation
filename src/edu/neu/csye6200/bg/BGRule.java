@@ -15,7 +15,7 @@ public class BGRule {
 	
 	// in order to calculate radians, LocationX/Y, length later
 	private double radians, X, Y, length;
-	private double lengthChange;
+	private double sideLengthChange, midLengthChange;
 	
 	public BGRule() {
 		log.info("An instance of BGRule is created");
@@ -42,7 +42,7 @@ public class BGRule {
 	 * @param i: is the index in the bgs
 	 */
 	public BGStem growthRule(int generation, double lengthGrow, double rotateRadian, ArrayList<BGStem> bgs, int i) {
-		lengthChange = Math.pow(lengthGrow, ((int) (Math.log(i + 1) / Math.log(2))));
+		sideLengthChange = Math.pow(lengthGrow, ((int) (Math.log(i + 1) / Math.log(2))));
 		// Let every stem has two child stems
 		// stems grow to left side
 		if (i % 2 == 1) {
@@ -55,7 +55,7 @@ public class BGRule {
 					// locationY
 					(Y + length * Math.sin(radians)),
 					// to calculate the length
-					(length / lengthChange),
+					(length / sideLengthChange),
 					// radians
 					radians + rotateRadian);
 		}
@@ -63,7 +63,7 @@ public class BGRule {
 		else if (i % 2 == 0) {
 			presentStem(bgs, (i - 2) / 2);
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-					(length / lengthChange), radians - rotateRadian);
+					(length / sideLengthChange), radians - rotateRadian);
 		}
 		return stem;
 	}
@@ -79,13 +79,13 @@ public class BGRule {
 	 */
 	public BGStem growthRule(int generation, double sideLengthGrow, double midLengthGrow, double rotateRadian, ArrayList<BGStem> bgs, int i) {
 
-		lengthChange = Math.pow(sideLengthGrow, (int) (Math.log(2 * i + 1) / Math.log(3)));
-		double midLengthChange = Math.pow(midLengthGrow, (int) (Math.log(2 * i + 1) / Math.log(3)));
+		sideLengthChange = Math.pow(sideLengthGrow, ((int) (Math.log(2 * i + 1) / Math.log(3))));
+		midLengthChange = Math.pow(midLengthGrow, ((int) (Math.log(2 * i + 1) / Math.log(3))));
 		// stems grow to left side
 		if (i % 3 == 1) {
 			presentStem(bgs, (i - 1) / 3);
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-					(length / lengthChange),
+					(length / sideLengthChange),
 					radians + rotateRadian);
 		}
 
@@ -94,7 +94,7 @@ public class BGRule {
 			// in orede to create new stem
 			presentStem(bgs, (i - 2) / 3);
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-					(length / lengthChange), radians);
+					(length / midLengthChange), radians);
 		}
 
 		// stems grow to right side
@@ -102,7 +102,7 @@ public class BGRule {
 			presentStem(bgs, (i - 3) / 3);
 
 			stem = new BGStem((X + length * Math.cos(radians)), (Y + length * Math.sin(radians)),
-					(length / lengthChange),
+					(length / sideLengthChange),
 					radians - rotateRadian);
 		}
 		return stem;
@@ -120,8 +120,8 @@ public class BGRule {
 	 */
 	
 	public BGStem growthRule(int generation, double sideLengthGrow, double midLengthGrow, double sideRotateRadian, double midRotateRadian, ArrayList<BGStem> bgs, int i) {
-		double sideLengthChange = Math.pow(sideLengthGrow, (int) (Math.log(3 * i + 1) / Math.log(4)));
-		double midLengthChange = Math.pow(midLengthGrow, (int) (Math.log(3 * i + 1) / Math.log(4)));
+		sideLengthChange = Math.pow(sideLengthGrow, (int) (Math.log(3 * i + 1) / Math.log(4)));
+		midLengthChange = Math.pow(midLengthGrow, (int) (Math.log(3 * i + 1) / Math.log(4)));
 		
 		// Let every stem has four child stems
 		// stems grow to the most left side
