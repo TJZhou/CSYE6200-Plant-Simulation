@@ -33,20 +33,20 @@ import javax.swing.event.ListSelectionListener;
 /**
  * @author Tianju Zhou NUID 001420546
  */
-public class PlantSimUI extends JFrame implements Runnable, ActionListener{
+public class PlantSimUI extends JFrame implements Runnable{
 	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
 	
-	public static int generation = 5;
+	public static int generation = 9;
 	public static double sideLengthGrow = 1.05;
-	public static double midLengthGrow = 1.05;
-	public static double sideRotateRadian = Math.PI /12;
-	public static double midRotateRadian = Math.PI/6;
-	public static String rule = "rule1";
-	public static Color color = Color.black; 
+	public static double midLengthGrow = 1.05;	//default length
+	public static double sideRotateRadian = Math.PI /9;
+	public static double midRotateRadian = Math.PI/9;	//default radian
+	public static String rule = "rule1";	//default rule
+	public static Color color = Color.white; 	//default color
 	private static int BGSetCount = 0;
-	private String rules[] = {"rule1", "rule2", "rule3"};
-	private String colors[] = {"black", "white", "red", "blue", "green", "yellow","cyan"};
-	private static boolean pause = false;
+	private String rules[] = {"rule1", "rule2", "rule3"};	//rule set
+	private String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
+	//private static boolean pause = false;
 	private JPanel menuPanel = null;
 	private JPanel mainPanel = null;
 	private JButton startBtn = null;
@@ -56,11 +56,15 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 	private JLabel colorLabel = null;
 	private JLabel lengthLabel = null;
 	private JLabel radianLabel = null;
+	private JLabel midLengthLabel = null;
+	private JLabel midRadianLabel = null;
 	private JLabel info = null;
 	private JComboBox ruleBox = null;
 	private JComboBox colorBox = null;
 	private JSlider lengthSlider = null;
+	private JSlider midLengthSlider = null; //only available at rule4
 	private JSlider radianSlider = null;
+	private JSlider midRadianSlider = null;//only available at rule4
 	private String logBase = "src/edu/neu/csye6200/bg/server.log";	//log file routine	
 	private BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
 	
@@ -100,46 +104,46 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 		
 		startBtn = new JButton("Start"); // create start button instances
 		startBtn.addActionListener(e->{
-				pause =false;		//pause equals false; it's able to draw line
+				//pause =false;		//pause equals false; it's able to draw line
 				startBtnAction();
 		});		
 		stopBtn = new JButton("Stop"); // create stop button instances
 		stopBtn.addActionListener(e->{
-			pause = true;
+			//pause = true;
 		});
 		resetBtn = new JButton("Reset"); // create reset button instances
 		resetBtn.addActionListener(e->{
 			mainPanel.repaint();
 		});
 		
-		ruleLabel = new JLabel("rule");		//ruleBox
+		ruleLabel = new JLabel("rule");		//ruleBox and action listener
 		ruleBox = new JComboBox();
 		ruleBox.setModel(new DefaultComboBoxModel(rules));
 		ruleBox.addActionListener(e->{
 			switch (ruleBox.getSelectedIndex()) {
 			case 0:
 				System.out.print("rule1");
-				rule = "rule1"; break;
+				rule = "rule1";break;		
 			case 1:
 				System.out.print("rule2");
-				rule = "rule2"; break;
+				rule = "rule2"; generation = 8;break;
 			case 2:
 				System.out.print("rule3");
-				rule = "rule3"; break;
+				rule = "rule3"; generation = 7;break;
 			}
 		});
 		
-		colorLabel = new JLabel("color");	//colorBox
+		colorLabel = new JLabel("color");	//colorBox and action listener
 		colorBox = new JComboBox();
 		colorBox.setModel(new DefaultComboBoxModel(colors));	
 		colorBox.addActionListener(e->{
 			switch (colorBox.getSelectedIndex()) {
 			case 0:
 				System.out.print("black");
-				color = Color.black; break;
+				color = Color.white; break;
 			case 1:
 				System.out.print("white");
-				color = Color.white; break;
+				color = Color.black; break;
 			case 2:
 				System.out.print("red");
 				color = Color.red; break;
@@ -158,25 +162,51 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 			}	
 		});
 
-		lengthLabel = new JLabel("length"); //length and radian slide control
-		lengthSlider = new JSlider(1, 2);		
-		radianLabel = new JLabel("radian");
-		radianSlider = new JSlider(1, 2);	
+		lengthLabel = new JLabel("length"); //length slide control and action listener
+		lengthSlider = new JSlider(10,50);	
+		lengthSlider.addChangeListener(e->{
+			sideLengthGrow = 1.0 + 1.0 / lengthSlider.getValue();		
+		});
+		
+		radianLabel = new JLabel("radian"); //radian slide control and action listener
+		radianSlider = new JSlider(20, 150);
+		radianSlider.addChangeListener(e->{
+			sideRotateRadian = Math.PI/(17 - ((double)radianSlider.getValue())/10);
+		});
+		
+		info = new JLabel("There two sliders are only available at rule3");
+		info.setBounds(20, 375, 300, 40);
+		menuPanel.add(info);
+		//mid length and radian slide control and action listener; only available at rule 4
+		midLengthLabel = new JLabel("midLength");
+		midLengthSlider = new JSlider(10,50);	
+		midLengthSlider.addChangeListener(e->{
+			midLengthGrow = 1.0 + 1.0 / midLengthSlider.getValue();		
+		});
+		midRadianLabel = new JLabel("midRadian");
+		midRadianSlider = new JSlider(20, 150);
+		midRadianSlider.addChangeListener(e->{
+			midRotateRadian = Math.PI/ (17 - ((double)midRadianSlider.getValue())/10);
+		});
 		
 		info = new JLabel("<html>Author: Tianju Zhou<br/><br/> NUID: 001420546</html>");
 		
 		//set location and size of every component
 		ruleLabel.setBounds(50, 100, 60, 40);
-		ruleBox.setBounds(100, 100, 100, 40);
+		ruleBox.setBounds(100, 100, 150, 40);
 		colorLabel.setBounds(50, 175, 60, 40);
-		colorBox.setBounds(100, 175, 100, 40);
+		colorBox.setBounds(100, 175, 150, 40);
 		lengthLabel.setBounds(50, 250, 60, 40);
-		lengthSlider.setBounds(100, 250, 100, 40);
-		radianLabel.setBounds(50, 325, 60, 40);
-		radianSlider.setBounds(100, 325, 100, 40);
-		startBtn.setBounds(50, 400, 150, 40);
-		stopBtn.setBounds(50, 475, 150, 40);
-		resetBtn.setBounds(50, 550, 150,40);
+		lengthSlider.setBounds(100, 250, 150, 40);
+		radianLabel.setBounds(50, 300, 60, 40);
+		radianSlider.setBounds(100, 300, 150, 40);
+		midLengthLabel.setBounds(25, 425, 200, 40);
+		midLengthSlider.setBounds(100, 425, 150, 40);
+		midRadianLabel.setBounds(25, 475, 200, 40);
+		midRadianSlider.setBounds(100, 475, 150, 40);
+		startBtn.setBounds(75, 550, 150, 40);
+		stopBtn.setBounds(75, 625, 150, 40);
+		resetBtn.setBounds(75, 700, 150,40);
 		info.setBounds(20, 850, 300, 100);
 		
 		//add every component to menuPanel 
@@ -191,6 +221,10 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 		menuPanel.add(lengthSlider);
 		menuPanel.add(radianLabel);
 		menuPanel.add(radianSlider);
+		menuPanel.add(midLengthLabel);
+		menuPanel.add(midLengthSlider);
+		menuPanel.add(midRadianLabel);
+		menuPanel.add(midRadianSlider);
 		menuPanel.add(info);
 		
 		menuPanel.setBackground(Color.WHITE);
@@ -217,7 +251,7 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 		BGSetCount++;
 	}
 
-	//draw stems of the plant
+	//draw stems of the plant at the mainPanel
 	private void drawLine(Graphics2D g2) {
 		Line2D line;
 		for (int i = 0; i < bgs.getBgSet().get(BGSetCount).getBgs().size(); i++) {
@@ -227,56 +261,16 @@ public class PlantSimUI extends JFrame implements Runnable, ActionListener{
 					(st.getLocationX() + st.getLength() * Math.cos(st.getRadians()) + 600),
 					-(st.getLocationY() + st.getLength() * Math.sin(st.getRadians())) + 1000);
 			g2.draw(line);
-			/*
-			 * try { Thread.sleep(30); } catch (InterruptedException e) {
-			 * log.warning("An error occurs at start button"); e.printStackTrace(); } }
-			 */
-		}
+			
+		
+	/*		 try { 
+				 Thread.sleep(30); 
+				 } catch (InterruptedException e) {
+		log.warning("An error occurs at start button"); e.printStackTrace(); } */
+				 }
+					
 	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//action appears at the rule box
-		if(e.getSource() == ruleBox) {
-			switch (ruleBox.getSelectedIndex()) {
-			case 0:
-				System.out.print("rule1");
-				rule = "rule1"; break;
-			case 1:
-				System.out.print("rule2");
-				rule = "rule2"; break;
-			case 2:
-				System.out.print("rule3");
-				rule = "rule3"; break;
-			}
-		}
-		//action appears at the colorBox
-		if(e.getSource() == colorBox) {
-			switch (colorBox.getSelectedIndex()) {
-			case 0:
-				System.out.print("black");
-				color = Color.black; break;
-			case 1:
-				System.out.print("white");
-				color = Color.white; break;
-			case 2:
-				System.out.print("red");
-				color = Color.red; break;
-			case 3:
-				System.out.print("blue");
-				color = Color.blue; break;
-			case 4:
-				System.out.print("green");
-				color = Color.green; break;
-			case 5:
-				System.out.print("yellow");
-				color = Color.yellow; break;
-			case 6:
-				System.out.print("cyan");
-				color = Color.cyan; break;		
-			}	
-		}
-	}	
+		
 	/**
 	 * @param args
 	 * @throws InterruptedException 

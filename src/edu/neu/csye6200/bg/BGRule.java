@@ -80,6 +80,7 @@ public class BGRule {
 	public BGStem growthRule(int generation, double sideLengthGrow, double midLengthGrow, double rotateRadian, ArrayList<BGStem> bgs, int i) {
 
 		lengthChange = Math.pow(sideLengthGrow, (int) (Math.log(2 * i + 1) / Math.log(3)));
+		double midLengthChange = Math.pow(midLengthGrow, (int) (Math.log(2 * i + 1) / Math.log(3)));
 		// stems grow to left side
 		if (i % 3 == 1) {
 			presentStem(bgs, (i - 1) / 3);

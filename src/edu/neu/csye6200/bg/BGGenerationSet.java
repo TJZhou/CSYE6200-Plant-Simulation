@@ -19,10 +19,6 @@ public class BGGenerationSet {
 	private BGGenerationSet() {
 		
 	}
-	
-	public ArrayList<BGGeneration> getBgSet() {
-		return bgSet;
-	}
 
 	public static BGGenerationSet generationSet() {
 		if(generationSet == null) {
@@ -31,7 +27,10 @@ public class BGGenerationSet {
 		}			
 		return generationSet;
 	}
-
+	
+	public ArrayList<BGGeneration> getBgSet() {
+		return bgSet;
+	}
 
 	/*
 	 * ----------------The Generation Set------------------------

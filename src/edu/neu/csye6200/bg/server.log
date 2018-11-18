@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-11-14T21:57:09.628529Z</date>
-  <millis>1542232629628</millis>
-  <nanos>529000</nanos>
+  <date>2018-11-18T21:27:52.530438Z</date>
+  <millis>1542576472530</millis>
+  <nanos>438000</nanos>
   <sequence>2</sequence>
   <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>My App exits</message>
 </record>
 <record>
-  <date>2018-11-14T21:57:20.261165Z</date>
-  <millis>1542232640261</millis>
-  <nanos>165000</nanos>
+  <date>2018-11-18T21:27:55.299579Z</date>
+  <millis>1542576475299</millis>
+  <nanos>579000</nanos>
   <sequence>3</sequence>
   <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>An instance of BGRule is created</message>
 </record>
 <record>
-  <date>2018-11-14T21:57:20.263566Z</date>
-  <millis>1542232640263</millis>
-  <nanos>566000</nanos>
+  <date>2018-11-18T21:27:55.301191Z</date>
+  <millis>1542576475301</millis>
+  <nanos>191000</nanos>
   <sequence>4</sequence>
   <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
   <level>INFO</level>
@@ -38,9 +38,9 @@
   <message>An instance of BGGenration is created</message>
 </record>
 <record>
-  <date>2018-11-14T21:57:32.356613Z</date>
-  <millis>1542232652356</millis>
-  <nanos>613000</nanos>
+  <date>2018-11-18T21:27:58.244065Z</date>
+  <millis>1542576478244</millis>
+  <nanos>65000</nanos>
   <sequence>5</sequence>
   <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
   <level>INFO</level>
@@ -50,9 +50,9 @@
   <message>An instance of BGRule is created</message>
 </record>
 <record>
-  <date>2018-11-14T21:57:32.357547Z</date>
-  <millis>1542232652357</millis>
-  <nanos>547000</nanos>
+  <date>2018-11-18T21:27:58.244966Z</date>
+  <millis>1542576478244</millis>
+  <nanos>966000</nanos>
   <sequence>6</sequence>
   <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
   <level>INFO</level>
@@ -61,4 +61,267 @@
   <thread>18</thread>
   <message>An instance of BGGenration is created</message>
 </record>
-</log>
+<record>
+  <date>2018-11-18T21:28:01.567094Z</date>
+  <millis>1542576481567</millis>
+  <nanos>94000</nanos>
+  <sequence>7</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:01.567667Z</date>
+  <millis>1542576481567</millis>
+  <nanos>667000</nanos>
+  <sequence>8</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:04.056980Z</date>
+  <millis>1542576484056</millis>
+  <nanos>980000</nanos>
+  <sequence>9</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:04.057461Z</date>
+  <millis>1542576484057</millis>
+  <nanos>461000</nanos>
+  <sequence>10</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:06.978834Z</date>
+  <millis>1542576486978</millis>
+  <nanos>834000</nanos>
+  <sequence>11</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:06.979322Z</date>
+  <millis>1542576486979</millis>
+  <nanos>322000</nanos>
+  <sequence>12</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:11.125693Z</date>
+  <millis>1542576491125</millis>
+  <nanos>693000</nanos>
+  <sequence>13</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:11.126146Z</date>
+  <millis>1542576491126</millis>
+  <nanos>146000</nanos>
+  <sequence>14</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:14.139694Z</date>
+  <millis>1542576494139</millis>
+  <nanos>694000</nanos>
+  <sequence>15</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:14.140105Z</date>
+  <millis>1542576494140</millis>
+  <nanos>105000</nanos>
+  <sequence>16</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:16.782753Z</date>
+  <millis>1542576496782</millis>
+  <nanos>753000</nanos>
+  <sequence>17</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:16.783247Z</date>
+  <millis>1542576496783</millis>
+  <nanos>247000</nanos>
+  <sequence>18</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:20.713727Z</date>
+  <millis>1542576500713</millis>
+  <nanos>727000</nanos>
+  <sequence>19</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:20.714142Z</date>
+  <millis>1542576500714</millis>
+  <nanos>142000</nanos>
+  <sequence>20</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:24.094861Z</date>
+  <millis>1542576504094</millis>
+  <nanos>861000</nanos>
+  <sequence>21</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:24.095254Z</date>
+  <millis>1542576504095</millis>
+  <nanos>254000</nanos>
+  <sequence>22</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:34.074686Z</date>
+  <millis>1542576514074</millis>
+  <nanos>686000</nanos>
+  <sequence>23</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:34.075096Z</date>
+  <millis>1542576514075</millis>
+  <nanos>96000</nanos>
+  <sequence>24</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:39.201177Z</date>
+  <millis>1542576519201</millis>
+  <nanos>177000</nanos>
+  <sequence>25</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:39.201532Z</date>
+  <millis>1542576519201</millis>
+  <nanos>532000</nanos>
+  <sequence>26</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:43.604751Z</date>
+  <millis>1542576523604</millis>
+  <nanos>751000</nanos>
+  <sequence>27</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGRule</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGRule is created</message>
+</record>
+<record>
+  <date>2018-11-18T21:28:43.605092Z</date>
+  <millis>1542576523605</millis>
+  <nanos>92000</nanos>
+  <sequence>28</sequence>
+  <logger>edu.neu.csye6200.bg.PlantSimUI</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.bg.BGGeneration</class>
+  <method>&lt;init&gt;</method>
+  <thread>18</thread>
+  <message>An instance of BGGenration is created</message>
+</record>
