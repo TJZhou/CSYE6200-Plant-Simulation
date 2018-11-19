@@ -62,9 +62,9 @@ public class PlantSimUI extends JFrame implements Runnable{
 	private JComboBox ruleBox = null;
 	private JComboBox colorBox = null;
 	private JSlider lengthSlider = null;
-	private JSlider midLengthSlider = null; //only available at rule4
+	private JSlider midLengthSlider = null; //only available at rule3
 	private JSlider radianSlider = null;
-	private JSlider midRadianSlider = null;//only available at rule4
+	private JSlider midRadianSlider = null;//only available at rule3
 	private String logBase = "src/edu/neu/csye6200/bg/server.log";	//log file routine	
 	private BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
 	
@@ -174,8 +174,8 @@ public class PlantSimUI extends JFrame implements Runnable{
 			sideRotateRadian = Math.PI/(17 - ((double)radianSlider.getValue())/10);
 		});
 		
-		info = new JLabel("midLength slider is only available at rule 2/3");
-		info.setBounds(20, 340, 300, 40);
+		info = new JLabel("Only available at rule 2/3");
+		info.setBounds(25, 340, 300, 40);
 		menuPanel.add(info);
 		//mid length and radian slide control and action listener; only available at rule 4
 		midLengthLabel = new JLabel("midLength");
@@ -184,8 +184,8 @@ public class PlantSimUI extends JFrame implements Runnable{
 			midLengthGrow = 1.0 + 1.0 / midLengthSlider.getValue();		
 		});
 		
-		info = new JLabel("midRadian slider is only available at rule 3");
-		info.setBounds(20, 435, 300, 40);
+		info = new JLabel("Only available at rule 3");
+		info.setBounds(25, 435, 300, 40);
 		menuPanel.add(info);
 		midRadianLabel = new JLabel("midRadian");
 		midRadianSlider = new JSlider(20, 150);
