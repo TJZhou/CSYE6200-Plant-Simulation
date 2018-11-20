@@ -1,17 +1,10 @@
-package edu.neu.csye6200.bg;
+package edu.neu.csye6200.ui;
 
-import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.awt.geom.Line2D;
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -23,13 +16,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSlider;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+
+import edu.neu.csye6200.bg.*;
 /**
  * @author Tianju Zhou NUID 001420546
  */
@@ -59,8 +49,8 @@ public class PlantSimUI extends JFrame implements Runnable{
 	private JLabel midLengthLabel = null;
 	private JLabel midRadianLabel = null;
 	private JLabel info = null;
-	private JComboBox ruleBox = null;
-	private JComboBox colorBox = null;
+	private JComboBox<String> ruleBox = null;
+	private JComboBox<String> colorBox = null;
 	private JSlider lengthSlider = null;
 	private JSlider midLengthSlider = null; //only available at rule3
 	private JSlider radianSlider = null;
@@ -117,8 +107,8 @@ public class PlantSimUI extends JFrame implements Runnable{
 		});
 		
 		ruleLabel = new JLabel("rule");		//ruleBox and action listener
-		ruleBox = new JComboBox();
-		ruleBox.setModel(new DefaultComboBoxModel(rules));
+		ruleBox = new JComboBox<String>(rules);
+		//ruleBox.setModel(new DefaultComboBoxModel(rules));
 		ruleBox.addActionListener(e->{
 			switch (ruleBox.getSelectedIndex()) {
 			case 0:

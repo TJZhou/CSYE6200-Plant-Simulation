@@ -1,12 +1,21 @@
 package edu.neu.csye6200.ui;
 
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
+
+import edu.neu.csye6200.bg.BGGenerationSet;
+
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
+import java.util.logging.Logger;
 
 /**
  * A sample Biological Growth Abstract application class
@@ -14,9 +23,40 @@ import java.awt.event.WindowListener;
  *
  */
 public abstract class BGApp implements ActionListener, WindowListener {
+	public static int generation = 9;
+	public static double sideLengthGrow = 1.05555;
+	public static double midLengthGrow = 1.05555;	//default length
+	public static double sideRotateRadian = Math.PI /9;
+	public static double midRotateRadian = Math.PI/9;	//default radian
+	public static String rule = "rule1";	//default rule
+	public static Color color = Color.white; 	//default color
+	
 	protected JFrame frame = null;
 	protected MenuManager menuMgr = null;
-
+	
+	protected static Logger log = Logger.getLogger(WolfApp.class.getName());
+	protected String logBase = "src/edu/neu/csye6200/bg/server.log";	//log file routine	
+	protected BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
+	protected String rules[] = {"rule1", "rule2", "rule3"};	//rule set
+	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
+	protected static int BGSetCount = 0;
+	
+	protected JButton startBtn = null;
+	protected JButton stopBtn = null;
+	protected JButton resetBtn = null;
+	protected JLabel ruleLabel = null;
+	protected JLabel colorLabel = null;
+	protected JLabel lengthLabel = null;
+	protected JLabel radianLabel = null;
+	protected JLabel midLengthLabel = null;
+	protected JLabel midRadianLabel = null;
+	protected JLabel info = null;
+	protected JComboBox<String> ruleBox = null;
+	protected JComboBox<String> colorBox = null;
+	protected JSlider lengthSlider = null;
+	protected JSlider midLengthSlider = null; //only available at rule2/3
+	protected JSlider radianSlider = null;
+	protected JSlider midRadianSlider = null;//only available at rule3
 	/**
 	 * The Biological growth constructor
 	 */

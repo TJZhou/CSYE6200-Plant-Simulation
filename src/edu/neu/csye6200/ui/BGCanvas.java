@@ -1,5 +1,7 @@
 package edu.neu.csye6200.ui;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Logger;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +13,7 @@ import javax.swing.JPanel;
  * A sample canvas that draws a rainbow of lines
  * @author MMUNSON
  */
-public class BGCanvas extends JPanel {
+public class BGCanvas extends JPanel implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(BGCanvas.class.getName());
@@ -91,6 +93,12 @@ public class BGCanvas extends JPanel {
 	private void paintLine(Graphics2D g2d, int startx, int starty, int endx, int endy, Color color) {
 		g2d.setColor(color);
 		g2d.drawLine(startx, starty, endx, endy);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

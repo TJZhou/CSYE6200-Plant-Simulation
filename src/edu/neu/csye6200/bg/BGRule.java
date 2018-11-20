@@ -3,6 +3,8 @@ package edu.neu.csye6200.bg;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import edu.neu.csye6200.ui.PlantSimUI;
+
 /**
  * @author Tianju Zhou NUID 001420546
  */
