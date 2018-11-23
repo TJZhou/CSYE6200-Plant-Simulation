@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  *
  */
 public abstract class BGApp implements ActionListener, WindowListener {
-	public static int generation = 0;
+	public static int generation = 0;	//default generation: onely one base stem
 	public static double sideLengthGrow = 1.05555;
 	public static double midLengthGrow = 1.05555;	//default length
 	public static double sideRotateRadian = Math.PI /9;
@@ -31,7 +31,8 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public static String rule = "rule1";	//default rule
 	public static Color color = Color.white; 	//default color
 	public static BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
-	public static int growthRate = 0;
+	public static int growthRate = 0;	//default growth rate, 0 means do not have speed limitation
+	public static boolean isStop = false;	// judge if we need to stop the growth process
 	
 	protected JFrame frame = null;
 	protected JPanel menuPanel = null;

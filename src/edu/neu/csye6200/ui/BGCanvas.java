@@ -51,13 +51,21 @@ public class BGCanvas extends JPanel implements Observer {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		if (BGApp.bgs.getBgSet().isEmpty() == false) {
-			for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
-				BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
-				paintLine(g2d, BGApp.color, st);
-				  try { Thread.sleep(BGApp.growthRate); } catch (InterruptedException e) {  e.printStackTrace(); }		 
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+					if (BGApp.bgs.getBgSet().isEmpty() == false) {
+						for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
+							BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
+							paintLine(g2d, BGApp.color, st);
+							
+							//show growth process
+							  try { Thread.sleep(BGApp.growthRate); } catch (InterruptedException e) {  e.printStackTrace(); }		 
+						}
+					}
 			}
-		}
+		}).start();
+	
 	}
 
 	/**

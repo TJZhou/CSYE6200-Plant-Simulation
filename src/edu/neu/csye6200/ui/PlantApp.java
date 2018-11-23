@@ -75,12 +75,12 @@ public class PlantApp extends BGApp {
 
 		startBtn = new JButton("Start"); // create start button instances
 		startBtn.addActionListener(e -> {
-			//bgPanel.repaint();
 			bgs.genrationSet(rule); // generate stems according to rules
 			bgPanel.paint(bgPanel.getGraphics());
 		});
 		stopBtn = new JButton("Stop"); // create stop button instances
 		stopBtn.addActionListener(e -> {
+			isStop = true;
 		});
 
 		ruleLabel = new JLabel("rule"); // ruleBox and action listener
@@ -145,14 +145,14 @@ public class PlantApp extends BGApp {
 		
 		growthLabel = new JLabel("<html>show growth <br/>&nbsp &nbsp process</html>");	// growthRate slide control and action listener
 		growthBox = new JComboBox<String>();
-		growthBox.addItem("true");
 		growthBox.addItem("false");
+		growthBox.addItem("true");
 		growthBox.addActionListener(e->{
 			switch (growthBox.getSelectedIndex()) {
 			case 0:
-				growthRate = 1; break;
-			case 1:
 				growthRate = 0; break;
+			case 1:
+				growthRate = 1; break;
 			}
 		});
 		
@@ -284,7 +284,7 @@ public class PlantApp extends BGApp {
 	public static void main(String[] args) {
 		PlantApp pt = new PlantApp();
 
-		log.info("WolfApp started");
+		log.info("PlantApp started");
 	}
 
 }
