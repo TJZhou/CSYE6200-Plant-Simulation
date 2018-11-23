@@ -15,7 +15,7 @@ public class BGGeneration {
 
 	private BGRule bgr = new BGRule();
 
-	private static Logger log = Logger.getLogger(BGApp.class.getName());
+	private static Logger log = Logger.getLogger(BGGeneration.class.getName());
 
 	// bgStem and the container to collect it
 	private BGStem bgStem;

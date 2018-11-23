@@ -16,7 +16,7 @@ public class BGGenerationSet extends Observable{
 	private static BGGenerationSet generationSet = null;
 	private ArrayList<BGGeneration> bgSet = new ArrayList<BGGeneration>();
 	
-	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
+	private static Logger log = Logger.getLogger(BGGenerationSet.class.getName());	
 	
 	//private constructor - singleton pattern
 	private BGGenerationSet() {

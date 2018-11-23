@@ -10,7 +10,7 @@ import edu.neu.csye6200.ui.*;
  */
 public class BGRule {
 
-	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());	
+	private static Logger log = Logger.getLogger(BGRule.class.getName());	
 	
 	// private BGStem baseStem;
 	private BGStem stem;
