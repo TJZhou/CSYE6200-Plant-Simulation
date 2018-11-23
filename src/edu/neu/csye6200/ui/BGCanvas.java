@@ -50,22 +50,39 @@ public class BGCanvas extends JPanel implements Observer {
 		log.info("Drawing BG " + counter++);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-		new Thread(new Runnable() {
+		
+		Thread myThrd = new Thread(new Runnable() {
 			@Override
 			public void run() {
+				
 					if (BGApp.bgs.getBgSet().isEmpty() == false) {
+						
+						
+							
 						for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
 							BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
 							paintLine(g2d, BGApp.color, st);
-							
-							//show growth process
-							  try { Thread.sleep(BGApp.growthRate); } catch (InterruptedException e) {  e.printStackTrace(); }		 
+							if(BGApp.isStop == true) {
+								try {
+									wait();
+									//Thread.sleep(10000);
+								} catch (InterruptedException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+							}
+							// show growth process
+							try {
+								Thread.sleep(BGApp.growthRate);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
 						}
 					}
-			}
-		}).start();
-	
+				}
+			
+		});
+		myThrd.start();
 	}
 
 	/**
@@ -85,12 +102,17 @@ public class BGCanvas extends JPanel implements Observer {
 		g2d.draw(line);
 	}
 
-	/**
-	 * every time the generationSet is changed, repaint the canvas
-	 */
 	@Override
 	public void update(Observable o, Object arg) {
 
 		// this.repaint();
 	}
 }
+
+//Inner Class
+class MyThread extends Thread{
+	public void run() {
+		
+	}
+}
+

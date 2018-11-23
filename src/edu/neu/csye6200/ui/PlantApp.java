@@ -75,12 +75,23 @@ public class PlantApp extends BGApp {
 
 		startBtn = new JButton("Start"); // create start button instances
 		startBtn.addActionListener(e -> {
+			isStop = false;
 			bgs.genrationSet(rule); // generate stems according to rules
 			bgPanel.paint(bgPanel.getGraphics());
 		});
 		stopBtn = new JButton("Stop"); // create stop button instances
 		stopBtn.addActionListener(e -> {
-			isStop = true;
+			//change the status of stop button; stop->continue; continue->stop
+			if(isStop== false) {
+				isStop = true;
+				stopBtn.setText("continue");
+			}
+			else if(isStop == true) {
+				isStop =false; 
+				
+				stopBtn.setText("stop");
+			}
+			System.out.println(isStop);
 		});
 
 		ruleLabel = new JLabel("rule"); // ruleBox and action listener
