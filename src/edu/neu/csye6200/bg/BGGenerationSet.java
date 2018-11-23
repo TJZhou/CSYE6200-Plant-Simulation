@@ -59,7 +59,7 @@ public class BGGenerationSet extends Observable{
 			bg.growthRule("rule3");
 			break;		
 		}
-		bgSet.add(bg);
+		bgSet.add(0,bg);
 		setChanged();	//Indicate that a change has happened
 		notifyObservers(new String("A message"));
 	}

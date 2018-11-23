@@ -32,6 +32,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public static Color color = Color.white; 	//default color
 	public static int BGSetCount = 0;	// the index of bgGeneration in the arraylist of BGGenerationSet
 	public static BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
+	public static int growthRate = 100;
 	
 	protected JFrame frame = null;
 	protected JPanel menuPanel = null;
@@ -39,12 +40,11 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	protected BGCanvas bgPanel = null;
 	protected MenuManager menuMgr = null;
 	protected static Logger log = Logger.getLogger(PlantApp.class.getName());
-	protected String logBase = "src/edu/neu/csye6200/server.log";	//log file routine	
+	protected String logBase = "src/server.log";	//log file routine	
 	protected String rules[] = {"rule1", "rule2", "rule3"};	//rule set
 	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
 	protected JButton startBtn = null;
 	protected JButton stopBtn = null;
-	protected JButton resetBtn = null;
 	protected JLabel ruleLabel = null;
 	protected JLabel colorLabel = null;
 	protected JLabel lengthLabel = null;

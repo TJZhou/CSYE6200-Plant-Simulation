@@ -82,21 +82,16 @@ public class PlantApp extends BGApp {
 			//bgPanel.repaint();
 			System.out.println(BGSetCount);
 	
-			BGApp.BGSetCount++;
+			//bgPanel.repaint();
 			
-			//bgPanel = new BGCanvas();
-			//BGSetCount++;
-				//pause =false;		//pause equals false; it's able to draw line
-				//startBtnAction();
+			BGSetCount++;
+		
 		});		
 		stopBtn = new JButton("Stop"); // create stop button instances
 		stopBtn.addActionListener(e->{
 			//pause = true;
 		});
-		resetBtn = new JButton("Reset"); // create reset button instances
-		resetBtn.addActionListener(e->{
-			bgPanel.repaint();
-		});
+	
 		
 		ruleLabel = new JLabel("rule");		//ruleBox and action listener
 		ruleBox = new JComboBox<String>(rules);
@@ -192,13 +187,11 @@ public class PlantApp extends BGApp {
 		midRadianSlider.setBounds(100, 400, 150, 40);
 		startBtn.setBounds(75, 475, 150, 40);
 		stopBtn.setBounds(75, 550, 150, 40);
-		resetBtn.setBounds(75, 625, 150,40);
 		info.setBounds(20, 675, 300, 100);
 		
 		//add every component to menuPanel 
 		menuPanel.add(startBtn);
 		menuPanel.add(stopBtn);
-		menuPanel.add(resetBtn);
 		menuPanel.add(ruleLabel);
 		menuPanel.add(ruleBox);		
 		menuPanel.add(colorLabel);

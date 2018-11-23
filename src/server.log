@@ -2,14 +2,74 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-11-23T16:55:02.839939Z</date>
-  <millis>1542992102839</millis>
-  <nanos>939000</nanos>
+  <date>2018-11-23T18:38:07.702937Z</date>
+  <millis>1542998287702</millis>
+  <nanos>937000</nanos>
   <sequence>2</sequence>
-  <logger>edu.neu.csye6200.ui.PlantSimUI</logger>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantSimUI</class>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
   <method>main</method>
   <thread>1</thread>
-  <message>My App exits</message>
+  <message>WolfApp started</message>
+</record>
+<record>
+  <date>2018-11-23T18:38:07.839529Z</date>
+  <millis>1542998287839</millis>
+  <nanos>529000</nanos>
+  <sequence>3</sequence>
+  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.ui.BGCanvas</class>
+  <method>drawBG</method>
+  <thread>17</thread>
+  <message>Drawing BG 0</message>
+</record>
+<record>
+  <date>2018-11-23T18:38:07.874372Z</date>
+  <millis>1542998287874</millis>
+  <nanos>372000</nanos>
+  <sequence>4</sequence>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowOpened</method>
+  <thread>17</thread>
+  <message>Window opened</message>
+</record>
+<record>
+  <date>2018-11-23T18:38:07.875434Z</date>
+  <millis>1542998287875</millis>
+  <nanos>434000</nanos>
+  <sequence>5</sequence>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowActivated</method>
+  <thread>17</thread>
+  <message>Window activated</message>
+</record>
+<record>
+  <date>2018-11-23T18:38:07.880874Z</date>
+  <millis>1542998287880</millis>
+  <nanos>874000</nanos>
+  <sequence>6</sequence>
+  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.ui.BGCanvas</class>
+  <method>drawBG</method>
+  <thread>17</thread>
+  <message>Drawing BG 1</message>
+</record>
+<record>
+  <date>2018-11-23T18:38:31.048942Z</date>
+  <millis>1542998311048</millis>
+  <nanos>942000</nanos>
+  <sequence>7</sequence>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowDeactivated</method>
+  <thread>17</thread>
+  <message>Window deactivated</message>
 </record>

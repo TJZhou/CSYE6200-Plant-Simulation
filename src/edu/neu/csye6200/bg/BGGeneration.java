@@ -15,7 +15,7 @@ public class BGGeneration {
 
 	private BGRule bgr = new BGRule();
 
-	private static Logger log = Logger.getLogger(PlantSimUI.class.getName());
+	private static Logger log = Logger.getLogger(BGApp.class.getName());
 
 	// bgStem and the container to collect it
 	private BGStem bgStem;
@@ -31,13 +31,13 @@ public class BGGeneration {
 	public void growthRule(String rule) {
 
 		// create baseStem
-		bgStemSet.add(new BGStem(0, 0, 150, Math.PI / 2));
+		bgStemSet.add(new BGStem(0, 0, 120, Math.PI / 2));
 
 		// rule1 grow to two side
 		if (rule.equals("rule1")) {
 			// the stem numbers are depended on generation
-			for (int i = 1; i < (Math.pow(2, PlantSimUI.generation) * 2 - 1); i++) {
-				bgStem = bgr.growthRule(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.sideRotateRadian,
+			for (int i = 1; i < (Math.pow(2, BGApp.generation) * 2 - 1); i++) {
+				bgStem = bgr.growthRule(BGApp.generation, BGApp.sideLengthGrow, BGApp.sideRotateRadian,
 						bgStemSet, i);
 				bgStemSet.add(bgStem);
 			}
@@ -45,18 +45,18 @@ public class BGGeneration {
 
 		// rule2 grow to three side
 		else if (rule.equals("rule2")) {
-			for (int i = 1; i < ((Math.pow(3, PlantSimUI.generation) * 3 / 2) - 1); i++) {
-				bgStem = bgr.growthRule(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.midLengthGrow,
-						PlantSimUI.sideRotateRadian, bgStemSet, i);
+			for (int i = 1; i < ((Math.pow(3, BGApp.generation) * 3 / 2) - 1); i++) {
+				bgStem = bgr.growthRule(BGApp.generation, BGApp.sideLengthGrow, BGApp.midLengthGrow,
+						BGApp.sideRotateRadian, bgStemSet, i);
 				bgStemSet.add(bgStem);
 			}
 		}
 
 		// rule3 grow to four side
 		else if (rule.equals("rule3")) {
-			for (int i = 1; i < ((Math.pow(4, PlantSimUI.generation) * 4 / 3) - 1); i++) {
-				bgStem = bgr.growthRule(PlantSimUI.generation, PlantSimUI.sideLengthGrow, PlantSimUI.midLengthGrow,
-						PlantSimUI.sideRotateRadian, PlantSimUI.midRotateRadian, bgStemSet, i);
+			for (int i = 1; i < ((Math.pow(4, BGApp.generation) * 4 / 3) - 1); i++) {
+				bgStem = bgr.growthRule(BGApp.generation, BGApp.sideLengthGrow, BGApp.midLengthGrow,
+						BGApp.sideRotateRadian, BGApp.midRotateRadian, bgStemSet, i);
 				bgStemSet.add(bgStem);
 			}
 		}
