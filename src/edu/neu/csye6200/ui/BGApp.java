@@ -23,16 +23,15 @@ import java.util.logging.Logger;
  *
  */
 public abstract class BGApp implements ActionListener, WindowListener {
-	public static int generation = 9;
+	public static int generation = 0;
 	public static double sideLengthGrow = 1.05555;
 	public static double midLengthGrow = 1.05555;	//default length
 	public static double sideRotateRadian = Math.PI /9;
 	public static double midRotateRadian = Math.PI/9;	//default radian
 	public static String rule = "rule1";	//default rule
 	public static Color color = Color.white; 	//default color
-	public static int BGSetCount = 0;	// the index of bgGeneration in the arraylist of BGGenerationSet
 	public static BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
-	public static int growthRate = 100;
+	public static int growthRate = 0;
 	
 	protected JFrame frame = null;
 	protected JPanel menuPanel = null;
@@ -43,17 +42,22 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	protected String logBase = "src/server.log";	//log file routine	
 	protected String rules[] = {"rule1", "rule2", "rule3"};	//rule set
 	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
+	protected Integer generations[] = {0,1,2,3,4,5,6,7}; //generation set
 	protected JButton startBtn = null;
 	protected JButton stopBtn = null;
 	protected JLabel ruleLabel = null;
 	protected JLabel colorLabel = null;
+	protected JLabel genLabel = null;
+	protected JLabel growthLabel = null;
 	protected JLabel lengthLabel = null;
 	protected JLabel radianLabel = null;
 	protected JLabel midLengthLabel = null;
 	protected JLabel midRadianLabel = null;
 	protected JLabel info = null;
+	protected JComboBox<String> growthBox = null;
 	protected JComboBox<String> ruleBox = null;
 	protected JComboBox<String> colorBox = null;
+	protected JComboBox<Integer> genBox = null;
 	protected JSlider lengthSlider = null;
 	protected JSlider midLengthSlider = null; //only available at rule2/3
 	protected JSlider radianSlider = null;

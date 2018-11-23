@@ -28,7 +28,7 @@ public class BGCanvas extends JPanel implements Observer {
 	 * CellAutCanvas constructor
 	 */
 	public BGCanvas() {
-
+		// this.setBackground(Color.GRAY);
 	}
 
 	/**
@@ -50,11 +50,12 @@ public class BGCanvas extends JPanel implements Observer {
 		log.info("Drawing BG " + counter++);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		// System.out.println(BGApp.BGSetCount);
+
 		if (BGApp.bgs.getBgSet().isEmpty() == false) {
 			for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
 				BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
 				paintLine(g2d, BGApp.color, st);
+				  try { Thread.sleep(BGApp.growthRate); } catch (InterruptedException e) {  e.printStackTrace(); }		 
 			}
 		}
 	}
@@ -62,12 +63,9 @@ public class BGCanvas extends JPanel implements Observer {
 	/**
 	 * A convenience routine to set the color and draw a line
 	 * 
-	 * @param g2d    the 2D Graphics context
-	 * @param startx the line start position on the x-Axis
-	 * @param starty the line start position on the y-Axis
-	 * @param endx   the line end position on the x-Axis
-	 * @param endy   the line end position on the y-Axis
-	 * @param color  the line color
+	 * @param g2d   the 2D Graphics context
+	 * @param st    the instance of BGstem which we need to draw
+	 * @param color the line color
 	 */
 	private void paintLine(Graphics2D g2d, Color color, BGStem st) {
 		Dimension size = getSize();
@@ -79,8 +77,12 @@ public class BGCanvas extends JPanel implements Observer {
 		g2d.draw(line);
 	}
 
+	/**
+	 * every time the generationSet is changed, repaint the canvas
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		this.repaint();
+
+		// this.repaint();
 	}
 }
