@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import edu.neu.csye6200.ui.PlantSimUI;
+import edu.neu.csye6200.ui.*;
 
 /**
  * @author Tianju Zhou NUID 001420546
@@ -68,7 +68,7 @@ public class BGGeneration {
 	// save stem information in the file stemData.txt
 	private void saveStemInfo() {
 		// try-with-resources
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/edu/neu/csye6200/bg/stemData.txt"))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/stemData.txt"))) {
 			bw.write(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s", "stemID", "locationX", "locationY",
 					"length", "radians"));
 			bw.write('\n');

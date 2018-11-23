@@ -30,17 +30,18 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public static double midRotateRadian = Math.PI/9;	//default radian
 	public static String rule = "rule1";	//default rule
 	public static Color color = Color.white; 	//default color
+	public static int BGSetCount = 0;	// the index of bgGeneration in the arraylist of BGGenerationSet
+	public static BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
 	
 	protected JFrame frame = null;
+	protected JPanel menuPanel = null;
+	protected JPanel mainPanel = null;
+	protected BGCanvas bgPanel = null;
 	protected MenuManager menuMgr = null;
-	
-	protected static Logger log = Logger.getLogger(WolfApp.class.getName());
-	protected String logBase = "src/edu/neu/csye6200/bg/server.log";	//log file routine	
-	protected BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
+	protected static Logger log = Logger.getLogger(PlantApp.class.getName());
+	protected String logBase = "src/edu/neu/csye6200/server.log";	//log file routine	
 	protected String rules[] = {"rule1", "rule2", "rule3"};	//rule set
 	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
-	protected static int BGSetCount = 0;
-	
 	protected JButton startBtn = null;
 	protected JButton stopBtn = null;
 	protected JButton resetBtn = null;
@@ -82,6 +83,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
 		frame.setJMenuBar(menuMgr.getMenuBar()); // Add a menu bar to this application
 		
 		frame.setLayout(new BorderLayout());
+		
 		frame.add(getMainPanel(), BorderLayout.CENTER);
     }
     
@@ -89,8 +91,8 @@ public abstract class BGApp implements ActionListener, WindowListener {
      * Override this method to provide the main content panel.
      * @return a JPanel, which contains the main content of of your application
      */
-    public abstract JPanel getMainPanel() ;
-
+    public abstract JPanel getMainPanel();
+   
     
     /**
      * A convenience method that uses the Swing dispatch threat to show the UI.

@@ -22,18 +22,12 @@ import javax.swing.JSlider;
  * A Test application for the Wolfram Biological Growth application
  * @author MMUNSON
  */
-public class WolfApp extends BGApp {
+public class PlantApp extends BGApp {
 
-
-	private JPanel menuPanel = null;
-	private JPanel mainPanel = null;
-	private BGCanvas bgPanel = null;
-	
-	
     /**
      * Sample app constructor
      */
-    public WolfApp() {
+    public PlantApp() {
     	try {
 			log.info("APP start");
 			Handler handler = new FileHandler(logBase);
@@ -64,7 +58,10 @@ public class WolfApp extends BGApp {
     	mainPanel.add(BorderLayout.WEST, getMenuPanel());
     	
     	bgPanel = new BGCanvas();
+    	//bgPanel.setBackground(Color.GRAY);
     	mainPanel.add(BorderLayout.CENTER, bgPanel);
+    	
+    	bgs.addObserver(bgPanel);	///add observer
     	
     	return mainPanel;
 	}
@@ -80,6 +77,15 @@ public class WolfApp extends BGApp {
 		
 		startBtn = new JButton("Start"); // create start button instances
 		startBtn.addActionListener(e->{
+			
+			bgs.genrationSet(rule);		//generate stem according to rules
+			//bgPanel.repaint();
+			System.out.println(BGSetCount);
+	
+			BGApp.BGSetCount++;
+			
+			//bgPanel = new BGCanvas();
+			//BGSetCount++;
 				//pause =false;		//pause equals false; it's able to draw line
 				//startBtnAction();
 		});		
@@ -89,7 +95,7 @@ public class WolfApp extends BGApp {
 		});
 		resetBtn = new JButton("Reset"); // create reset button instances
 		resetBtn.addActionListener(e->{
-			//mainPanel.repaint();
+			bgPanel.repaint();
 		});
 		
 		ruleLabel = new JLabel("rule");		//ruleBox and action listener
@@ -271,7 +277,8 @@ public class WolfApp extends BGApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		WolfApp wapp = new WolfApp();
+		PlantApp wapp = new PlantApp();
+		
 		log.info("WolfApp started");
 	}
 

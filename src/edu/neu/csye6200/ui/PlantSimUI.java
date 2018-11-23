@@ -55,7 +55,7 @@ public class PlantSimUI extends JFrame implements Runnable{
 	private JSlider midLengthSlider = null; //only available at rule3
 	private JSlider radianSlider = null;
 	private JSlider midRadianSlider = null;//only available at rule3
-	private String logBase = "src/edu/neu/csye6200/bg/server.log";	//log file routine	
+	private String logBase = "src/server.log";	//log file routine	
 	private BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
 	
 	//constructor

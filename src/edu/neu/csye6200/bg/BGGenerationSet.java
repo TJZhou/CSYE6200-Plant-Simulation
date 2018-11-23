@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.logging.Logger;
 
-import edu.neu.csye6200.ui.PlantSimUI;
+import edu.neu.csye6200.ui.*;
 
 /**
  * @author Tianju Zhou NUID 001420546
@@ -48,15 +48,6 @@ public class BGGenerationSet extends Observable{
 		
 		case "rule1":
 			// locationX locationY length radians
-			/*
-			 * Able to grow by each generation
-			 * bg.growthRule1(1, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(2, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(3, 100, Math.PI / 6, baseStem);
-			 * bg.growthRule1(4, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(5, 100, Math.PI / 6, baseStem); 
-			 * bg.growthRule1(6, 100, Math.PI / 6, baseStem);
-			 */		
 			bg.growthRule("rule1");
 			break;
 
@@ -69,5 +60,8 @@ public class BGGenerationSet extends Observable{
 			break;		
 		}
 		bgSet.add(bg);
+		setChanged();	//Indicate that a change has happened
+		notifyObservers(new String("A message"));
 	}
+
 }
