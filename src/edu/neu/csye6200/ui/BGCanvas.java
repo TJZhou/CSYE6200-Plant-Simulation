@@ -9,7 +9,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
-
 import javax.swing.JPanel;
 import edu.neu.csye6200.bg.*;
 
@@ -50,39 +49,48 @@ public class BGCanvas extends JPanel implements Observer {
 		log.info("Drawing BG " + counter++);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		
-		Thread myThrd = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				
-					if (BGApp.bgs.getBgSet().isEmpty() == false) {
-						
-						
-							
-						for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
-							BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
-							paintLine(g2d, BGApp.color, st);
-							if(BGApp.isStop == true) {
-								try {
-									wait();
-									//Thread.sleep(10000);
-								} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
+
+		if(BGApp.isSimComplete == false) {
+			new Thread(new Runnable() {
+				public void run() {
+					try {
+						// the first time, the canvas is initialized without stem data
+						if (BGApp.bgs.getBgSet().isEmpty() == false) {
+							for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
+								BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
+								paintLine(g2d, BGApp.color, st); // paint on the canvas
+								// show growth process
+								Thread.sleep(BGApp.growthRate);
+								// if the flag isStop is true; then stop the thread
+								while (BGApp.isStop == true) {
+									BGApp.isSimComplete = true;
+									Thread.currentThread().stop();
 								}
 							}
-							// show growth process
-							try {
-								Thread.sleep(BGApp.growthRate);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
+							BGApp.isStop = false;
+							BGApp.frame.setResizable(true);
+							BGApp.isSimComplete = true;
 						}
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
 				}
-			
-		});
-		myThrd.start();
+			}).start();
+		}
+		
+		//when the jpanel is repainted and do not need thread to control
+		// in this way, we can remain the picture we paint
+		if(BGApp.isSimComplete == true) {
+			for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
+				BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i);
+				paintLine(g2d, BGApp.color, st); 
+		}
+		}
+	}
+
+	// Stop the thread.
+	synchronized void mystop() {
+		BGApp.isStop = true;
 	}
 
 	/**
@@ -104,15 +112,5 @@ public class BGCanvas extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-
-		// this.repaint();
 	}
 }
-
-//Inner Class
-class MyThread extends Thread{
-	public void run() {
-		
-	}
-}
-

@@ -33,8 +33,9 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public static BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
 	public static int growthRate = 0;	//default growth rate, 0 means do not have speed limitation
 	public static boolean isStop = false;	// judge if we need to stop the growth process
+	public static boolean isSimComplete = false; //if the simulation process is complete
+	public static JFrame frame = null;
 	
-	protected JFrame frame = null;
 	protected JPanel menuPanel = null;
 	protected JPanel mainPanel = null;
 	protected BGCanvas bgPanel = null;
@@ -127,6 +128,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
      * Override this method to show a About Dialog
      */
     public void showHelp() {
+    	System.out.println(1);
     }
 	
 }

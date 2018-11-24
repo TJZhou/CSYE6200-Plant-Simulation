@@ -76,22 +76,16 @@ public class PlantApp extends BGApp {
 		startBtn = new JButton("Start"); // create start button instances
 		startBtn.addActionListener(e -> {
 			isStop = false;
+			isSimComplete = false;
 			bgs.genrationSet(rule); // generate stems according to rules
+			frame.setResizable(false);
 			bgPanel.paint(bgPanel.getGraphics());
 		});
 		stopBtn = new JButton("Stop"); // create stop button instances
 		stopBtn.addActionListener(e -> {
 			//change the status of stop button; stop->continue; continue->stop
-			if(isStop== false) {
-				isStop = true;
-				stopBtn.setText("continue");
-			}
-			else if(isStop == true) {
-				isStop =false; 
-				
-				stopBtn.setText("stop");
-			}
-			System.out.println(isStop);
+			frame.setResizable(true);	
+			bgPanel.mystop();
 		});
 
 		ruleLabel = new JLabel("rule"); // ruleBox and action listener
@@ -182,8 +176,7 @@ public class PlantApp extends BGApp {
 		info = new JLabel("Only available at rule 2/3");
 		info.setBounds(25, 350, 300, 40);
 		menuPanel.add(info);
-		// mid length and radian slide control and action listener; only available at
-		// rule 4
+		// mid length and radian slide control and action listener; only available at rule 4
 		midLengthLabel = new JLabel("midLength");
 		midLengthSlider = new JSlider(5, 31);
 		midLengthSlider.addChangeListener(e -> {
