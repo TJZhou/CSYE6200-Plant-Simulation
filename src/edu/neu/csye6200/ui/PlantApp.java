@@ -84,8 +84,16 @@ public class PlantApp extends BGApp {
 		stopBtn = new JButton("Stop"); // create stop button instances
 		stopBtn.addActionListener(e -> {
 			//change the status of stop button; stop->continue; continue->stop
-			frame.setResizable(true);	
-			bgPanel.mystop();
+			if(isStop == false) {
+				frame.setResizable(true);	
+				bgPanel.mystop();
+				stopBtn.setText("continue");
+			}
+			else if(isStop == true) {
+				frame.setResizable(false);	
+				bgPanel.myresume();
+				stopBtn.setText("stop");
+			}
 		});
 
 		ruleLabel = new JLabel("rule"); // ruleBox and action listener

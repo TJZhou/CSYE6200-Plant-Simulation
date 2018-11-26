@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import edu.neu.csye6200.bg.*;
@@ -22,7 +24,9 @@ public class BGCanvas extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(BGCanvas.class.getName());
 	private long counter = 0L;
-
+	private double width = 1000;
+	private double height = 750;
+	
 	/**
 	 * CellAutCanvas constructor
 	 */
@@ -47,50 +51,90 @@ public class BGCanvas extends JPanel implements Observer {
 	 */
 	public void drawBG(Graphics g) {
 		log.info("Drawing BG " + counter++);
+		
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		if(BGApp.isSimComplete == false) {
+		if (BGApp.isSimComplete == false) {
 			new Thread(new Runnable() {
 				public void run() {
-					try {
-						// the first time, the canvas is initialized without stem data
-						if (BGApp.bgs.getBgSet().isEmpty() == false) {
-							for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
-								BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
-								paintLine(g2d, BGApp.color, st); // paint on the canvas
-								// show growth process
-								Thread.sleep(BGApp.growthRate);
-								// if the flag isStop is true; then stop the thread
-								while (BGApp.isStop == true) {
-									BGApp.isSimComplete = true;
-									Thread.currentThread().stop();
-								}
-							}
-							BGApp.isStop = false;
-							BGApp.frame.setResizable(true);
-							BGApp.isSimComplete = true;
-						}
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					drawPlant(g2d);
 				}
 			}).start();
 		}
-		
-		//when the jpanel is repainted and do not need thread to control
+
+		// when the jpanel is repainted and do not need thread to control
 		// in this way, we can remain the picture we paint
-		if(BGApp.isSimComplete == true) {
+		if (BGApp.isSimComplete == true) {
 			for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
 				BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i);
-				paintLine(g2d, BGApp.color, st); 
+				paintLine(g2d, BGApp.color, st);
+			}
 		}
-		}
+
+/*		//if the size of jrame is resized
+		BGApp.frame.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				if(BGApp.isSimComplete == true) {
+					if((width/getSize().getWidth()) >= (height/getSize().getHeight())) {
+						BGApp.midLengthGrow = BGApp.midLengthGrow*(width/getSize().getWidth());
+						BGApp.sideLengthGrow = BGApp.sideLengthGrow*(width/getSize().getWidth());
+					}
+					
+					else {
+						BGApp.midLengthGrow = BGApp.midLengthGrow*(height/getSize().getHeight());
+						BGApp.sideLengthGrow = BGApp.sideLengthGrow*(height/getSize().getHeight());
+					}
+					BGApp.bgs.genrationSet(BGApp.rule); // generate stems according to rules
+					drawPlant(g2d);
+				}
+			}
+		});*/
 	}
 
+	/**
+	 *  extra data from bgSet and draw stem based on the data
+	 *  if the isStop param is true the stop the thread
+	 *  when the draw process is done,
+	 *  set isStop false, set setResizable true, set isSimComplete true
+	 * @param g2d
+	 */
+	private void drawPlant(Graphics2D g2d) {
+		try {
+			// the first time, the canvas is initialized without stem data
+			if (BGApp.bgs.getBgSet().isEmpty() == false) {
+				for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
+					BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
+					paintLine(g2d, BGApp.color, st); // paint on the canvas
+					// show growth process
+					Thread.sleep(BGApp.growthRate);
+					// if the flag isStop is true; then stop the thread
+					synchronized(this) {
+						while (BGApp.isStop == true) {
+							BGApp.isSimComplete = true;
+							wait();
+						}
+					}
+				}
+				BGApp.isStop = false;
+				BGApp.frame.setResizable(true);
+				BGApp.isSimComplete = true;
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// Stop the thread.
 	synchronized void mystop() {
 		BGApp.isStop = true;
+	}
+	
+	//continue the thread
+	synchronized void myresume() {
+		BGApp.isStop = false;
+		notifyAll();
 	}
 
 	/**
