@@ -1,5 +1,6 @@
 package edu.neu.csye6200.ui;
 
+import net.java.dev.designgridlayout.DesignGridLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,8 +17,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
-
-import net.java.dev.designgridlayout.DesignGridLayout;
 
 /**
  * Biological Plant Growth Simulation application
@@ -72,34 +71,10 @@ public class PlantApp extends BGApp {
 	 */
 	public JPanel getMenuPanel() {
 		menuPanel = new JPanel();
-		menuPanel.setLayout(null);
-		menuPanel.setPreferredSize(new Dimension(300, 800)); // the size of menu panel is 300*800
-
-		startBtn = new JButton("Start"); // create start button instances
-		startBtn.addActionListener(e -> {
-			isStop = false;
-			isSimComplete = false;
-			bgs.genrationSet(rule); // generate stems according to rules
-			frame.setResizable(false);
-			bgPanel.paint(bgPanel.getGraphics());
-		});
-		stopBtn = new JButton("Stop"); // create stop button instances
-		stopBtn.addActionListener(e -> {
-			//change the status of stop button; stop->continue; continue->stop
-			if(isStop == false) {
-				frame.setResizable(true);	
-				bgPanel.mystop();
-				stopBtn.setText("continue");
-			}
-			else if(isStop == true) {
-				frame.setResizable(false);	
-				bgPanel.myresume();
-				stopBtn.setText("stop");
-			}
-		});
-
-		ruleLabel = new JLabel("rule"); // ruleBox and action listener
-		ruleBox = new JComboBox<String>(rules);
+		menuPanel.setPreferredSize(new Dimension(235, 800)); // the size of menu panel is 300*800
+		DesignGridLayout playout =  new DesignGridLayout(menuPanel);
+		
+		ruleBox = new JComboBox<String>(rules);// ruleBox and action listener
 		ruleBox.setModel(new DefaultComboBoxModel<String>(rules));
 		ruleBox.addActionListener(e -> {
 			switch (ruleBox.getSelectedItem().toString()) {
@@ -111,9 +86,10 @@ public class PlantApp extends BGApp {
 				rule = "rule3"; break;
 			}
 		});
+		playout.row().grid().empty();	//using DesignGridLayout
+		playout.row().grid(new JLabel("rule")).add(ruleBox);
 		
-		genLabel = new JLabel("generation");	//generationBox and action listener
-		genBox = new JComboBox<Integer>(generations);
+		genBox = new JComboBox<Integer>(generations);//generationBox and action listener
 		genBox.setModel(new DefaultComboBoxModel<Integer>(generations));
 		genBox.addActionListener(e -> {
 			switch (genBox.getSelectedIndex()) {
@@ -135,9 +111,10 @@ public class PlantApp extends BGApp {
 				generation = 7; break;
 			}
 		});
+		playout.row().grid().empty();	//using DesignGridLayout
+		playout.row().grid(new JLabel("generation")).add(genBox);
 		
-		colorLabel = new JLabel("color"); // colorBox and action listener
-		colorBox = new JComboBox<String>();
+		colorBox = new JComboBox<String>();	//colorBox and action listener
 		colorBox.setModel(new DefaultComboBoxModel<String>(colors));
 		colorBox.addActionListener(e -> {
 			switch (colorBox.getSelectedIndex()) {
@@ -157,9 +134,10 @@ public class PlantApp extends BGApp {
 				color = Color.cyan; break;
 			}
 		});
+		playout.row().grid().empty();
+		playout.row().grid(new JLabel("color")).add(colorBox);
 		
-		growthLabel = new JLabel("<html>show growth <br/>&nbsp &nbsp process</html>");	// growthRate slide control and action listener
-		growthBox = new JComboBox<String>();
+		growthBox = new JComboBox<String>();	//growthBox and action listner
 		growthBox.addItem("false");
 		growthBox.addItem("true");
 		growthBox.addActionListener(e->{
@@ -170,82 +148,76 @@ public class PlantApp extends BGApp {
 				growthRate = 1; break;
 			}
 		});
+		playout.row().grid().empty();
+		playout.row().grid(new JLabel("growth process")).add(growthBox);
 		
-		lengthLabel = new JLabel("length"); // length slide control and action listener
-		lengthSlider = new JSlider(5, 31);
+		lengthSlider = new JSlider(5, 31);// length slide control and action listener
 		lengthSlider.addChangeListener(e -> {
 			sideLengthGrow = 1.0 + 1.0 / lengthSlider.getValue();
 		});
-
-		radianLabel = new JLabel("radian"); // radian slide control and action listener
-		radianSlider = new JSlider(20, 150);
+		playout.row().grid().empty();
+		playout.row().grid(new JLabel("length")).add(lengthSlider);
+		
+		radianSlider = new JSlider(20, 150);// radian slide control and action listener
 		radianSlider.addChangeListener(e -> {
 			sideRotateRadian = Math.PI / (17 - ((double) radianSlider.getValue()) / 10);
 		});
-
-		info = new JLabel("Only available at rule 2/3");
-		info.setBounds(25, 350, 300, 40);
-		menuPanel.add(info);
-		// mid length and radian slide control and action listener; only available at rule 4
-		midLengthLabel = new JLabel("midLength");
+		playout.row().grid().empty();
+		playout.row().grid(new JLabel("radian")).add(radianSlider);
+		
+		playout.row().grid().empty();	// basic instruction about midLength
+		playout.row().grid((new JLabel("Only available at"))).add(new JLabel("rule 2/3"));
+		
 		midLengthSlider = new JSlider(5, 31);
 		midLengthSlider.addChangeListener(e -> {
 			midLengthGrow = 1.0 + 1.0 / midLengthSlider.getValue();
 		});
-
-		info = new JLabel("Only available at rule 3");
-		info.setBounds(25, 425, 300, 40);
-		menuPanel.add(info);
-		midRadianLabel = new JLabel("midRadian");
+		playout.row().grid().empty();
+		playout.row().grid(new JLabel("midLength")).add(midLengthSlider);
+		
+		playout.row().grid().empty();	// basic instruction about midRadian
+		playout.row().grid((new JLabel("Only available at"))).add(new JLabel("rule 3"));
+		
 		midRadianSlider = new JSlider(20, 150);
 		midRadianSlider.addChangeListener(e -> {
 			midRotateRadian = Math.PI / (17 - ((double) midRadianSlider.getValue()) / 10);
 		});
-
-		info = new JLabel("<html>Author: Tianju Zhou<br/><br/> NUID: 001420546</html>");
-
-		// set location and size of every component
-		ruleLabel.setBounds(50, 30, 60, 40);
-		ruleBox.setBounds(120, 30, 150, 40);
-		genLabel.setBounds(35,75,70,40);
-		genBox.setBounds(120, 75,150,40);
-		colorLabel.setBounds(50, 125, 60, 40);
-		colorBox.setBounds(120, 125, 150, 40);
-		growthLabel.setBounds(30,180,110,40);
-		growthBox.setBounds(120,180,150,40);
-		lengthLabel.setBounds(50, 230, 60, 40);
-		lengthSlider.setBounds(120, 230, 150, 40);
-		radianLabel.setBounds(50, 270, 60, 40);
-		radianSlider.setBounds(120, 270, 150, 40);
-		midLengthLabel.setBounds(25, 325, 200, 40);
-		midLengthSlider.setBounds(120, 325, 150, 40);
-		midRadianLabel.setBounds(25, 400, 200, 40);
-		midRadianSlider.setBounds(120, 400, 150, 40);
-		startBtn.setBounds(75, 475, 150, 40);
-		stopBtn.setBounds(75, 550, 150, 40);
-		info.setBounds(20, 675, 300, 100);
-
-		// add every component to menuPanel
-		menuPanel.add(startBtn);
-		menuPanel.add(stopBtn);
-		menuPanel.add(ruleLabel);
-		menuPanel.add(ruleBox);
-		menuPanel.add(genLabel);
-		menuPanel.add(genBox);
-		menuPanel.add(colorLabel);
-		menuPanel.add(colorBox);
-		menuPanel.add(growthLabel);
-		menuPanel.add(growthBox);
-		menuPanel.add(lengthLabel);
-		menuPanel.add(lengthSlider);
-		menuPanel.add(radianLabel);
-		menuPanel.add(radianSlider);
-		menuPanel.add(midLengthLabel);
-		menuPanel.add(midLengthSlider);
-		menuPanel.add(midRadianLabel);
-		menuPanel.add(midRadianSlider);
-		menuPanel.add(info);
-
+		playout.row().grid().empty();
+		playout.row().grid(new JLabel("midRadian")).add(midRadianSlider);
+		
+		startBtn = new JButton("    Start    "); // create start button instances
+		startBtn.addActionListener(e -> {
+			isStop = false;	//reset isStop and isSimCompelte to false
+			isSimComplete = false;
+			frame.setResizable(false);// set frame resizable false
+			bgs.genrationSet(rule); // generate stems according to rules
+			bgPanel.paint(bgPanel.getGraphics());
+		});
+		playout.row().grid().empty();
+		playout.row().center().add(startBtn);
+		
+		stopBtn = new JButton("    Stop    "); // create stop button instances
+		stopBtn.addActionListener(e -> {
+			//change the status of stop button; stop->continue; continue->stop
+				bgPanel.mystop();
+		});
+		playout.row().grid().empty();
+		playout.row().center().add(stopBtn);
+		
+		resumeBtn = new JButton("    Resume    "); // create stop button instances
+		resumeBtn.addActionListener(e -> {
+			//change the status of stop button; stop->continue; continue->stop
+				bgPanel.myresume();
+		});
+		playout.row().grid().empty();
+		playout.row().center().add(resumeBtn);
+		
+		playout.row().grid().empty();	// info
+		playout.row().grid().empty();
+		playout.row().grid().empty();
+		playout.row().grid((new JLabel("Author: Tianju"))).add((new JLabel("Zhou")));
+		playout.row().grid((new JLabel("ID:001420546")));
+		
 		menuPanel.setBackground(Color.WHITE);
 		return menuPanel;
 	}

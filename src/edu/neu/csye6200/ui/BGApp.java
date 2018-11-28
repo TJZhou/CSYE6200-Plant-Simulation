@@ -16,7 +16,6 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
 import java.util.logging.Logger;
-
 /**
  * A sample Biological Growth Abstract application class
  * @author MMUNSON
@@ -47,15 +46,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	protected Integer generations[] = {0,1,2,3,4,5,6,7}; //generation set
 	protected JButton startBtn = null;
 	protected JButton stopBtn = null;
-	protected JLabel ruleLabel = null;
-	protected JLabel colorLabel = null;
-	protected JLabel genLabel = null;
-	protected JLabel growthLabel = null;
-	protected JLabel lengthLabel = null;
-	protected JLabel radianLabel = null;
-	protected JLabel midLengthLabel = null;
-	protected JLabel midRadianLabel = null;
-	protected JLabel info = null;
+	protected JButton resumeBtn = null;
 	protected JComboBox<String> growthBox = null;
 	protected JComboBox<String> ruleBox = null;
 	protected JComboBox<String> colorBox = null;
