@@ -5,6 +5,8 @@ import java.util.Observable;
 import java.util.logging.Logger;
 
 /**
+ * generationSetL: hold different generation
+ * 
  * @author Tianju Zhou NUID 001420546
  */
 public class BGGenerationSet extends Observable{
@@ -34,16 +36,16 @@ public class BGGenerationSet extends Observable{
 		return bgSet;
 	}
 
-	/*
-	 * ----------------The Generation Set------------------------
+	/**
+	 * -------------------------The Generation Set---------------------------
+	 * 
+	 * @param rule: has rule1, rule2 and rule3. growthRule depends on rules
 	 */
 	public void genrationSet(String rule) {
 		bg = new BGGeneration();
 		
 		// different plant should have different growth patterns
-		// here, assume rose has the same growth patterns as maple
 		switch (rule) {
-		
 		
 		case "rule1":
 			bg.growthRule("rule1"); break;
@@ -54,6 +56,8 @@ public class BGGenerationSet extends Observable{
 		case "rule3":
 			bg.growthRule("rule3"); break;		
 		}
+		
+		//add all bgGeneration to the index 0; do not need to hold multiply generation
 		bgSet.add(0,bg);
 		setChanged();	//Indicate that a change has happened
 		notifyObservers(new String("A message"));

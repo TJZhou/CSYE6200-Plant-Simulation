@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
+import net.java.dev.designgridlayout.DesignGridLayout;
+
 /**
  * Biological Plant Growth Simulation application
  * 
@@ -66,7 +68,7 @@ public class PlantApp extends BGApp {
 	/**
 	 * Create a top panel that will hold control buttons, sliders and comboBoxs
 	 * 
-	 * @return
+	 * @return JPanel
 	 */
 	public JPanel getMenuPanel() {
 		menuPanel = new JPanel();
@@ -295,7 +297,6 @@ public class PlantApp extends BGApp {
 	 */
 	public static void main(String[] args) {
 		PlantApp pt = new PlantApp();
-
 		log.info("PlantApp started");
 	}
 

@@ -17,6 +17,14 @@ public class BGStem {
 
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param locationX: X-axis coordinate
+	 * @param locationY: Y-axis coordinate
+	 * @param length: length of each stem
+	 * @param radians:	growth radians of each stem
+	 */
 	public BGStem(double locationX, double locationY, double length, double radians) {
 		this.stemID = stemCounter++;
 		setLocationX(locationX);

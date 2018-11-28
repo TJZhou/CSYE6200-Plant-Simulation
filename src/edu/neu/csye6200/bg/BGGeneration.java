@@ -9,6 +9,10 @@ import java.util.logging.Logger;
 import edu.neu.csye6200.ui.*;
 
 /**
+ * Create a whole generation of a plant
+ * Have three rules to simulate
+ * Save all stems info into a stemData.txt file
+ * 
  * @author Tianju Zhou NUID 001420546
  */
 public class BGGeneration {
@@ -28,12 +32,19 @@ public class BGGeneration {
 		log.info("An instance of BGGenration is created");
 	}
 
+	
+	/**
+	 * Each stem is created by method growthMethod
+	 * And save all stem info into stemData.txt
+	 * 
+	 * @param rule: which rules to choose
+	 */
 	public void growthRule(String rule) {
 
 		// create baseStem
 		bgStemSet.add(new BGStem(0, 0, 120, Math.PI / 2));
 
-		// rule1 grow to two side
+		// rule1 - grow to two side
 		if (rule.equals("rule1")) {
 			// the stem numbers are depended on generation
 			for (int i = 1; i < (Math.pow(2, BGApp.generation) * 2 - 1); i++) {
@@ -43,7 +54,7 @@ public class BGGeneration {
 			}
 		}
 
-		// rule2 grow to three side
+		// rule2 - grow to three side
 		else if (rule.equals("rule2")) {
 			for (int i = 1; i < ((Math.pow(3, BGApp.generation) * 3 / 2) - 1); i++) {
 				bgStem = bgr.growthRule(BGApp.generation, BGApp.sideLengthGrow, BGApp.midLengthGrow,
@@ -52,7 +63,7 @@ public class BGGeneration {
 			}
 		}
 
-		// rule3 grow to four side
+		// rule3 - grow to four side
 		else if (rule.equals("rule3")) {
 			for (int i = 1; i < ((Math.pow(4, BGApp.generation) * 4 / 3) - 1); i++) {
 				bgStem = bgr.growthRule(BGApp.generation, BGApp.sideLengthGrow, BGApp.midLengthGrow,
@@ -60,12 +71,12 @@ public class BGGeneration {
 				bgStemSet.add(bgStem);
 			}
 		}
-
 		saveStemInfo();
-
 	}
 
-	// save stem information in the file stemData.txt
+	/**
+	 * save stem information in the file stemData.txt
+	 */
 	private void saveStemInfo() {
 		// try-with-resources
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/stemData.txt"))) {

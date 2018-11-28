@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 /**
+ * Class hold three different rules
+ * Every GrowthRule return a BGStem
+ * 
  * @author Tianju Zhou NUID 001420546
  */
 public class BGRule {
@@ -21,7 +24,12 @@ public class BGRule {
 		log.info("An instance of BGRule is created");
 	}
 	
-	// the present stem info based on the last stem info
+	/**
+	 * the present stem info based on the last stem info
+	 * 
+	 * @param bgs: the ArrayList of BGStem
+	 * @param lastStemID: the index of BGStem in the arrayList
+	 */
 	private void presentStem(ArrayList<BGStem> bgs, int lastStemID) {
 		radians = bgs.get(lastStemID).getRadians();
 		X = bgs.get(lastStemID).getLocationX();
@@ -40,6 +48,8 @@ public class BGRule {
 	 * @param rotateRadian: in each generation, how much does the radian change
 	 * @param bgs: is an arrayList of BGStem
 	 * @param i: is the index in the bgs
+	 * 
+	 * return BGStem
 	 */
 	public BGStem growthRule(int generation, double lengthGrow, double rotateRadian, ArrayList<BGStem> bgs, int i) {
 		sideLengthChange = Math.pow(lengthGrow, ((int) (Math.log(i + 1) / Math.log(2))));
@@ -76,6 +86,8 @@ public class BGRule {
 	 * @param rotateRadian: in each generation, how much does the radian change
 	 * @param bgs: is an arrayList of BGStem
 	 * @param i: is the index in the bgs
+	 * 
+	 * return BGStem
 	 */
 	public BGStem growthRule(int generation, double sideLengthGrow, double midLengthGrow, double rotateRadian, ArrayList<BGStem> bgs, int i) {
 
@@ -117,6 +129,8 @@ public class BGRule {
 	 * @param sideRotateRadian: in each generation, how much does the radian of two side stem rotate
 	 * @param bgs: is an arrayList of BGStem
 	 * @param i: is the index in the bgs
+	 * 
+	 * return BGStem
 	 */
 	
 	public BGStem growthRule(int generation, double sideLengthGrow, double midLengthGrow, double sideRotateRadian, double midRotateRadian, ArrayList<BGStem> bgs, int i) {

@@ -40,7 +40,7 @@ public class BGCanvas extends JPanel implements Observer {
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);
-		this.setBackground(Color.GRAY);
+		this.setBackground(Color.LIGHT_GRAY);
 		drawBG(g); // Our Added-on drawing
 	}
 
@@ -94,13 +94,14 @@ public class BGCanvas extends JPanel implements Observer {
 	}
 
 	/**
-	 *  extra data from bgSet and draw stem based on the data
-	 *  if the isStop param is true the stop the thread
-	 *  when the draw process is done,
-	 *  set isStop false, set setResizable true, set isSimComplete true
+	 *  Extra data from bgSet and draw stem based on the data
+	 *  If the isStop parameter is true, then stop the thread
+	 *  When the draw process is done: set isStop false, set setResizable true, set isSimComplete true
+	 *  
 	 * @param g2d
 	 */
 	private void drawPlant(Graphics2D g2d) {
+
 		try {
 			// the first time, the canvas is initialized without stem data
 			if (BGApp.bgs.getBgSet().isEmpty() == false) {
@@ -121,7 +122,8 @@ public class BGCanvas extends JPanel implements Observer {
 				BGApp.frame.setResizable(true);
 				BGApp.isSimComplete = true;
 			}
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e ) {
 			e.printStackTrace();
 		}
 	}
@@ -154,6 +156,12 @@ public class BGCanvas extends JPanel implements Observer {
 		g2d.draw(line);
 	}
 
+	/**
+	 * update method: changes from class BGGenerationSet can be observed here
+	 * not been used here
+	 * @param o
+	 * @param arg
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 	}
