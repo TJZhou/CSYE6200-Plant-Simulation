@@ -4,15 +4,16 @@ package edu.neu.csye6200.ui;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import edu.neu.csye6200.bg.BGGenerationSet;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
 import java.util.logging.Logger;
@@ -24,14 +25,14 @@ import java.util.logging.Logger;
 public abstract class BGApp implements ActionListener, WindowListener {
 	public static int generation = 0;	//default generation: onely one base stem
 	public static double sideLengthGrow = 1.05555;
-	public static double midLengthGrow = 1.05555;	//default length
+	public static double midLengthGrow = 1.2;	//default length
 	public static double sideRotateRadian = Math.PI /9;
-	public static double midRotateRadian = Math.PI/9;	//default radian
+	public static double midRotateRadian = Math.PI/15;	//default radian
 	public static String rule = "rule1";	//default rule
 	public static Color color = Color.white; 	//default color
 	public static BGGenerationSet bgs  = BGGenerationSet.generationSet();//singleton pattern
 	public static int growthRate = 0;	//default growth rate, 0 means do not have speed limitation
-	public static boolean isStop = false;	// judge if we need to stop the growth process
+	public static boolean isPause = false;	// judge if we need to stop the growth process
 	public static boolean isSimComplete = false; //if the simulation process is complete
 	public static JFrame frame = null;
 	
@@ -40,21 +41,21 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	protected BGCanvas bgPanel = null;
 	protected MenuManager menuMgr = null;
 	protected static Logger log = Logger.getLogger(PlantApp.class.getName());
-	protected String logBase = "src/server.log";	//log file routine	
+	protected String logBase = "log/server.log";	//log file routine	
 	protected String rules[] = {"rule1", "rule2", "rule3"};	//rule set
 	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
-	protected Integer generations[] = {0,1,2,3,4,5,6,7}; //generation set
+	protected JTextField genTextField = null; //input generation into this textField
 	protected JButton startBtn = null;
 	protected JButton stopBtn = null;
 	protected JButton resumeBtn = null;
 	protected JComboBox<String> growthBox = null;
 	protected JComboBox<String> ruleBox = null;
 	protected JComboBox<String> colorBox = null;
-	protected JComboBox<Integer> genBox = null;
 	protected JSlider lengthSlider = null;
 	protected JSlider midLengthSlider = null; //only available at rule2/3
 	protected JSlider radianSlider = null;
 	protected JSlider midRadianSlider = null;//only available at rule3
+	
 	/**
 	 * The Biological growth constructor
 	 */
@@ -116,10 +117,13 @@ public abstract class BGApp implements ActionListener, WindowListener {
     }
 
     /**
-     * Override this method to show a About Dialog
-     */
-    public void showHelp() {
-    	System.out.println(1);
+	 * Override this method to show a About Dialog
+	 */
+	public void showHelp() {
+		try {
+			Desktop.getDesktop().open(new java.io.File("log/Readme.md"));
+			} catch (Exception ex) {
+			ex.printStackTrace();
+		}
     }
-	
 }

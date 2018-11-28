@@ -71,7 +71,8 @@ public class BGGeneration {
 				bgStemSet.add(bgStem);
 			}
 		}
-		saveStemInfo();
+		
+		//saveStemInfo();  the data is correct - do not need to save data to check anymore
 	}
 
 	/**

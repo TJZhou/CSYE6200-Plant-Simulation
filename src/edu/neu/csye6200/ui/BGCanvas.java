@@ -71,26 +71,6 @@ public class BGCanvas extends JPanel implements Observer {
 				paintLine(g2d, BGApp.color, st);
 			}
 		}
-
-/*		//if the size of jrame is resized
-		BGApp.frame.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentResized(ComponentEvent e) {
-				if(BGApp.isSimComplete == true) {
-					if((width/getSize().getWidth()) >= (height/getSize().getHeight())) {
-						BGApp.midLengthGrow = BGApp.midLengthGrow*(width/getSize().getWidth());
-						BGApp.sideLengthGrow = BGApp.sideLengthGrow*(width/getSize().getWidth());
-					}
-					
-					else {
-						BGApp.midLengthGrow = BGApp.midLengthGrow*(height/getSize().getHeight());
-						BGApp.sideLengthGrow = BGApp.sideLengthGrow*(height/getSize().getHeight());
-					}
-					BGApp.bgs.genrationSet(BGApp.rule); // generate stems according to rules
-					drawPlant(g2d);
-				}
-			}
-		});*/
 	}
 
 	/**
@@ -101,7 +81,6 @@ public class BGCanvas extends JPanel implements Observer {
 	 * @param g2d
 	 */
 	private void drawPlant(Graphics2D g2d) {
-
 		try {
 			// the first time, the canvas is initialized without stem data
 			if (BGApp.bgs.getBgSet().isEmpty() == false) {
@@ -112,13 +91,13 @@ public class BGCanvas extends JPanel implements Observer {
 					Thread.sleep(BGApp.growthRate);
 					// if the flag isStop is true; then stop the thread
 					synchronized(this) {
-						while (BGApp.isStop == true) {
-							BGApp.isSimComplete = true;
+						while (BGApp.isPause == true) {
 							wait();
 						}
 					}
 				}
-				BGApp.isStop = false;
+				// when the draw process is done
+				BGApp.isPause = false;
 				BGApp.frame.setResizable(true);
 				BGApp.isSimComplete = true;
 			}
@@ -128,17 +107,22 @@ public class BGCanvas extends JPanel implements Observer {
 		}
 	}
 	
-	// Stop the thread.
-	synchronized void mystop() {
-		BGApp.isStop = true;
+	// pause the thread.
+	synchronized void mypause() {
+		BGApp.isPause = true;
 	}
 	
 	//continue the thread
 	synchronized void myresume() {
-		BGApp.isStop = false;
+		BGApp.isPause = false;
 		notifyAll();
 	}
 
+	//stop the thread
+	void mystop() {
+		Thread.currentThread().stop();
+	}
+	
 	/**
 	 * A convenience routine to set the color and draw a line
 	 * 

@@ -15,8 +15,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 
 /**
  * Biological Plant Growth Simulation application
@@ -71,7 +73,7 @@ public class PlantApp extends BGApp {
 	 */
 	public JPanel getMenuPanel() {
 		menuPanel = new JPanel();
-		menuPanel.setPreferredSize(new Dimension(235, 800)); // the size of menu panel is 300*800
+		menuPanel.setPreferredSize(new Dimension(250, 800)); // the size of menu panel is 300*800
 		DesignGridLayout playout =  new DesignGridLayout(menuPanel);
 		
 		ruleBox = new JComboBox<String>(rules);// ruleBox and action listener
@@ -89,30 +91,10 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();	//using DesignGridLayout
 		playout.row().grid(new JLabel("rule")).add(ruleBox);
 		
-		genBox = new JComboBox<Integer>(generations);//generationBox and action listener
-		genBox.setModel(new DefaultComboBoxModel<Integer>(generations));
-		genBox.addActionListener(e -> {
-			switch (genBox.getSelectedIndex()) {
-			case 0:
-				generation = 0; break;
-			case 1:
-				generation = 1; break;
-			case 2:
-				generation = 2; break;
-			case 3:
-				generation = 3; break;
-			case 4:
-				generation = 4; break;
-			case 5:
-				generation = 5; break;
-			case 6:
-				generation = 6; break;
-			case 7:
-				generation = 7; break;
-			}
-		});
-		playout.row().grid().empty();	//using DesignGridLayout
-		playout.row().grid(new JLabel("generation")).add(genBox);
+		genTextField = new JTextField();//jTextField: input the number of generation
+		genTextField.setText("    0~9");
+		playout.row().grid().empty();	
+		playout.row().grid(new JLabel("generation")).add(genTextField);
 		
 		colorBox = new JComboBox<String>();	//colorBox and action listener
 		colorBox.setModel(new DefaultComboBoxModel<String>(colors));
@@ -168,7 +150,7 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();	// basic instruction about midLength
 		playout.row().grid((new JLabel("Only available at"))).add(new JLabel("rule 2/3"));
 		
-		midLengthSlider = new JSlider(5, 31);
+		midLengthSlider = new JSlider(5, 31, 5);
 		midLengthSlider.addChangeListener(e -> {
 			midLengthGrow = 1.0 + 1.0 / midLengthSlider.getValue();
 		});
@@ -178,7 +160,7 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();	// basic instruction about midRadian
 		playout.row().grid((new JLabel("Only available at"))).add(new JLabel("rule 3"));
 		
-		midRadianSlider = new JSlider(20, 150);
+		midRadianSlider = new JSlider(20, 150, 20);
 		midRadianSlider.addChangeListener(e -> {
 			midRotateRadian = Math.PI / (17 - ((double) midRadianSlider.getValue()) / 10);
 		});
@@ -187,11 +169,25 @@ public class PlantApp extends BGApp {
 		
 		startBtn = new JButton("    Start    "); // create start button instances
 		startBtn.addActionListener(e -> {
-			isStop = false;	//reset isStop and isSimCompelte to false
-			isSimComplete = false;
-			frame.setResizable(false);// set frame resizable false
-			bgs.genrationSet(rule); // generate stems according to rules
-			bgPanel.paint(bgPanel.getGraphics());
+			try {
+				int num = Integer.parseInt(genTextField.getText());
+				if(num>=0&&num<=9) {
+					isPause = false;	//reset isStop and isSimCompelte to false
+					isSimComplete = false;
+					frame.setResizable(false);// set frame resizable false
+					generation = Integer.parseInt(genTextField.getText());
+					bgs.genrationSet(rule); // generate stems according to rules
+					bgPanel.paint(bgPanel.getGraphics());
+				}
+				else {
+					log.warning("invalid input");
+					JOptionPane.showMessageDialog(null, " Please input again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
+				}
+					
+			}catch(NumberFormatException ex) {
+				log.warning("invalid input");
+				JOptionPane.showMessageDialog(null, " Please input again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
+			}
 		});
 		playout.row().grid().empty();
 		playout.row().center().add(startBtn);
@@ -199,7 +195,7 @@ public class PlantApp extends BGApp {
 		stopBtn = new JButton("    Stop    "); // create stop button instances
 		stopBtn.addActionListener(e -> {
 			//change the status of stop button; stop->continue; continue->stop
-				bgPanel.mystop();
+				bgPanel.mypause();
 		});
 		playout.row().grid().empty();
 		playout.row().center().add(stopBtn);
