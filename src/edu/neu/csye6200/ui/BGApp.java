@@ -44,6 +44,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	protected String logBase = "log/server.log";	//log file routine	
 	protected String rules[] = {"rule1", "rule2", "rule3"};	//rule set
 	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
+	protected String growthRates[] = {"no process", "fast", "middle", "slow"}; 	//growth rate set
 	protected JTextField genTextField = null; //input generation into this textField
 	protected JButton startBtn = null;
 	protected JButton stopBtn = null;

@@ -8,8 +8,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import edu.neu.csye6200.bg.*;
@@ -19,13 +17,12 @@ import edu.neu.csye6200.bg.*;
  * 
  * @author MMUNSON
  */
+@SuppressWarnings("deprecation")
 public class BGCanvas extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(BGCanvas.class.getName());
 	private long counter = 0L;
-	private double width = 1000;
-	private double height = 750;
 	
 	/**
 	 * CellAutCanvas constructor

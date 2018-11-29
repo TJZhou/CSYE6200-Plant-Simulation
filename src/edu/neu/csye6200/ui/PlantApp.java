@@ -24,6 +24,29 @@ import javax.swing.JTextField;
  * Biological Plant Growth Simulation application
  * 
  * @author Tianju Zhou NUID 001420546
+ * 
+ * ----------------------Function Description-------------------------
+ * A java swing application to simulate the process of plant growth.
+ * 
+ * Before press the start button, users can change some basic settings
+ * which include growth rule, growth generation, plant color, whether 
+ * to show growth process and the stems' length and radian.
+ * 
+ * After press the start button, the panel will show the picture of the 
+ * plant, and it can show growth process when the growth process box is 
+ * not "no process".
+ * 
+ * When the growth process box is "fast", "middle" or "slow", then users  
+ * can press stop button to pause the draw process; when the draw process
+ * is paused, users can press resume button to start again.
+ * 
+ * In the draw process, it is not able to resize the window. After the 
+ * draw process is done, it is able to resize the window.
+ * 
+ * In the file menu, users can click “exit” to exit the application,
+ * and in the help menu, users can click "about" to see the helping
+ * file: Readme.md.
+ * -------------------------------------------------------------------
  */
 public class PlantApp extends BGApp {
 
@@ -54,9 +77,9 @@ public class PlantApp extends BGApp {
 	/**
 	 * Create a main panel that will hold the bulk of our application display
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public JPanel getMainPanel() {
-
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		mainPanel.add(BorderLayout.WEST, getMenuPanel());
@@ -73,83 +96,56 @@ public class PlantApp extends BGApp {
 	 */
 	public JPanel getMenuPanel() {
 		menuPanel = new JPanel();
-		menuPanel.setPreferredSize(new Dimension(250, 800)); // the size of menu panel is 300*800
+		menuPanel.setPreferredSize(new Dimension(250, 800)); // the size of menu panel is 250*800
 		DesignGridLayout playout =  new DesignGridLayout(menuPanel);
 		
-		ruleBox = new JComboBox<String>(rules);// ruleBox and action listener
+		// ruleBox and action listener
+		ruleBox = new JComboBox<String>(rules);
 		ruleBox.setModel(new DefaultComboBoxModel<String>(rules));
-		ruleBox.addActionListener(e -> {
-			switch (ruleBox.getSelectedItem().toString()) {
-			case "rule1":
-				rule = "rule1"; break;
-			case "rule2":
-				rule = "rule2"; break;
-			case "rule3":
-				rule = "rule3"; break;
-			}
-		});
+		ruleBox.addActionListener(e -> {ruleBoxAction();});
 		playout.row().grid().empty();	//using DesignGridLayout
 		playout.row().grid(new JLabel("rule")).add(ruleBox);
 		
-		genTextField = new JTextField();//jTextField: input the number of generation
+		//jTextField: input the number of generation
+		genTextField = new JTextField();
 		genTextField.setText("    0~9");
 		playout.row().grid().empty();	
 		playout.row().grid(new JLabel("generation")).add(genTextField);
 		
-		colorBox = new JComboBox<String>();	//colorBox and action listener
+		//colorBox and action listener
+		colorBox = new JComboBox<String>();	
 		colorBox.setModel(new DefaultComboBoxModel<String>(colors));
-		colorBox.addActionListener(e -> {
-			switch (colorBox.getSelectedIndex()) {
-			case 0:
-				color = Color.white; break;
-			case 1:
-				color = Color.black; break;
-			case 2:
-				color = Color.red; break;
-			case 3:
-				color = Color.blue; break;
-			case 4:
-				color = Color.green; break;
-			case 5:
-				color = Color.yellow; break;
-			case 6:
-				color = Color.cyan; break;
-			}
-		});
+		colorBox.addActionListener(e -> {colorBoxAction();});
 		playout.row().grid().empty();
 		playout.row().grid(new JLabel("color")).add(colorBox);
 		
-		growthBox = new JComboBox<String>();	//growthBox and action listner
-		growthBox.addItem("false");
-		growthBox.addItem("true");
-		growthBox.addActionListener(e->{
-			switch (growthBox.getSelectedIndex()) {
-			case 0:
-				growthRate = 0; break;
-			case 1:
-				growthRate = 1; break;
-			}
-		});
+		//growthBox and action listner
+		growthBox = new JComboBox<String>();
+		growthBox.setModel(new DefaultComboBoxModel<String>(growthRates));
+		growthBox.addActionListener(e->{growthBoxAction();});
 		playout.row().grid().empty();
 		playout.row().grid(new JLabel("growth process")).add(growthBox);
 		
-		lengthSlider = new JSlider(5, 31);// length slide control and action listener
+		// side length slide control and action listener
+		lengthSlider = new JSlider(5, 31);
 		lengthSlider.addChangeListener(e -> {
 			sideLengthGrow = 1.0 + 1.0 / lengthSlider.getValue();
 		});
 		playout.row().grid().empty();
 		playout.row().grid(new JLabel("length")).add(lengthSlider);
 		
-		radianSlider = new JSlider(20, 150);// radian slide control and action listener
+		// radian slide control and action listener
+		radianSlider = new JSlider(20, 150);
 		radianSlider.addChangeListener(e -> {
 			sideRotateRadian = Math.PI / (17 - ((double) radianSlider.getValue()) / 10);
 		});
 		playout.row().grid().empty();
 		playout.row().grid(new JLabel("radian")).add(radianSlider);
 		
-		playout.row().grid().empty();	// basic instruction about midLength
+		// basic instruction about midLength
+		playout.row().grid().empty();	
 		playout.row().grid((new JLabel("Only available at"))).add(new JLabel("rule 2/3"));
-		
+		// middle length slide control and action listener
 		midLengthSlider = new JSlider(5, 31, 5);
 		midLengthSlider.addChangeListener(e -> {
 			midLengthGrow = 1.0 + 1.0 / midLengthSlider.getValue();
@@ -157,9 +153,10 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();
 		playout.row().grid(new JLabel("midLength")).add(midLengthSlider);
 		
-		playout.row().grid().empty();	// basic instruction about midRadian
+		// basic instruction about midRadian
+		playout.row().grid().empty();	
 		playout.row().grid((new JLabel("Only available at"))).add(new JLabel("rule 3"));
-		
+		// middle radian slide control and action listener
 		midRadianSlider = new JSlider(20, 150, 20);
 		midRadianSlider.addChangeListener(e -> {
 			midRotateRadian = Math.PI / (17 - ((double) midRadianSlider.getValue()) / 10);
@@ -167,32 +164,16 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();
 		playout.row().grid(new JLabel("midRadian")).add(midRadianSlider);
 		
-		startBtn = new JButton("    Start    "); // create start button instances
+		// create start button instances
+		startBtn = new JButton("    Start    "); 
 		startBtn.addActionListener(e -> {
-			try {
-				int num = Integer.parseInt(genTextField.getText());
-				if(num>=0&&num<=9) {
-					isPause = false;	//reset isStop and isSimCompelte to false
-					isSimComplete = false;
-					frame.setResizable(false);// set frame resizable false
-					generation = Integer.parseInt(genTextField.getText());
-					bgs.genrationSet(rule); // generate stems according to rules
-					bgPanel.paint(bgPanel.getGraphics());
-				}
-				else {
-					log.warning("invalid input");
-					JOptionPane.showMessageDialog(null, " Please input again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
-				}
-					
-			}catch(NumberFormatException ex) {
-				log.warning("invalid input");
-				JOptionPane.showMessageDialog(null, " Please input again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
-			}
+			startBtnAction();
 		});
 		playout.row().grid().empty();
 		playout.row().center().add(startBtn);
 		
-		stopBtn = new JButton("    Stop    "); // create stop button instances
+		// create stop button instances
+		stopBtn = new JButton("    Stop    "); 
 		stopBtn.addActionListener(e -> {
 			//change the status of stop button; stop->continue; continue->stop
 				bgPanel.mypause();
@@ -200,7 +181,8 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();
 		playout.row().center().add(stopBtn);
 		
-		resumeBtn = new JButton("    Resume    "); // create stop button instances
+		// create stop button instances
+		resumeBtn = new JButton("    Resume    "); 
 		resumeBtn.addActionListener(e -> {
 			//change the status of stop button; stop->continue; continue->stop
 				bgPanel.myresume();
@@ -208,7 +190,8 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();
 		playout.row().center().add(resumeBtn);
 		
-		playout.row().grid().empty();	// info
+		// info
+		playout.row().grid().empty();	
 		playout.row().grid().empty();
 		playout.row().grid().empty();
 		playout.row().grid((new JLabel("Author: Tianju"))).add((new JLabel("Zhou")));
@@ -218,6 +201,70 @@ public class PlantApp extends BGApp {
 		return menuPanel;
 	}
 
+	private void growthBoxAction() {
+		switch (growthBox.getSelectedIndex()) {
+		case 0:
+			growthRate = 0; break;
+		case 1:
+			growthRate = 1; break;
+		case 2:
+			growthRate = 10; break;
+		case 3:
+			growthRate = 20; break;
+		}
+	}
+
+	private void ruleBoxAction() {
+		switch (ruleBox.getSelectedIndex()) {
+		case 0:
+			rule = "rule1"; break;
+		case 1:
+			rule = "rule2"; break;
+		case 2:
+			rule = "rule3"; break;
+		}
+	}
+
+	private void colorBoxAction() {
+		switch (colorBox.getSelectedIndex()) {
+		case 0:
+			color = Color.white; break;
+		case 1:
+			color = Color.black; break;
+		case 2:
+			color = Color.red; break;
+		case 3:
+			color = Color.blue; break;
+		case 4:
+			color = Color.green; break;
+		case 5:
+			color = Color.yellow; break;
+		case 6:
+			color = Color.cyan; break;
+		}
+	}
+
+	private void startBtnAction() {
+		try {
+			int num = Integer.parseInt(genTextField.getText());
+			if(num>=0&&num<=9) {
+				isPause = false;	//reset isStop and isSimCompelte to false
+				isSimComplete = false;
+				frame.setResizable(false);// set frame resizable false
+				generation = Integer.parseInt(genTextField.getText());
+				bgs.genrationSet(rule); // generate stems according to rules
+				bgPanel.paint(bgPanel.getGraphics());
+			}
+			else {
+				log.warning("invalid input");
+				JOptionPane.showMessageDialog(null, " Please input generations again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
+			}
+		}catch(NumberFormatException ex) {
+			log.warning("invalid input");
+			JOptionPane.showMessageDialog(null, " Please input generations again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
+		}
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 
@@ -264,7 +311,7 @@ public class PlantApp extends BGApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		PlantApp pt = new PlantApp();
+		new PlantApp();
 		log.info("PlantApp started");
 	}
 

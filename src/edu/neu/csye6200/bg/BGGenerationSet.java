@@ -9,6 +9,7 @@ import java.util.logging.Logger;
  * 
  * @author Tianju Zhou NUID 001420546
  */
+@SuppressWarnings("deprecation")
 public class BGGenerationSet extends Observable{
 	
 	// BGGeneration and the container to collect it

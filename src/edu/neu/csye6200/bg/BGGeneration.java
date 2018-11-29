@@ -72,7 +72,7 @@ public class BGGeneration {
 			}
 		}
 		
-		//saveStemInfo();  the data is correct - do not need to save data to check anymore
+		saveStemInfo();
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class BGGeneration {
 	 */
 	private void saveStemInfo() {
 		// try-with-resources
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/stemData.txt"))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("log/stemData.txt"))) {
 			bw.write(String.format("%1$-16s %2$-16s %3$-16s %4$-16s %5$-16s", "stemID", "locationX", "locationY",
 					"length", "radians"));
 			bw.write('\n');
