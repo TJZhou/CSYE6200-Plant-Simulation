@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  *
  */
 public abstract class BGApp implements ActionListener, WindowListener {
-	public static int generation = 0;	//default generation: onely one base stem
+	public static int generation = 0;	//default generation: only one base stem
 	public static double sideLengthGrow = 1.05555;
 	public static double midLengthGrow = 1.2;	//default length
 	public static double sideRotateRadian = Math.PI /9;
@@ -34,6 +34,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public static int growthRate = 0;	//default growth rate, 0 means do not have speed limitation
 	public static boolean isPause = false;	// judge if we need to stop the growth process
 	public static boolean isSimComplete = false; //if the simulation process is complete
+	public static boolean isRestart = true;	//if the drawing process can be restarted
 	public static JFrame frame = null;
 	
 	protected JPanel menuPanel = null;
@@ -118,9 +119,10 @@ public abstract class BGApp implements ActionListener, WindowListener {
     }
 
     /**
-	 * Override this method to show a About Dialog
+	 * Override this method to show an About Dialog
 	 */
 	public void showHelp() {
+		// show read me file
 		try {
 			Desktop.getDesktop().open(new java.io.File("log/Readme.md"));
 			} catch (Exception ex) {

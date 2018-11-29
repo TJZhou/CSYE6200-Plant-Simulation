@@ -366,6 +366,7 @@ public class MenuManager implements ActionListener {
 		return (mi);
 	}
 
+	@SuppressWarnings("unused")
 	private int menuNum = 0;
 
 	/**

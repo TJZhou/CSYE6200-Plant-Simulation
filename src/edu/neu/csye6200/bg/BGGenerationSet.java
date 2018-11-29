@@ -5,7 +5,7 @@ import java.util.Observable;
 import java.util.logging.Logger;
 
 /**
- * generationSetL: hold different generation
+ * generationSet: hold different BGGeneration
  * 
  * @author Tianju Zhou NUID 001420546
  */

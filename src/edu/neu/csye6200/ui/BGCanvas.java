@@ -97,6 +97,7 @@ public class BGCanvas extends JPanel implements Observer {
 				BGApp.isPause = false;
 				BGApp.frame.setResizable(true);
 				BGApp.isSimComplete = true;
+				BGApp.isRestart = true;
 			}
 		}
 		catch (InterruptedException e ) {

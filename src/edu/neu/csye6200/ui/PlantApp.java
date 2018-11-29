@@ -46,6 +46,9 @@ import javax.swing.JTextField;
  * In the file menu, users can click “exit” to exit the application,
  * and in the help menu, users can click "about" to see the helping
  * file: Readme.md.
+ * 
+ * During the draw process, There are two variables that can be modified 
+ * in real time: growth rate and color.
  * -------------------------------------------------------------------
  */
 public class PlantApp extends BGApp {
@@ -58,7 +61,7 @@ public class PlantApp extends BGApp {
 		try {
 			log.info("APP start");
 			Handler handler = new FileHandler(logBase);
-			Logger.getLogger("").addHandler(handler);
+			Logger.getLogger("").addHandler(handler);	//add global fileHandler
 
 		} catch (SecurityException e) {
 			log.warning("SecurityException occurs in constructor PlantSimUI");
@@ -84,13 +87,13 @@ public class PlantApp extends BGApp {
 		mainPanel.setLayout(new BorderLayout());
 		mainPanel.add(BorderLayout.WEST, getMenuPanel());
 		bgPanel = new BGCanvas();
-		mainPanel.add(BorderLayout.CENTER, bgPanel);
+		mainPanel.add(BorderLayout.CENTER, bgPanel);	// set menuPanel to the left and mainPanel to the right
 		bgs.addObserver(bgPanel); /// add observer
 		return mainPanel;
 	}
 
 	/**
-	 * Create a top panel that will hold control buttons, sliders and comboBoxs
+	 * Create a left panel that will hold control buttons, sliders and comboBoxs
 	 * 
 	 * @return JPanel
 	 */
@@ -210,7 +213,7 @@ public class PlantApp extends BGApp {
 		case 2:
 			growthRate = 10; break;
 		case 3:
-			growthRate = 20; break;
+			growthRate = 50; break;
 		}
 	}
 
@@ -245,23 +248,31 @@ public class PlantApp extends BGApp {
 	}
 
 	private void startBtnAction() {
-		try {
-			int num = Integer.parseInt(genTextField.getText());
-			if(num>=0&&num<=9) {
-				isPause = false;	//reset isStop and isSimCompelte to false
-				isSimComplete = false;
-				frame.setResizable(false);// set frame resizable false
-				generation = Integer.parseInt(genTextField.getText());
-				bgs.genrationSet(rule); // generate stems according to rules
-				bgPanel.paint(bgPanel.getGraphics());
-			}
-			else {
+		if(isRestart == true) {	// the process is done and can start again
+			try {
+				int num = Integer.parseInt(genTextField.getText());
+				if(num>=0&&num<=9) {	// ensure that the generation is 0-9
+					isPause = false;	//reset isStop, isRestart, isSimCompelte to false
+					isSimComplete = false;
+					isRestart = false;
+					frame.setResizable(false);// set frame resizable false
+					generation = Integer.parseInt(genTextField.getText());
+					bgs.genrationSet(rule); // generate stems according to rules
+					bgPanel.paint(bgPanel.getGraphics());
+				}
+				else {	// input less than 0 or greater than 9 
+					log.warning("invalid input");
+					JOptionPane.showMessageDialog(null, " Please input generations again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
+				}
+			}catch(NumberFormatException ex) {	//input is not a integer
 				log.warning("invalid input");
 				JOptionPane.showMessageDialog(null, " Please input generations again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
 			}
-		}catch(NumberFormatException ex) {
-			log.warning("invalid input");
-			JOptionPane.showMessageDialog(null, " Please input generations again (0~9). ", " Invalid Input", JOptionPane.ERROR_MESSAGE); 
+		}
+		else {	// cannot be restart when the isRestart is false
+			JOptionPane.showMessageDialog(null, " Please wait the process to be done or "
+					+ "set the growth process to \"no process\" \nto finishi the drawing process immediately. ",
+					" Cannot restart now", JOptionPane.ERROR_MESSAGE); 
 		}
 	}
 	
