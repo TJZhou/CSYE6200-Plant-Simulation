@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-11-29T01:37:13.933669Z</date>
-  <millis>1543455433933</millis>
-  <nanos>669000</nanos>
+  <date>2018-12-01T03:56:15.717931Z</date>
+  <millis>1543636575717</millis>
+  <nanos>931000</nanos>
   <sequence>2</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>PlantApp started</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:14.077634Z</date>
-  <millis>1543455434077</millis>
-  <nanos>634000</nanos>
+  <date>2018-12-01T03:56:15.865948Z</date>
+  <millis>1543636575865</millis>
+  <nanos>948000</nanos>
   <sequence>3</sequence>
   <logger>edu.neu.csye6200.ui.BGCanvas</logger>
   <level>INFO</level>
@@ -26,22 +26,10 @@
   <message>Drawing BG 0</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:14.110905Z</date>
-  <millis>1543455434110</millis>
-  <nanos>905000</nanos>
+  <date>2018-12-01T03:56:15.901750Z</date>
+  <millis>1543636575901</millis>
+  <nanos>750000</nanos>
   <sequence>4</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowActivated</method>
-  <thread>17</thread>
-  <message>Window activated</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:14.114092Z</date>
-  <millis>1543455434114</millis>
-  <nanos>92000</nanos>
-  <sequence>5</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
   <class>edu.neu.csye6200.ui.PlantApp</class>
@@ -50,9 +38,21 @@
   <message>Window opened</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:14.115007Z</date>
-  <millis>1543455434115</millis>
-  <nanos>7000</nanos>
+  <date>2018-12-01T03:56:15.902825Z</date>
+  <millis>1543636575902</millis>
+  <nanos>825000</nanos>
+  <sequence>5</sequence>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
+  <level>INFO</level>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowActivated</method>
+  <thread>17</thread>
+  <message>Window activated</message>
+</record>
+<record>
+  <date>2018-12-01T03:56:15.930039Z</date>
+  <millis>1543636575930</millis>
+  <nanos>39000</nanos>
   <sequence>6</sequence>
   <logger>edu.neu.csye6200.ui.BGCanvas</logger>
   <level>INFO</level>
@@ -62,819 +62,87 @@
   <message>Drawing BG 1</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:21.177030Z</date>
-  <millis>1543455441177</millis>
-  <nanos>30000</nanos>
+  <date>2018-12-01T03:56:16.953369Z</date>
+  <millis>1543636576953</millis>
+  <nanos>369000</nanos>
   <sequence>7</sequence>
-  <logger>edu.neu.csye6200.bg.BGRule</logger>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
-  <class>edu.neu.csye6200.bg.BGRule</class>
-  <method>&lt;init&gt;</method>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowDeactivated</method>
   <thread>17</thread>
-  <message>An instance of BGRule is created</message>
+  <message>Window deactivated</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:21.177785Z</date>
-  <millis>1543455441177</millis>
-  <nanos>785000</nanos>
+  <date>2018-12-01T03:56:21.554132Z</date>
+  <millis>1543636581554</millis>
+  <nanos>132000</nanos>
   <sequence>8</sequence>
-  <logger>edu.neu.csye6200.bg.BGGeneration</logger>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
-  <class>edu.neu.csye6200.bg.BGGeneration</class>
-  <method>&lt;init&gt;</method>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowActivated</method>
   <thread>17</thread>
-  <message>An instance of BGGenration is created</message>
+  <message>Window activated</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:22.105522Z</date>
-  <millis>1543455442105</millis>
-  <nanos>522000</nanos>
+  <date>2018-12-01T03:56:26.857138Z</date>
+  <millis>1543636586857</millis>
+  <nanos>138000</nanos>
   <sequence>9</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowDeactivated</method>
   <thread>17</thread>
-  <message>Drawing BG 2</message>
+  <message>Window deactivated</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:23.656292Z</date>
-  <millis>1543455443656</millis>
-  <nanos>292000</nanos>
+  <date>2018-12-01T03:56:41.640060Z</date>
+  <millis>1543636601640</millis>
+  <nanos>60000</nanos>
   <sequence>10</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
   <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowDeactivated</method>
+  <method>windowActivated</method>
   <thread>17</thread>
-  <message>Window deactivated</message>
+  <message>Window activated</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:26.841660Z</date>
-  <millis>1543455446841</millis>
-  <nanos>660000</nanos>
+  <date>2018-12-01T03:56:43.523719Z</date>
+  <millis>1543636603523</millis>
+  <nanos>719000</nanos>
   <sequence>11</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
   <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowActivated</method>
+  <method>windowDeactivated</method>
   <thread>17</thread>
-  <message>Window activated</message>
+  <message>Window deactivated</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:31.169258Z</date>
-  <millis>1543455451169</millis>
-  <nanos>258000</nanos>
+  <date>2018-12-01T03:56:53.656507Z</date>
+  <millis>1543636613656</millis>
+  <nanos>507000</nanos>
   <sequence>12</sequence>
-  <logger>edu.neu.csye6200.bg.BGRule</logger>
+  <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
-  <class>edu.neu.csye6200.bg.BGRule</class>
-  <method>&lt;init&gt;</method>
+  <class>edu.neu.csye6200.ui.PlantApp</class>
+  <method>windowActivated</method>
   <thread>17</thread>
-  <message>An instance of BGRule is created</message>
+  <message>Window activated</message>
 </record>
 <record>
-  <date>2018-11-29T01:37:31.169887Z</date>
-  <millis>1543455451169</millis>
-  <nanos>887000</nanos>
+  <date>2018-12-01T03:56:55.606026Z</date>
+  <millis>1543636615606</millis>
+  <nanos>26000</nanos>
   <sequence>13</sequence>
-  <logger>edu.neu.csye6200.bg.BGGeneration</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.bg.BGGeneration</class>
-  <method>&lt;init&gt;</method>
-  <thread>17</thread>
-  <message>An instance of BGGenration is created</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:31.900069Z</date>
-  <millis>1543455451900</millis>
-  <nanos>69000</nanos>
-  <sequence>14</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 3</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:38.151741Z</date>
-  <millis>1543455458151</millis>
-  <nanos>741000</nanos>
-  <sequence>15</sequence>
-  <logger>edu.neu.csye6200.bg.BGRule</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.bg.BGRule</class>
-  <method>&lt;init&gt;</method>
-  <thread>17</thread>
-  <message>An instance of BGRule is created</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:38.152306Z</date>
-  <millis>1543455458152</millis>
-  <nanos>306000</nanos>
-  <sequence>16</sequence>
-  <logger>edu.neu.csye6200.bg.BGGeneration</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.bg.BGGeneration</class>
-  <method>&lt;init&gt;</method>
-  <thread>17</thread>
-  <message>An instance of BGGenration is created</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:38.497448Z</date>
-  <millis>1543455458497</millis>
-  <nanos>448000</nanos>
-  <sequence>17</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 4</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:40.282738Z</date>
-  <millis>1543455460282</millis>
-  <nanos>738000</nanos>
-  <sequence>18</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
   <class>edu.neu.csye6200.ui.PlantApp</class>
   <method>windowDeactivated</method>
   <thread>17</thread>
   <message>Window deactivated</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:43.828712Z</date>
-  <millis>1543455463828</millis>
-  <nanos>712000</nanos>
-  <sequence>19</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowActivated</method>
-  <thread>17</thread>
-  <message>Window activated</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:49.168490Z</date>
-  <millis>1543455469168</millis>
-  <nanos>490000</nanos>
-  <sequence>20</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowDeactivated</method>
-  <thread>17</thread>
-  <message>Window deactivated</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:53.618671Z</date>
-  <millis>1543455473618</millis>
-  <nanos>671000</nanos>
-  <sequence>21</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowActivated</method>
-  <thread>17</thread>
-  <message>Window activated</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:58.679791Z</date>
-  <millis>1543455478679</millis>
-  <nanos>791000</nanos>
-  <sequence>22</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 5</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:58.745863Z</date>
-  <millis>1543455478745</millis>
-  <nanos>863000</nanos>
-  <sequence>23</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 6</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:58.794491Z</date>
-  <millis>1543455478794</millis>
-  <nanos>491000</nanos>
-  <sequence>24</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 7</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:58.837771Z</date>
-  <millis>1543455478837</millis>
-  <nanos>771000</nanos>
-  <sequence>25</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 8</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:58.879942Z</date>
-  <millis>1543455478879</millis>
-  <nanos>942000</nanos>
-  <sequence>26</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 9</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:58.922381Z</date>
-  <millis>1543455478922</millis>
-  <nanos>381000</nanos>
-  <sequence>27</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 10</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:58.965822Z</date>
-  <millis>1543455478965</millis>
-  <nanos>822000</nanos>
-  <sequence>28</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 11</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.010273Z</date>
-  <millis>1543455479010</millis>
-  <nanos>273000</nanos>
-  <sequence>29</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 12</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.054640Z</date>
-  <millis>1543455479054</millis>
-  <nanos>640000</nanos>
-  <sequence>30</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 13</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.091337Z</date>
-  <millis>1543455479091</millis>
-  <nanos>337000</nanos>
-  <sequence>31</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 14</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.139450Z</date>
-  <millis>1543455479139</millis>
-  <nanos>450000</nanos>
-  <sequence>32</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 15</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.177015Z</date>
-  <millis>1543455479177</millis>
-  <nanos>15000</nanos>
-  <sequence>33</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 16</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.221384Z</date>
-  <millis>1543455479221</millis>
-  <nanos>384000</nanos>
-  <sequence>34</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 17</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.260769Z</date>
-  <millis>1543455479260</millis>
-  <nanos>769000</nanos>
-  <sequence>35</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 18</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.306597Z</date>
-  <millis>1543455479306</millis>
-  <nanos>597000</nanos>
-  <sequence>36</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 19</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.347618Z</date>
-  <millis>1543455479347</millis>
-  <nanos>618000</nanos>
-  <sequence>37</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 20</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.390413Z</date>
-  <millis>1543455479390</millis>
-  <nanos>413000</nanos>
-  <sequence>38</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 21</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.425538Z</date>
-  <millis>1543455479425</millis>
-  <nanos>538000</nanos>
-  <sequence>39</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 22</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.463335Z</date>
-  <millis>1543455479463</millis>
-  <nanos>335000</nanos>
-  <sequence>40</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 23</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.502561Z</date>
-  <millis>1543455479502</millis>
-  <nanos>561000</nanos>
-  <sequence>41</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 24</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.540301Z</date>
-  <millis>1543455479540</millis>
-  <nanos>301000</nanos>
-  <sequence>42</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 25</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.583673Z</date>
-  <millis>1543455479583</millis>
-  <nanos>673000</nanos>
-  <sequence>43</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 26</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.630546Z</date>
-  <millis>1543455479630</millis>
-  <nanos>546000</nanos>
-  <sequence>44</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 27</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.671980Z</date>
-  <millis>1543455479671</millis>
-  <nanos>980000</nanos>
-  <sequence>45</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 28</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.711549Z</date>
-  <millis>1543455479711</millis>
-  <nanos>549000</nanos>
-  <sequence>46</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 29</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.753590Z</date>
-  <millis>1543455479753</millis>
-  <nanos>590000</nanos>
-  <sequence>47</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 30</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.791920Z</date>
-  <millis>1543455479791</millis>
-  <nanos>920000</nanos>
-  <sequence>48</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 31</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.837813Z</date>
-  <millis>1543455479837</millis>
-  <nanos>813000</nanos>
-  <sequence>49</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 32</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.878311Z</date>
-  <millis>1543455479878</millis>
-  <nanos>311000</nanos>
-  <sequence>50</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 33</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.916598Z</date>
-  <millis>1543455479916</millis>
-  <nanos>598000</nanos>
-  <sequence>51</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 34</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.959056Z</date>
-  <millis>1543455479959</millis>
-  <nanos>56000</nanos>
-  <sequence>52</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 35</message>
-</record>
-<record>
-  <date>2018-11-29T01:37:59.998610Z</date>
-  <millis>1543455479998</millis>
-  <nanos>610000</nanos>
-  <sequence>53</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 36</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.037798Z</date>
-  <millis>1543455480037</millis>
-  <nanos>798000</nanos>
-  <sequence>54</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 37</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.083684Z</date>
-  <millis>1543455480083</millis>
-  <nanos>684000</nanos>
-  <sequence>55</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 38</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.125907Z</date>
-  <millis>1543455480125</millis>
-  <nanos>907000</nanos>
-  <sequence>56</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 39</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.171489Z</date>
-  <millis>1543455480171</millis>
-  <nanos>489000</nanos>
-  <sequence>57</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 40</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.213374Z</date>
-  <millis>1543455480213</millis>
-  <nanos>374000</nanos>
-  <sequence>58</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 41</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.251860Z</date>
-  <millis>1543455480251</millis>
-  <nanos>860000</nanos>
-  <sequence>59</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 42</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.294095Z</date>
-  <millis>1543455480294</millis>
-  <nanos>95000</nanos>
-  <sequence>60</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 43</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.330546Z</date>
-  <millis>1543455480330</millis>
-  <nanos>546000</nanos>
-  <sequence>61</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 44</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.372956Z</date>
-  <millis>1543455480372</millis>
-  <nanos>956000</nanos>
-  <sequence>62</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 45</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.443864Z</date>
-  <millis>1543455480443</millis>
-  <nanos>864000</nanos>
-  <sequence>63</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 46</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.487787Z</date>
-  <millis>1543455480487</millis>
-  <nanos>787000</nanos>
-  <sequence>64</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 47</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.532922Z</date>
-  <millis>1543455480532</millis>
-  <nanos>922000</nanos>
-  <sequence>65</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 48</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.571375Z</date>
-  <millis>1543455480571</millis>
-  <nanos>375000</nanos>
-  <sequence>66</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 49</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.614426Z</date>
-  <millis>1543455480614</millis>
-  <nanos>426000</nanos>
-  <sequence>67</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 50</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.656633Z</date>
-  <millis>1543455480656</millis>
-  <nanos>633000</nanos>
-  <sequence>68</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 51</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.704249Z</date>
-  <millis>1543455480704</millis>
-  <nanos>249000</nanos>
-  <sequence>69</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 52</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.743736Z</date>
-  <millis>1543455480743</millis>
-  <nanos>736000</nanos>
-  <sequence>70</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 53</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.788540Z</date>
-  <millis>1543455480788</millis>
-  <nanos>540000</nanos>
-  <sequence>71</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 54</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.825363Z</date>
-  <millis>1543455480825</millis>
-  <nanos>363000</nanos>
-  <sequence>72</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 55</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:00.867585Z</date>
-  <millis>1543455480867</millis>
-  <nanos>585000</nanos>
-  <sequence>73</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 56</message>
-</record>
-<record>
-  <date>2018-11-29T01:38:02.788641Z</date>
-  <millis>1543455482788</millis>
-  <nanos>641000</nanos>
-  <sequence>74</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowClosing</method>
-  <thread>17</thread>
-  <message>Window closing</message>
 </record>
 </log>

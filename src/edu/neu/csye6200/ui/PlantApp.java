@@ -30,7 +30,8 @@ import javax.swing.JTextField;
  * 
  * Before press the start button, users can change some basic settings
  * which include growth rule, growth generation, plant color, whether 
- * to show growth process and the stems' length and radian.
+ * to show growth process and the stems' length and radian. Also users
+ * can press random button to set parameters randomly
  * 
  * After press the start button, the panel will show the picture of the 
  * plant, and it can show growth process when the growth process box is 
@@ -111,7 +112,7 @@ public class PlantApp extends BGApp {
 		
 		//jTextField: input the number of generation
 		genTextField = new JTextField();
-		genTextField.setText("    0~9");
+		genTextField.setText("0~9");
 		playout.row().grid().empty();	
 		playout.row().grid(new JLabel("generation")).add(genTextField);
 		
@@ -167,6 +168,14 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();
 		playout.row().grid(new JLabel("midRadian")).add(midRadianSlider);
 		
+		// create random button instances
+		startBtn = new JButton("    Random    ");
+		startBtn.addActionListener(e -> {
+			randomBtnAction();
+		});
+		playout.row().grid().empty();
+		playout.row().center().add(startBtn);
+	
 		// create start button instances
 		startBtn = new JButton("    Start    "); 
 		startBtn.addActionListener(e -> {
@@ -184,7 +193,7 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();
 		playout.row().center().add(stopBtn);
 		
-		// create stop button instances
+		// create resume button instances
 		resumeBtn = new JButton("    Resume    "); 
 		resumeBtn.addActionListener(e -> {
 			//change the status of stop button; stop->continue; continue->stop
@@ -195,13 +204,47 @@ public class PlantApp extends BGApp {
 		
 		// info
 		playout.row().grid().empty();	
-		playout.row().grid().empty();
-		playout.row().grid().empty();
-		playout.row().grid((new JLabel("Author: Tianju"))).add((new JLabel("Zhou")));
-		playout.row().grid((new JLabel("ID:001420546")));
+		playout.row().grid().empty();	
+		playout.row().grid((new JLabel("Author: Tianju"))).add((new JLabel("Zhou")));	
+		playout.row().grid((new JLabel("ID:001420546")));	
 		
 		menuPanel.setBackground(Color.WHITE);
 		return menuPanel;
+	}
+
+	private void randomBtnAction() {
+		// random of ruleBox: rule1/2/3
+		int index = (int) (Math.random()*3);
+		ruleBox.setSelectedIndex(index);
+		
+		// random textField: generation of 0-9
+		index = (int)(Math.random()*10);
+		genTextField.setText(String.valueOf(index));
+		
+		// random of coloreBox: 7 different colors
+		index = (int) (Math.random() * 7);
+		colorBox.setSelectedIndex(index);
+
+		// random of growthBox: speed of growth - no process/fast/middle/low
+		index = (int) (Math.random() * 4);
+		growthBox.setSelectedIndex(index);
+		
+		// random of length growth 
+		index = (int) (Math.random()*27+5);
+		lengthSlider.setValue(index);
+		
+		// random of radian rotation
+		index = (int) (Math.random()*131+20);
+		radianSlider.setValue(index);
+
+		// random of mid length rotation
+		index = (int) (Math.random() * 27 + 5);
+
+		midLengthSlider.setValue(index);
+
+		// random of mid radian rotation
+		index = (int) (Math.random() * 131 + 20);
+		midRadianSlider.setValue(index);
 	}
 
 	private void growthBoxAction() {
@@ -251,8 +294,9 @@ public class PlantApp extends BGApp {
 		if(isRestart == true) {	// the process is done and can start again
 			try {
 				int num = Integer.parseInt(genTextField.getText());
-				if(num>=0&&num<=9) {	// ensure that the generation is 0-9
-					isPause = false;	//reset isStop, isRestart, isSimCompelte to false
+				System.out.print(genTextField.getText().trim());
+				if (num >= 0 && num <= 9) { // ensure that the generation is 0-9
+					isPause = false; // reset isStop, isRestart, isSimCompelte to false
 					isSimComplete = false;
 					isRestart = false;
 					frame.setResizable(false);// set frame resizable false

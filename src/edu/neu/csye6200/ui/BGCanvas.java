@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import edu.neu.csye6200.bg.*;
@@ -52,6 +53,8 @@ public class BGCanvas extends JPanel implements Observer {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+		// use anonymous inner class to start a new thread
+		// use this thread to draw plant; start/stop/resume can control this thread
 		if (BGApp.isSimComplete == false) {
 			new Thread(new Runnable() {
 				public void run() {
@@ -60,13 +63,20 @@ public class BGCanvas extends JPanel implements Observer {
 			}).start();
 		}
 
-		// when the jpanel is repainted and do not need thread to control
-		// in this way, we can remain the picture we paint
+		/* 
+		 * when the draw process is done
+		 * the jpanel is repainted and do not need thread to control
+		 * in this way, we can remain the picture we paint
+		 */		
 		if (BGApp.isSimComplete == true) {
 			for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
 				BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i);
+			/*	AffineTransform at = new AffineTransform();
+		        at.scale(0.9,0.9);
+		        g2d.transform(at);*/
 				paintLine(g2d, BGApp.color, st);
 			}
+			
 		}
 	}
 
@@ -86,7 +96,7 @@ public class BGCanvas extends JPanel implements Observer {
 					paintLine(g2d, BGApp.color, st); // paint on the canvas
 					// show growth process
 					Thread.sleep(BGApp.growthRate);
-					// if the flag isStop is true; then stop the thread
+					// if the flag isPause is true; then pause the thread
 					synchronized(this) {
 						while (BGApp.isPause == true) {
 							wait();
@@ -98,6 +108,8 @@ public class BGCanvas extends JPanel implements Observer {
 				BGApp.frame.setResizable(true);
 				BGApp.isSimComplete = true;
 				BGApp.isRestart = true;
+				
+				
 			}
 		}
 		catch (InterruptedException e ) {
@@ -114,11 +126,6 @@ public class BGCanvas extends JPanel implements Observer {
 	synchronized void myresume() {
 		BGApp.isPause = false;
 		notifyAll();
-	}
-
-	//stop the thread
-	void mystop() {
-		Thread.currentThread().stop();
 	}
 	
 	/**

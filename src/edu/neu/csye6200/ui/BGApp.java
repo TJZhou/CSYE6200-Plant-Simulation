@@ -47,6 +47,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
 	protected String growthRates[] = {"no process", "fast", "middle", "slow"}; 	//growth rate set
 	protected JTextField genTextField = null; //input generation into this textField
+	protected JButton randomBtn = null;
 	protected JButton startBtn = null;
 	protected JButton stopBtn = null;
 	protected JButton resumeBtn = null;
@@ -124,7 +125,7 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public void showHelp() {
 		// show read me file
 		try {
-			Desktop.getDesktop().open(new java.io.File("log/Readme.md"));
+			Desktop.getDesktop().open(new java.io.File("README.md"));
 			} catch (Exception ex) {
 			ex.printStackTrace();
 		}

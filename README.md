@@ -1,4 +1,4 @@
-/**
+ /**
  * Biological Plant Growth Simulation application
  * 
  * @author Tianju Zhou NUID 001420546
@@ -122,8 +122,17 @@ Trigger <Silde the midRadianSlider>
 
 
 
-Use Case: <startBtn>
+Use Case: <randomBtn>
 Id:  11
+Level: <Medium>
+Description <select the parameters randomly>
+Actor(s) <Users>
+Trigger <Press the random button>
+
+
+
+Use Case: <startBtn>
+Id:  12
 Level: <Medium>
 Description <Start the draw process>
 Actor(s) <Users>
@@ -132,7 +141,7 @@ Trigger <Press the start button>
 
 
 Use Case: <stoptBtn>
-Id:  12
+Id:  13
 Level: <Medium>
 Description <Pause the draw process>
 Actor(s) <Users>
@@ -141,7 +150,7 @@ Trigger <Press the stop button>
 
 
 Use Case: <resumeBtn>
-Id:  13
+Id:  14
 Level: <Medium>
 Description <Resume the paused draw process>
 Actor(s) <Users>
