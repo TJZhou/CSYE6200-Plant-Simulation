@@ -3,7 +3,6 @@ package edu.neu.csye6200.ui;
 import net.java.dev.designgridlayout.DesignGridLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
@@ -53,6 +52,9 @@ import javax.swing.JTextField;
  * 
  * During the draw process, There are two variables that can be modified 
  * in real time: growth rate and color.
+ * 
+ * All the information will be printed in the JTextField in the InfoPanel -
+ * at the right side of the main panel
  * -------------------------------------------------------------------
  */
 public class PlantApp extends BGApp {
@@ -75,7 +77,7 @@ public class PlantApp extends BGApp {
 			e.printStackTrace();
 		}
 
-		frame.setSize(1400, 800); // initial Frame size
+		frame.setSize(1500, 800); // initial Frame size
 		frame.setTitle("PlantApp");
 		menuMgr.createDefaultActions(); // Set up default menu items
 		showUI(); // Cause the Swing Dispatch thread to display the JFrame
@@ -83,13 +85,15 @@ public class PlantApp extends BGApp {
 
 	/**
 	 * Create a main panel that will hold the bulk of our application display
+	 * 
+	 * * @return JPanel
 	 */
 	@SuppressWarnings("deprecation")
 	@Override
 	public JPanel getMainPanel() {
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
-		mainPanel.add(BorderLayout.WEST, getMenuPanel());
+		mainPanel.add(BorderLayout.WEST, getSettingPanel());
 		bgPanel = new BGCanvas();
 		mainPanel.add(BorderLayout.CENTER, bgPanel);	// set menuPanel to the left and mainPanel to the right
 		bgs.addObserver(bgPanel); /// add observer
@@ -108,11 +112,11 @@ public class PlantApp extends BGApp {
 		infoPanel.setLayout(null);
 		// add a scrollPane to hold JTextArea
 		infoScrollPane = new JScrollPane();
-		infoScrollPane.setBounds(25, 25, 200, 400);
+		infoScrollPane.setBounds(15, 25, 220, 400);
 		infoPanel.add(infoScrollPane);
 		// add a textArea to output info
 		infoTextArea = new JTextArea();
-		infoTextArea.setBounds(25, 25, 200, 400);
+		infoTextArea.setBounds(15, 25, 220, 400);
 		infoScrollPane.setViewportView(infoTextArea);
 		// info
 		JLabel info = new JLabel("       Author:Tianju Zhou");
@@ -128,14 +132,14 @@ public class PlantApp extends BGApp {
 	}
 
 	/**
-	 * Create a left panel that will hold control buttons, sliders and comboBoxs
+	 * Create a menuPanel (at left side) that will hold control buttons, sliders and comboBoxs
 	 * 
 	 * @return JPanel
 	 */
-	public JPanel getMenuPanel() {
-		menuPanel = new JPanel();
-		menuPanel.setPreferredSize(new Dimension(250, 800)); // the size of menu panel is 250*800
-		DesignGridLayout playout =  new DesignGridLayout(menuPanel);
+	public JPanel getSettingPanel() {
+		settingPanel = new JPanel();
+		settingPanel.setPreferredSize(new Dimension(250, 800)); // the size of menu panel is 250*800
+		DesignGridLayout playout =  new DesignGridLayout(settingPanel);
 		
 		// ruleBox and action listener
 		ruleBox = new JComboBox<String>(rules);
@@ -218,40 +222,47 @@ public class PlantApp extends BGApp {
 		});
 		playout.row().grid().empty();
 		playout.row().center().add(startBtn);
-		
+
 		// create stop button instances
-		stopBtn = new JButton("    Stop    "); 
+		stopBtn = new JButton("    Stop    ");
 		stopBtn.addActionListener(e -> {
-			//change the status of stop button; stop->continue; continue->stop
-				bgPanel.mypause();
+			// change the status of stop button; stop->continue; continue->stop
+			bgPanel.mypause();
+			if(isRestart == false)
+				infoTextArea.insert("Simulation process is paused.\n\n", 0);
 		});
 		playout.row().grid().empty();
 		playout.row().center().add(stopBtn);
-		
+
 		// create resume button instances
-		resumeBtn = new JButton("    Resume    "); 
+		resumeBtn = new JButton("    Resume    ");
 		resumeBtn.addActionListener(e -> {
-			//change the status of stop button; stop->continue; continue->stop
-				bgPanel.myresume();
+			// change the status of stop button; stop->continue; continue->stop
+			bgPanel.myresume();
+			if(isRestart == false)
+				infoTextArea.insert("Simulation process continues.\n\n", 0);
 		});
 		playout.row().grid().empty();
 		playout.row().center().add(resumeBtn);
 		
-		menuPanel.setBackground(Color.WHITE);
-		return menuPanel;
+		settingPanel.setBackground(Color.WHITE);
+		return settingPanel;
 	}
 
+	/**
+	 * random button: set all parameters randomly
+	 */
 	private void randomBtnAction() {
 		infoTextArea.insert("Set parameters randomly\n\n", 0);
-		
+
 		// random of ruleBox: rule1/2/3
-		int index = (int) (Math.random()*3);
+		int index = (int) (Math.random() * 3);
 		ruleBox.setSelectedIndex(index);
-		
+
 		// random textField: generation of 0-9
-		index = (int)(Math.random()*10);
+		index = (int) (Math.random() * 10);
 		genTextField.setText(String.valueOf(index));
-		
+
 		// random of coloreBox: 7 different colors
 		index = (int) (Math.random() * 7);
 		colorBox.setSelectedIndex(index);
@@ -259,13 +270,13 @@ public class PlantApp extends BGApp {
 		// random of growthBox: speed of growth - no process/fast/middle/low
 		index = (int) (Math.random() * 4);
 		growthBox.setSelectedIndex(index);
-		
-		// random of length growth 
-		index = (int) (Math.random()*27+5);
+
+		// random of length growth
+		index = (int) (Math.random() * 27 + 5);
 		lengthSlider.setValue(index);
-		
+
 		// random of radian rotation
-		index = (int) (Math.random()*131+20);
+		index = (int) (Math.random() * 131 + 20);
 		radianSlider.setValue(index);
 
 		// random of mid length rotation
@@ -401,5 +412,4 @@ public class PlantApp extends BGApp {
 		new PlantApp();
 		log.info("PlantApp started");
 	}
-
 }

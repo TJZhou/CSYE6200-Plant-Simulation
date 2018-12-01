@@ -11,7 +11,8 @@
  * 
  * Before press the start button, users can change some basic settings
  * which include growth rule, growth generation, plant color, whether 
- * to show growth process and the stems' length and radian.
+ * to show growth process and the stems' length and radian. Also users
+ * can press random button to set parameters randomly
  * 
  * After press the start button, the panel will show the picture of the 
  * plant, and it can show growth process when the growth process box is 
@@ -27,6 +28,12 @@
  * In the file menu, users can click “exit” to exit the application,
  * and in the help menu, users can click "about" to see the helping
  * file: Readme.md.
+ * 
+ * During the draw process, There are two variables that can be modified 
+ * in real time: growth rate and color.
+ * 
+ * All the information will be printed in the JTextField in the InfoPanel -
+ * at the right side of the main panel.
  * -------------------------------------------------------------------
  */
 
@@ -155,3 +162,12 @@ Level: <Medium>
 Description <Resume the paused draw process>
 Actor(s) <Users>
 Trigger <Press the resume button>
+
+
+
+Use Case: <infoTextField>
+Id: 15
+Level: <Medium>
+Description <Print all the information when running the application>
+Actor(s) <Users>
+Trigger <Start the application and press some buttons>

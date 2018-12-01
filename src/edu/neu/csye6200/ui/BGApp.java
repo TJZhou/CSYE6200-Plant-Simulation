@@ -40,10 +40,10 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public static JFrame frame = null;
 	public static JTextArea infoTextArea = null;
 	
-	protected JPanel menuPanel = null;
 	protected JPanel mainPanel = null;
+	protected JPanel settingPanel = null;
 	protected BGCanvas bgPanel = null;
-	protected JPanel infoPanel = null;
+	protected JPanel infoPanel = null;	
 	protected MenuManager menuMgr = null;
 	protected static Logger log = Logger.getLogger(PlantApp.class.getName());
 	protected String logBase = "log/server.log";	//log file routine	
