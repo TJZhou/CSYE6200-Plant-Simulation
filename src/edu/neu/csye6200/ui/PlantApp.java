@@ -119,7 +119,7 @@ public class PlantApp extends BGApp {
 		infoTextArea.setBounds(15, 25, 220, 400);
 		infoScrollPane.setViewportView(infoTextArea);
 		// info
-		JLabel info = new JLabel("       Author:Tianju Zhou");
+		JLabel info = new JLabel("       Author: Tianju Zhou");
 		info.setBounds(80, 600, 200, 50);
 		infoPanel.add(info);
 		info = new JLabel("Northeastern University");
@@ -289,6 +289,7 @@ public class PlantApp extends BGApp {
 		midRadianSlider.setValue(index);
 	}
 
+	//doing this action when choosing from growthBox
 	private void growthBoxAction() {
 		switch (growthBox.getSelectedIndex()) {
 		case 0:
@@ -302,6 +303,7 @@ public class PlantApp extends BGApp {
 		}
 	}
 
+	// doing this action when choosing from ruleBox
 	private void ruleBoxAction() {
 		switch (ruleBox.getSelectedIndex()) {
 		case 0:
@@ -313,6 +315,7 @@ public class PlantApp extends BGApp {
 		}
 	}
 
+	// doing this action when choosing from color box
 	private void colorBoxAction() {
 		switch (colorBox.getSelectedIndex()) {
 		case 0:
@@ -332,6 +335,7 @@ public class PlantApp extends BGApp {
 		}
 	}
 
+	// doing this action when pressing start button
 	private void startBtnAction() {
 		if(isRestart == true) {	// the process is done and can start again
 			try {
