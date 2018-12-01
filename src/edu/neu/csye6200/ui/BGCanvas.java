@@ -8,9 +8,13 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import edu.neu.csye6200.bg.*;
 
 /**
@@ -25,11 +29,13 @@ public class BGCanvas extends JPanel implements Observer {
 	private Logger log = Logger.getLogger(BGCanvas.class.getName());
 	private long counter = 0L;
 	
+	
 	/**
 	 * CellAutCanvas constructor
 	 */
 	public BGCanvas() {
-		// this.setBackground(Color.GRAY);
+		this.setLayout(null);
+		this.setBackground(Color.LIGHT_GRAY);
 	}
 
 	/**
@@ -38,7 +44,6 @@ public class BGCanvas extends JPanel implements Observer {
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);
-		this.setBackground(Color.LIGHT_GRAY);
 		drawBG(g); // Our Added-on drawing
 	}
 
@@ -76,7 +81,6 @@ public class BGCanvas extends JPanel implements Observer {
 		        g2d.transform(at);*/
 				paintLine(g2d, BGApp.color, st);
 			}
-			
 		}
 	}
 
@@ -91,6 +95,7 @@ public class BGCanvas extends JPanel implements Observer {
 		try {
 			// the first time, the canvas is initialized without stem data
 			if (BGApp.bgs.getBgSet().isEmpty() == false) {
+				BGApp.infoTextArea.insert("In simulation...\n\n", 0);
 				for (int i = 0; i < BGApp.bgs.getBgSet().get(0).getBgs().size(); i++) {
 					BGStem st = BGApp.bgs.getBgSet().get(0).getBgs().get(i); // get the current BGStem;
 					paintLine(g2d, BGApp.color, st); // paint on the canvas
@@ -104,12 +109,11 @@ public class BGCanvas extends JPanel implements Observer {
 					}
 				}
 				// when the draw process is done
+				BGApp.infoTextArea.insert("Simulation is done!\n\n", 0);
 				BGApp.isPause = false;
 				BGApp.frame.setResizable(true);
 				BGApp.isSimComplete = true;
 				BGApp.isRestart = true;
-				
-				
 			}
 		}
 		catch (InterruptedException e ) {

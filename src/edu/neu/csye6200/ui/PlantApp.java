@@ -3,6 +3,7 @@ package edu.neu.csye6200.ui;
 import net.java.dev.designgridlayout.DesignGridLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
@@ -17,7 +18,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -72,7 +75,7 @@ public class PlantApp extends BGApp {
 			e.printStackTrace();
 		}
 
-		frame.setSize(1300, 800); // initial Frame size
+		frame.setSize(1400, 800); // initial Frame size
 		frame.setTitle("PlantApp");
 		menuMgr.createDefaultActions(); // Set up default menu items
 		showUI(); // Cause the Swing Dispatch thread to display the JFrame
@@ -90,7 +93,38 @@ public class PlantApp extends BGApp {
 		bgPanel = new BGCanvas();
 		mainPanel.add(BorderLayout.CENTER, bgPanel);	// set menuPanel to the left and mainPanel to the right
 		bgs.addObserver(bgPanel); /// add observer
+		mainPanel.add(BorderLayout.EAST, getInfoPanel());
 		return mainPanel;
+	}
+
+	/**
+	 * Create a info panel (at right side) that will hold JTextArea
+	 * 
+	 * @return JPanel
+	 */
+	private JPanel getInfoPanel() {
+		infoPanel = new JPanel();
+		infoPanel.setPreferredSize(new Dimension(250, 800));
+		infoPanel.setLayout(null);
+		// add a scrollPane to hold JTextArea
+		infoScrollPane = new JScrollPane();
+		infoScrollPane.setBounds(25, 25, 200, 400);
+		infoPanel.add(infoScrollPane);
+		// add a textArea to output info
+		infoTextArea = new JTextArea();
+		infoTextArea.setBounds(25, 25, 200, 400);
+		infoScrollPane.setViewportView(infoTextArea);
+		// info
+		JLabel info = new JLabel("       Author:Tianju Zhou");
+		info.setBounds(80, 600, 200, 50);
+		infoPanel.add(info);
+		info = new JLabel("Northeastern University");
+		info.setBounds(80, 650, 200, 50);
+		infoPanel.add(info);
+		info = new JLabel("         NUID:001420546");
+		info.setBounds(80, 700, 200, 50);
+		infoPanel.add(info);
+		return infoPanel;
 	}
 
 	/**
@@ -169,12 +203,13 @@ public class PlantApp extends BGApp {
 		playout.row().grid(new JLabel("midRadian")).add(midRadianSlider);
 		
 		// create random button instances
-		startBtn = new JButton("    Random    ");
-		startBtn.addActionListener(e -> {
+		playout.row().grid().empty();
+		randomBtn = new JButton("    Random    ");
+		randomBtn.addActionListener(e -> {
 			randomBtnAction();
 		});
 		playout.row().grid().empty();
-		playout.row().center().add(startBtn);
+		playout.row().center().add(randomBtn);
 	
 		// create start button instances
 		startBtn = new JButton("    Start    "); 
@@ -202,17 +237,13 @@ public class PlantApp extends BGApp {
 		playout.row().grid().empty();
 		playout.row().center().add(resumeBtn);
 		
-		// info
-		playout.row().grid().empty();	
-		playout.row().grid().empty();	
-		playout.row().grid((new JLabel("Author: Tianju"))).add((new JLabel("Zhou")));	
-		playout.row().grid((new JLabel("ID:001420546")));	
-		
 		menuPanel.setBackground(Color.WHITE);
 		return menuPanel;
 	}
 
 	private void randomBtnAction() {
+		infoTextArea.insert("Set parameters randomly\n\n", 0);
+		
 		// random of ruleBox: rule1/2/3
 		int index = (int) (Math.random()*3);
 		ruleBox.setSelectedIndex(index);
@@ -296,6 +327,7 @@ public class PlantApp extends BGApp {
 				int num = Integer.parseInt(genTextField.getText());
 				System.out.print(genTextField.getText().trim());
 				if (num >= 0 && num <= 9) { // ensure that the generation is 0-9
+					infoTextArea.insert("Simulation Starts.\n\n", 0);
 					isPause = false; // reset isStop, isRestart, isSimCompelte to false
 					isSimComplete = false;
 					isRestart = false;

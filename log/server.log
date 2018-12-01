@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-12-01T03:56:15.717931Z</date>
-  <millis>1543636575717</millis>
-  <nanos>931000</nanos>
+  <date>2018-12-01T14:44:05.679549Z</date>
+  <millis>1543675445679</millis>
+  <nanos>549000</nanos>
   <sequence>2</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>PlantApp started</message>
 </record>
 <record>
-  <date>2018-12-01T03:56:15.865948Z</date>
-  <millis>1543636575865</millis>
-  <nanos>948000</nanos>
+  <date>2018-12-01T14:44:05.829964Z</date>
+  <millis>1543675445829</millis>
+  <nanos>964000</nanos>
   <sequence>3</sequence>
   <logger>edu.neu.csye6200.ui.BGCanvas</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>Drawing BG 0</message>
 </record>
 <record>
-  <date>2018-12-01T03:56:15.901750Z</date>
-  <millis>1543636575901</millis>
-  <nanos>750000</nanos>
+  <date>2018-12-01T14:44:05.854801Z</date>
+  <millis>1543675445854</millis>
+  <nanos>801000</nanos>
   <sequence>4</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
@@ -38,9 +38,9 @@
   <message>Window opened</message>
 </record>
 <record>
-  <date>2018-12-01T03:56:15.902825Z</date>
-  <millis>1543636575902</millis>
-  <nanos>825000</nanos>
+  <date>2018-12-01T14:44:05.857654Z</date>
+  <millis>1543675445857</millis>
+  <nanos>654000</nanos>
   <sequence>5</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
@@ -50,99 +50,15 @@
   <message>Window activated</message>
 </record>
 <record>
-  <date>2018-12-01T03:56:15.930039Z</date>
-  <millis>1543636575930</millis>
-  <nanos>39000</nanos>
+  <date>2018-12-01T14:44:20.284456Z</date>
+  <millis>1543675460284</millis>
+  <nanos>456000</nanos>
   <sequence>6</sequence>
-  <logger>edu.neu.csye6200.ui.BGCanvas</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.BGCanvas</class>
-  <method>drawBG</method>
-  <thread>17</thread>
-  <message>Drawing BG 1</message>
-</record>
-<record>
-  <date>2018-12-01T03:56:16.953369Z</date>
-  <millis>1543636576953</millis>
-  <nanos>369000</nanos>
-  <sequence>7</sequence>
   <logger>edu.neu.csye6200.ui.PlantApp</logger>
   <level>INFO</level>
   <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowDeactivated</method>
+  <method>windowClosing</method>
   <thread>17</thread>
-  <message>Window deactivated</message>
-</record>
-<record>
-  <date>2018-12-01T03:56:21.554132Z</date>
-  <millis>1543636581554</millis>
-  <nanos>132000</nanos>
-  <sequence>8</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowActivated</method>
-  <thread>17</thread>
-  <message>Window activated</message>
-</record>
-<record>
-  <date>2018-12-01T03:56:26.857138Z</date>
-  <millis>1543636586857</millis>
-  <nanos>138000</nanos>
-  <sequence>9</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowDeactivated</method>
-  <thread>17</thread>
-  <message>Window deactivated</message>
-</record>
-<record>
-  <date>2018-12-01T03:56:41.640060Z</date>
-  <millis>1543636601640</millis>
-  <nanos>60000</nanos>
-  <sequence>10</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowActivated</method>
-  <thread>17</thread>
-  <message>Window activated</message>
-</record>
-<record>
-  <date>2018-12-01T03:56:43.523719Z</date>
-  <millis>1543636603523</millis>
-  <nanos>719000</nanos>
-  <sequence>11</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowDeactivated</method>
-  <thread>17</thread>
-  <message>Window deactivated</message>
-</record>
-<record>
-  <date>2018-12-01T03:56:53.656507Z</date>
-  <millis>1543636613656</millis>
-  <nanos>507000</nanos>
-  <sequence>12</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowActivated</method>
-  <thread>17</thread>
-  <message>Window activated</message>
-</record>
-<record>
-  <date>2018-12-01T03:56:55.606026Z</date>
-  <millis>1543636615606</millis>
-  <nanos>26000</nanos>
-  <sequence>13</sequence>
-  <logger>edu.neu.csye6200.ui.PlantApp</logger>
-  <level>INFO</level>
-  <class>edu.neu.csye6200.ui.PlantApp</class>
-  <method>windowDeactivated</method>
-  <thread>17</thread>
-  <message>Window deactivated</message>
+  <message>Window closing</message>
 </record>
 </log>

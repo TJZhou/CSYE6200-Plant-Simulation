@@ -5,7 +5,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -36,16 +38,19 @@ public abstract class BGApp implements ActionListener, WindowListener {
 	public static boolean isSimComplete = false; //if the simulation process is complete
 	public static boolean isRestart = true;	//if the drawing process can be restarted
 	public static JFrame frame = null;
+	public static JTextArea infoTextArea = null;
 	
 	protected JPanel menuPanel = null;
 	protected JPanel mainPanel = null;
 	protected BGCanvas bgPanel = null;
+	protected JPanel infoPanel = null;
 	protected MenuManager menuMgr = null;
 	protected static Logger log = Logger.getLogger(PlantApp.class.getName());
 	protected String logBase = "log/server.log";	//log file routine	
 	protected String rules[] = {"rule1", "rule2", "rule3"};	//rule set
 	protected String colors[] = {"white", "black", "red", "blue", "green", "yellow","cyan"};	//color set
 	protected String growthRates[] = {"no process", "fast", "middle", "slow"}; 	//growth rate set
+	protected JScrollPane infoScrollPane = null;	// a scrollPanel to hold JTextArea
 	protected JTextField genTextField = null; //input generation into this textField
 	protected JButton randomBtn = null;
 	protected JButton startBtn = null;
@@ -86,6 +91,8 @@ public abstract class BGApp implements ActionListener, WindowListener {
 		frame.setLayout(new BorderLayout());
 		
 		frame.add(getMainPanel(), BorderLayout.CENTER);
+		
+		infoTextArea.insert("App starts!\n\n", 0);
     }
     
     /**
