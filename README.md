@@ -173,6 +173,6 @@ Actor(s) <Users>
 Trigger <Start the application and press some buttons>
  
 
-![alt text](https://drive.google.com/uc?export=view&id=1w5FkDJN8A1mQs7FsmRsicw2eNEihkl3K "Logo Title Text 1")
-![alt text](https://drive.google.com/uc?export=view&id=1UjR8cMP6spCApBUS3RSIYkO5vWCoWzSX "Logo Title Text 1")
+![image](https://drive.google.com/uc?export=view&id=1w5FkDJN8A1mQs7FsmRsicw2eNEihkl3K)
+![image](https://drive.google.com/uc?export=view&id=1UjR8cMP6spCApBUS3RSIYkO5vWCoWzSX)
 
