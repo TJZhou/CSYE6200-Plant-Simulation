@@ -171,3 +171,7 @@ Level: <Medium>
 Description <Print all the information when running the application>
 Actor(s) <Users>
 Trigger <Start the application and press some buttons>
+ 
+![alt text](https://drive.google.com/file/d/1w5FkDJN8A1mQs7FsmRsicw2eNEihkl3K/view?usp=sharing "Logo Title Text 1")
+![alt text](https://drive.google.com/open?id=1UjR8cMP6spCApBUS3RSIYkO5vWCoWzSX "Logo Title Text 1")
+
