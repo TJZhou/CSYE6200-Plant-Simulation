@@ -1,3 +1,5 @@
+ ![image](https://drive.google.com/uc?export=view&id=1w5FkDJN8A1mQs7FsmRsicw2eNEihkl3K)
+ ![image](https://drive.google.com/uc?export=view&id=1UjR8cMP6spCApBUS3RSIYkO5vWCoWzSX)
  /**
  * Biological Plant Growth Simulation application
  * 
@@ -171,8 +173,3 @@ Level: <Medium>
 Description <Print all the information when running the application>
 Actor(s) <Users>
 Trigger <Start the application and press some buttons>
- 
-
-![image](https://drive.google.com/uc?export=view&id=1w5FkDJN8A1mQs7FsmRsicw2eNEihkl3K)
-![image](https://drive.google.com/uc?export=view&id=1UjR8cMP6spCApBUS3RSIYkO5vWCoWzSX)
-
